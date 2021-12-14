@@ -224,6 +224,27 @@ extension Contactable {
     var concrete: Contact {
         Contact.init(from: self)
     }
+
+    init(from contact: Contactable){
+        self.id = contact.id
+        self.name = contact.name
+        self.phoneNumber = contact.phoneNumber
+        self.email = contact.email
+        self.thumbnailImage = contact.thumbnailImage
+        self.note = contact.note
+        self.followUps = contact.followUps
+        self.createDate = contact.createDate
+        self.lastFollowedUp = contact.lastFollowedUp
+        self.highlighted = contact.highlighted
+        self.containedInFollowUps = contact.containedInFollowUps
+    }
+}
+
+// MARK: - Conversion to Concrete type Convenience
+extension Contactable {
+    var concrete: Contact {
+        Contact.init(from: self)
+    }
 }
 
 // MARK: - Grouping Extension

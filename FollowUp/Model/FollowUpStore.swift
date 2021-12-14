@@ -361,6 +361,62 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
         case lastFetchedContacts
     }
 
+    // MARK: - Initialization
+    init() {
+        self.contactsInteractor
+            .contactsPublisher
+            .sink(receiveValue: { contacts in
+                self.contacts.append(contentsOf: contacts.map(\.concrete))
+            })
+            .store(in: &subscriptions)
+    }
+
+    // MARK: - CodingKeys
+    enum CodingKeys: CodingKey {
+        case contacts
+        case lastFetchedContacts
+    }
+
+    // MARK: - Codable Conformance
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(contacts, forKey: .contacts)
+        try container.encode(lastFetchedContacts, forKey: .lastFetchedContacts)
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.contacts = try container.decode(OrderedSet<Contact>.self, forKey: .contacts)
+        self.lastFetchedContacts = try container.decodeIfPresent(Date.self, forKey: .lastFetchedContacts)
+    }
+
+    // MARK: - RawRepresentable Conformance
+    var rawValue: String {
+        guard
+            let data = try? Self.encoder.encode(self),
+            let string = String(data: data, encoding: .utf8)
+        else { return .defaultFollowUpStoreString }
+        return string
+    }
+
+    required init?(rawValue: String) {
+        guard
+            let data = rawValue.data(using: .utf8),
+            let followUpStore = try? Self.decoder.decode(FollowUpStore.self, from: data)
+        else { return nil }
+        self.contacts = followUpStore.contacts
+        self.lastFetchedContacts = followUpStore.lastFetchedContacts
+    }
+}
+
+fileprivate extension String {
+    static var defaultFollowUpStoreString: String {
+        """
+        {
+            "contacts": []
+        }
+        """
+    }
 }
 
 fileprivate extension String {
