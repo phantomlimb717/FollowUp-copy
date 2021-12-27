@@ -60,6 +60,9 @@ enum ContactInteractorState {
 // MARK: -
 class ContactsInteractor: ContactsInteracting, ObservableObject {
 
+    // MARK: - Static Properties
+    public static var shared: ContactsInteracting = ContactsInteractor()
+
     // MARK: - Private Properties
     private var _contactsPublisher: PassthroughSubject<[any Contactable], FollowUpError> = .init()
     private var realm: Realm?

@@ -361,14 +361,8 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
         case lastFetchedContacts
     }
 
-    // MARK: - Initialization
     init() {
-        self.contactsInteractor
-            .contactsPublisher
-            .sink(receiveValue: { contacts in
-                self.contacts.append(contentsOf: contacts.map(\.concrete))
-            })
-            .store(in: &subscriptions)
+        
     }
 
     // MARK: - CodingKeys
@@ -380,13 +374,13 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     // MARK: - Codable Conformance
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(contacts, forKey: .contacts)
+        try container.encode(contactDictionary, forKey: .contacts)
         try container.encode(lastFetchedContacts, forKey: .lastFetchedContacts)
     }
 
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.contacts = try container.decode(OrderedSet<Contact>.self, forKey: .contacts)
+        self.contactDictionary = try container.decode([String:Contact].self, forKey: .contacts)
         self.lastFetchedContacts = try container.decodeIfPresent(Date.self, forKey: .lastFetchedContacts)
     }
 
@@ -399,14 +393,49 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
         return string
     }
 
-    required init?(rawValue: String) {
+    init?(rawValue: String) {
         guard
             let data = rawValue.data(using: .utf8),
             let followUpStore = try? Self.decoder.decode(FollowUpStore.self, from: data)
         else { return nil }
-        self.contacts = followUpStore.contacts
+        self.contactDictionary = followUpStore.contactDictionary
         self.lastFetchedContacts = followUpStore.lastFetchedContacts
     }
+}
+
+/// Persistent App Storage container.
+final class FollowUpManager: ObservableObject {
+
+    // MARK: - Private Stored Properties
+    @Persisted(Constant.Key.followUpStore) var store: FollowUpStore = .init() {
+        didSet { self.objectWillChange.send() }
+    }
+    public var contactsInteractor: ContactsInteracting = ContactsInteractor()
+    private var subscriptions: Set<AnyCancellable> = .init()
+
+    // MARK: - Public Methods
+    public func fetchContacts() async {
+        await self.contactsInteractor.fetchContacts()
+    }
+
+    // MARK: - Initialization
+    init() {
+        self.subscribeForNewContacts()
+    }
+
+    // MARK: - Methods
+    private func subscribeForNewContacts() {
+        self.contactsInteractor
+            .contactsPublisher
+            .sink(receiveValue: { newContacts in
+                let mapped = newContacts
+                    .map(\.concrete)
+                    .mappedToDictionary(by: \.id)
+                self.store.contactDictionary.merge(mapped, uniquingKeysWith: { _, second in second })
+            })
+            .store(in: &self.subscriptions)
+    }
+
 }
 
 fileprivate extension String {

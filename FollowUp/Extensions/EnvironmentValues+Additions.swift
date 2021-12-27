@@ -17,6 +17,10 @@ struct FollowUpStoreKey: EnvironmentKey {
     static let defaultValue: FollowUpStore = FollowUpStore()
 }
 
+struct FollowUpStoreKey: EnvironmentKey {
+    static let defaultValue: FollowUpStore = FollowUpStore()
+}
+
 // MARK: - EnvironmentValues Extensions
 extension EnvironmentValues {
     var contactsInteractor: ContactsInteractor {
