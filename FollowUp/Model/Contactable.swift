@@ -235,6 +235,7 @@ extension Contactable {
         self.followUps = contact.followUps
         self.createDate = contact.createDate
         self.lastFollowedUp = contact.lastFollowedUp
+        self.lastInteractedWith = contact.lastInteractedWith
         self.highlighted = contact.highlighted
         self.containedInFollowUps = contact.containedInFollowUps
     }
