@@ -411,7 +411,7 @@ final class FollowUpManager: ObservableObject {
     @Persisted(Constant.Key.followUpStore) var store: FollowUpStore = .init() {
         didSet { self.objectWillChange.send() }
     }
-    public var contactsInteractor: ContactsInteracting = ContactsInteractor()
+    public lazy var contactsInteractor: ContactsInteracting = ContactsInteractor()
     private var subscriptions: Set<AnyCancellable> = .init()
 
     // MARK: - Public Methods

@@ -29,6 +29,10 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
         self.$state.eraseToAnyPublisher()
     }
 
+    var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> {
+        self.$contactSheet.eraseToAnyPublisher()
+    }
+
     private var addToContactAmount: Int
 
     init(
@@ -78,6 +82,14 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
 
     func dismiss(_ contact: any Contactable) {
         
+    }
+
+    func displayContactSheet(_ contact: Contactable) {
+        self.contactSheet = contact.sheet
+    }
+
+    func hideContactSheet() {
+        self.contactSheet = nil
     }
     
     func add(tag: Tag, to contact: any Contactable) {

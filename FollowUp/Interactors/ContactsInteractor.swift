@@ -84,6 +84,10 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
         self.realm = realm
     }
 
+    var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> { self.$contactSheet.eraseToAnyPublisher() }
+
+    @Published var contactSheet: ContactSheet?
+
     // MARK: - Public Methods
     
     func highlight(_ contact: any Contactable) {
