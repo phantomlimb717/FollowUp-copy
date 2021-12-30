@@ -404,39 +404,6 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     }
 }
 
-/// Persistent App Storage container.
-final class FollowUpManager: ObservableObject {
-
-    // MARK: - Private Stored Properties
-    @Persisted(Constant.Key.followUpStore) var store: FollowUpStore = .init() {
-        didSet { self.objectWillChange.send() }
-    }
-    public lazy var contactsInteractor: ContactsInteracting = ContactsInteractor()
-    private var subscriptions: Set<AnyCancellable> = .init()
-
-    // MARK: - Public Methods
-    public func fetchContacts() async {
-        await self.contactsInteractor.fetchContacts()
-    }
-
-    // MARK: - Initialization
-    init() {
-        self.subscribeForNewContacts()
-        self.objectWillChange.send()
-    }
-
-    // MARK: - Methods
-    private func subscribeForNewContacts() {
-        self.contactsInteractor
-            .contactsPublisher
-            .sink(receiveValue: { newContacts in
-                self.store.updateWithFetchedContacts(newContacts)
-            })
-            .store(in: &self.subscriptions)
-    }
-
-}
-
 fileprivate extension String {
     static var defaultFollowUpStoreString: String {
         """

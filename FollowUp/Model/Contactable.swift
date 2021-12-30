@@ -28,6 +28,9 @@ protocol Contactable: Object, Identifiable {
     /// New contacts younger than one week, and have not been interacted with.
     var isNew: Bool { get }
 
+    /// New contacts are not older than one week, and have not been interacted with.
+    var isNew: Bool { get }
+
     // MARK: - Interaction Indicators
     var lastFollowedUp: Date? { get set }
     var hasBeenFollowedUpToday: Bool { get }
