@@ -77,6 +77,20 @@ struct ContactListView: View {
         .background(Color.clear)
     }
 
+    var verticalListRowItemEdgeInsets: EdgeInsets = .init(
+        top: 5,
+        leading: -20,
+        bottom: 0,
+        trailing: 0
+    )
+
+    var emptyListRowItemEdgeInsets: EdgeInsets = .init(
+        top: 0,
+        leading: 0,
+        bottom: 0,
+        trailing: 0
+    )
+
     // MARK: - Views
     var body: some View {
         #if DEBUG
