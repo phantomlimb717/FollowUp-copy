@@ -25,6 +25,11 @@ class PhoneNumber: Object, Codable {
         value.filter { !$0.isWhitespace }
     }
 
+    // MARK: - Computed Properties
+    private var urlFriendlyValue: String {
+        value.filter { !$0.isWhitespace }
+    }
+
     var callURL: URL? {
         URL(string: "tel://\(urlFriendlyValue)")
     }
