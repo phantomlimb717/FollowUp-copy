@@ -39,6 +39,63 @@ struct ContactListSectionView: View {
             .font(.headline)
             .padding(.bottom)
     }
+
+    @ViewBuilder
+    private func createHighlightToggleButton(for contact: Contact) -> some View {
+        if !contact.highlighted {
+            highlightButton(for: contact)
+        }
+        else {
+            unhighlightButton(for: contact)
+        }
+    }
+
+    private func highlightButton(for contact: Contact) -> some View {
+        Button(action: {
+            followUpManager.contactsInteractor.highlight(contact)
+        }, label: {
+            Label("Highlight", systemImage: "star.fill")
+        })
+        .tint(.yellow)
+    }
+
+    private func unhighlightButton(for contact: Contact) -> some View {
+        Button(action: {
+            followUpManager.contactsInteractor.unhighlight(contact)
+        }, label: {
+            Label("Unhighlight", systemImage: "star.slash.fill")
+        })
+        .tint(.yellow)
+    }
+
+    @ViewBuilder
+    private func createAddToFollowUpsToggleButton(for contact: Contact) -> some View {
+        if !contact.containedInFollowUps {
+            addToFollowUpsButton(for: contact)
+        } else {
+            removeFromFollowUpsButton(for: contact)
+        }
+    }
+
+    private func addToFollowUpsButton(for contact: Contact) -> some View {
+        Button(action: {
+            followUpManager.contactsInteractor.addToFollowUps(contact)
+        }, label: {
+            Label("Add to Follow Ups", systemImage: "plus")
+        })
+        .tint(.blue)
+    }
+
+    private func removeFromFollowUpsButton(for contact: Contact) -> some View {
+        Button(action: {
+            followUpManager.contactsInteractor.addToFollowUps(contact)
+        }, label: {
+            Label("Remove from Follow Ups", systemImage: "minus")
+        })
+        .tint(.red)
+    }
+
+    
     
     private var horizontalSectionTitle: some View {
         HStack {
