@@ -31,6 +31,7 @@ struct FollowUpApp: App {a
         WindowGroup {
             ContentView()
                 .environmentObject(followUpManager)
+                .onAppear(perform: self.followUpManager.configureNotifications)
                 .environmentObject(followUpManager.store)
                 .environmentObject(followUpManager.store.settings)
                 .onAppear(perform: self.followUpManager.configureNotifications)
