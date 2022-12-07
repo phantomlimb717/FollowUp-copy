@@ -216,5 +216,23 @@ final class FollowUpManager: ObservableObject {
          
          task?.setTaskCompleted(success: true)
     }
+    
+    /// Contains the logic associated with a request to sechedule notifications while the app is running in the background.
+    private func handleScheduledNotificationsBackgroundTask(_ task: BGAppRefreshTask) {
+        task.expirationHandler = {
+            print("Could not register notifications.")
+        }
+        
+        // Clear current notifications.
+        self.notificationManager.clearScheduledNotifications()
+        
+        // Re-register notifications.
+        self.scheduleFollowUpReminderNotification()
+        
+        // Schedule a background task for tomorrow, at the same time.
+        self.scheduleBackgroundTaskForConfiguringNotifications(onDay: Date().adding(1, to: .day))
+        
+        task.setTaskCompleted(success: true)
+    }
 
 }
