@@ -153,6 +153,13 @@ enum Constant {
     enum ConversationActionButton {
         static let maxWidth: CGFloat = 200.0
     }
+    
+    // MARK: - Tags
+    enum Tag {
+        static let horiztontalPadding: CGFloat = 10.0
+        static let verticalPadding: CGFloat = 5.0
+        static let cornerRadius: CGFloat = 5.0
+    }
 
     // MARK: - Keys
     enum Key {

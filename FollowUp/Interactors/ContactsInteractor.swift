@@ -236,16 +236,49 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
                 print("Unable to modify contact, as no realm instance was found in the ContactsInteractor.")
                 return
             }
-            
+            contact?.tags.remove(at: tagIndex)
+        }
+    }
+    
+    public func removeTags(forContact contact: any Contactable, atOffsets offsets: IndexSet) {
+        self.modify(contact: contact) { contact in
+            contact?.tags.remove(atOffsets: offsets)
+        }
+    }
+    
+    public func moveTags(forContact contact: any Contactable, fromOffsets offsets: IndexSet, toOffset destination: Int) {
+        self.modify(contact: contact) { contact in
+            contact?.tags.move(fromOffsets: offsets, toOffset: destination)
+        }
+    }
+    
+    func changeColour(forTag tag: Tag, toColour colour: Color, forContact contact: any Contactable) {
+        self.writeToRealm { _ in
+            tag.colour = colour
+        }
+    }
+    
+    // MARK: - Private methods
+    private func modify(contact: any Contactable, closure: @escaping (Contact?) -> Void) {
+        writeToRealm { realm in
             let contact = realm.object(ofType: Contact.self, forPrimaryKey: contact.id)
-            
-            do {
-                try realm.writeAsync {
-                    closure(contact)
-                }
-            } catch {
-                print("Could not perform action: \(error.localizedDescription)")
+            closure(contact)
+        }
+    }
+    
+    private func writeToRealm(_ closure: @escaping (Realm) -> Void) {
+        guard let realm = self.realm else {
+            Log.error("Unable to modify contact, as no realm instance was found in the ContactsInteractor.")
+            return
+        }
+
+        do {
+            try realm.writeAsync {
+                closure(realm)
             }
+        } catch {
+            Log.error("Could not perform action: \(error.localizedDescription)")
+        }
     }
 }
 
