@@ -84,7 +84,7 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
         
     }
 
-    func displayContactSheet(_ contact: Contactable) {
+    func displayContactSheet(_ contact: any Contactable) {
         self.contactSheet = contact.sheet
     }
 

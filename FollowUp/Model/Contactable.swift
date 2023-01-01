@@ -228,19 +228,21 @@ extension Contactable {
         Contact.init(from: self)
     }
 
-    init(from contact: Contactable){
-        self.id = contact.id
-        self.name = contact.name
-        self.phoneNumber = contact.phoneNumber
-        self.email = contact.email
-        self.thumbnailImage = contact.thumbnailImage
-        self.note = contact.note
-        self.followUps = contact.followUps
-        self.createDate = contact.createDate
-        self.lastFollowedUp = contact.lastFollowedUp
-        self.lastInteractedWith = contact.lastInteractedWith
-        self.highlighted = contact.highlighted
-        self.containedInFollowUps = contact.containedInFollowUps
+    convenience init(from contact: any Contactable){
+        self.init(
+            contactID: contact.id,
+            name: contact.name,
+            phoneNumber: contact.phoneNumber,
+            email: contact.email,
+            thumbnailImage: contact.thumbnailImage,
+            note: contact.note,
+            followUps: contact.followUps,
+            createDate: contact.createDate,
+            lastFollowedUp: contact.lastFollowedUp,
+            highlighted: contact.highlighted,
+            containedInFollowUps: contact.containedInFollowUps,
+            lastInteractedWith: contact.lastInteractedWith
+        )
     }
 }
 

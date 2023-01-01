@@ -361,8 +361,29 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
         case lastFetchedContacts
     }
 
-    init() {
-        
+
+    func contact(forID contactID: ContactID) -> (any Contactable)? {
+//        self.contactDictionary[contactID] ?? nil
+        guard
+            let realm = realm,
+            let contact = realm.object(ofType: Contact.self, forPrimaryKey: contactID)
+        else {
+            print("Unable to find contact for ID \(contactID)")
+            return nil
+        }
+
+        return contact
+    }
+    
+    func configureObserver() {
+        guard let realm = realm else {
+            print("Could not find realm in order to configure contacts observer.")
+            return
+        }
+        let observedContacts = realm.objects(Contact.self)
+        self.contactsNotificationToken = observedContacts.observe { [weak self] _ in
+            self?._contacts = observedContacts
+        }
     }
 
     // MARK: - CodingKeys
@@ -372,36 +393,27 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     }
 
     // MARK: - Codable Conformance
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(contactDictionary, forKey: .contactDictionary)
-        try container.encode(lastFetchedContacts, forKey: .lastFetchedContacts)
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.contactDictionary = try container.decode([String:Contact].self, forKey: .contactDictionary)
-        self.lastFetchedContacts = try container.decodeIfPresent(Date.self, forKey: .lastFetchedContacts)
-        self.contacts = self.contactDictionary.values.map { $0 }
-    }
+//    func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: CodingKeys.self)
+//        try container.encode(contactDictionary, forKey: .contactDictionary)
+//        try container.encode(lastFetchedContacts, forKey: .lastFetchedContacts)
+//    }
+//
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        self.contactDictionary = try container.decode([ContactID:Contact].self, forKey: .contactDictionary)
+//        self.lastFetchedContacts = try container.decodeIfPresent(Date.self, forKey: .lastFetchedContacts)
+//        self.contacts = self.contactDictionary.values.map { $0 }
+//    }
 
     // MARK: - RawRepresentable Conformance
-    var rawValue: String {
-        guard
-            let data = try? Self.encoder.encode(self),
-            let string = String(data: data, encoding: .utf8)
-        else { return .defaultFollowUpStoreString }
-        return string
-    }
-
-    init?(rawValue: String) {
-        guard
-            let data = rawValue.data(using: .utf8),
-            let followUpStore = try? Self.decoder.decode(FollowUpStore.self, from: data)
-        else { return nil }
-        self.contactDictionary = followUpStore.contactDictionary
-        self.lastFetchedContacts = followUpStore.lastFetchedContacts
-    }
+//    var rawValue: String {
+//        guard
+//            let data = try? Self.encoder.encode(self),
+//            let string = String(data: data, encoding: .utf8)
+//        else { return .defaultFollowUpStoreString }
+//        return string
+//    }
 }
 
 fileprivate extension String {

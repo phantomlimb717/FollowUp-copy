@@ -234,6 +234,8 @@
 			files = (
 				21379047275AE82B004059F4 /* Collections in Frameworks */,
 				2159D01027120349005A2387 /* Fakery in Frameworks */,
+				210A6213295014040064EB8A /* Realm in Frameworks */,
+				210A6215295014040064EB8A /* RealmSwift in Frameworks */,
 				21379049275AE82B004059F4 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

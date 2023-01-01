@@ -60,9 +60,6 @@ enum ContactInteractorState {
 // MARK: -
 class ContactsInteractor: ContactsInteracting, ObservableObject {
 
-    // MARK: - Static Properties
-    public static var shared: ContactsInteracting = ContactsInteractor()
-
     // MARK: - Private Properties
     private var _contactsPublisher: PassthroughSubject<[any Contactable], FollowUpError> = .init()
     private var realm: Realm?
@@ -87,6 +84,11 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
     var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> { self.$contactSheet.eraseToAnyPublisher() }
 
     @Published var contactSheet: ContactSheet?
+    
+    // MARK: - Initialiser
+    init(realm: Realm?) {
+        self.realm = realm
+    }
 
     // MARK: - Public Methods
     
