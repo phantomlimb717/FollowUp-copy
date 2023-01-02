@@ -360,10 +360,17 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
         case contactDictionary
         case lastFetchedContacts
     }
+    
+    func mergeWithContactsDictionary(contacts: [any Contactable]) {
+        self.contactsDictionary.merge(contacts.mappedToDictionary(by: \.id)) { first, second in
+            // Check to see when we last interacted with a contact. We use the most recently interacted with version.
+            // TODO: We should always start with the last interacted with contact, and then update all the other values (e.g. name, email, phone number, etc).
+            (first.lastInteractedWith ?? .distantPast) > (second.lastInteractedWith ?? .distantPast) ? first : second
+        }
+    }
 
 
     func contact(forID contactID: ContactID) -> (any Contactable)? {
-//        self.contactDictionary[contactID] ?? nil
         guard
             let realm = realm,
             let contact = realm.object(ofType: Contact.self, forPrimaryKey: contactID)
@@ -382,7 +389,7 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
         }
         let observedContacts = realm.objects(Contact.self)
         self.contactsNotificationToken = observedContacts.observe { [weak self] _ in
-            self?._contacts = observedContacts
+            self?.contactsResults = observedContacts
         }
     }
 

@@ -213,6 +213,24 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
             Log.error("Could not perform action: \(error.localizedDescription)")
         }
     }
+    
+    // MARK: - Private methods
+    func modify(contact: any Contactable, closure: (Contact?) -> Void) {
+        guard let realm = realm else {
+            print("Unable to modify contact, as no realm instance was found in the ContactsInteractor.")
+            return
+        }
+        
+        let contact = realm.object(ofType: Contact.self, forPrimaryKey: contact.id)
+        
+        do {
+            try realm.write {
+                closure(contact)
+            }
+        } catch {
+            print("Could not perform action: \(error.localizedDescription)")
+        }
+    }
 }
 
 // MARK: - Fetch Logic Extension

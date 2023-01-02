@@ -81,6 +81,19 @@ struct ContentView: View {
                 default: break
                 }
             })
+            .sheet(item: $contactSheet, onDismiss: {
+                followUpManager.contactsInteractor.hideContactSheet()
+            }, content: {
+                ContactSheetView(
+                    kind: .modal,
+                    sheet: $0,
+                    onClose: {
+                        followUpManager.contactsInteractor.hideContactSheet()
+                    })
+            })
+            .onReceive(followUpManager.contactsInteractor.contactSheetPublisher, perform: { contactSheet in
+                self.contactSheet = contactSheet
+            })
     }
 
 }
