@@ -215,21 +215,21 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
     }
     
     // MARK: - Private methods
-    func modify(contact: any Contactable, closure: (Contact?) -> Void) {
-        guard let realm = realm else {
-            print("Unable to modify contact, as no realm instance was found in the ContactsInteractor.")
-            return
-        }
-        
-        let contact = realm.object(ofType: Contact.self, forPrimaryKey: contact.id)
-        
-        do {
-            try realm.write {
-                closure(contact)
+    private func modify(contact: any Contactable, closure: @escaping (Contact?) -> Void) {
+            guard let realm = self.realm else {
+                print("Unable to modify contact, as no realm instance was found in the ContactsInteractor.")
+                return
             }
-        } catch {
-            print("Could not perform action: \(error.localizedDescription)")
-        }
+            
+            let contact = realm.object(ofType: Contact.self, forPrimaryKey: contact.id)
+            
+            do {
+                try realm.writeAsync {
+                    closure(contact)
+                }
+            } catch {
+                print("Could not perform action: \(error.localizedDescription)")
+            }
     }
 }
 
