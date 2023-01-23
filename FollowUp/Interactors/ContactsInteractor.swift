@@ -57,6 +57,18 @@ enum ContactInteractorState {
     case loaded
 }
 
+/// Describes the current state of the contacts interactor.
+enum ContactInteractorState {
+    /// Currently awaiting authorization from the user to fetch contacts.
+    case requestingAuthorization
+    /// Authorization for reading contacts denied.
+    case authorizationDenied
+    /// Fetching contacts.
+    case fetchingContacts
+    /// Contacts have been loaded and are up to date.
+    case loaded
+}
+
 // MARK: -
 class ContactsInteractor: ContactsInteracting, ObservableObject {
 
@@ -82,8 +94,12 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
     }
 
     var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> { self.$contactSheet.eraseToAnyPublisher() }
+    
+    var statePublisher: AnyPublisher<ContactInteractorState, Never> { self.$state.eraseToAnyPublisher() }
 
     @Published var contactSheet: ContactSheet?
+    @Published var contactsAuthorized: Bool = false
+    @Published var state: ContactInteractorState = .fetchingContacts
     
     // MARK: - Initialiser
     init(realm: Realm?) {

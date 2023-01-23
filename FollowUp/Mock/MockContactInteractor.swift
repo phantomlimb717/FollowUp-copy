@@ -32,6 +32,10 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
     var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> {
         self.$contactSheet.eraseToAnyPublisher()
     }
+    
+    var statePublisher: AnyPublisher<ContactInteractorState, Never> {
+        self.$state.eraseToAnyPublisher()
+    }
 
     private var addToContactAmount: Int
 

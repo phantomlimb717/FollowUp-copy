@@ -80,6 +80,9 @@ enum Constant {
         case whatsApp = "whatsAppIcon"
         case personWithCheckmark = "person.crop.circle.fill.badge.checkmark"
         case partyPopper = "party.popper.fill"
+        case arrowCirclePath = "arrow.triangle.2.circlepath"
+        case lock = "lock.fill"
+        case lockWithExclamationMark = "lock.trianglebadge.exclamationmark"
 
         case arrowCirclePath = "arrow.triangle.2.circlepath"
         case lock = "lock.fill"
@@ -138,6 +141,12 @@ enum Constant {
         static let horiztontalPadding: CGFloat = 10.0
         static let verticalPadding: CGFloat = 5.0
         static let cornerRadius: CGFloat = 5.0
+    }
+    
+    // MARK: - Hero Message
+    enum HeroMessage {
+        static let verticalSpacing: CGFloat = 10.0
+        static let maxContentWidth: CGFloat = 250.0
     }
 
     // MARK: - Conversation Action Button
