@@ -375,7 +375,7 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
             let realm = realm,
             let contact = realm.object(ofType: Contact.self, forPrimaryKey: contactID)
         else {
-            print("Unable to find contact for ID \(contactID)")
+            assertionFailurePreviewSafe("Unable to find contact for ID \(contactID)")
             return nil
         }
 
@@ -384,12 +384,31 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     
     func configureObserver() {
         guard let realm = realm else {
-            print("Could not find realm in order to configure contacts observer.")
+            assertionFailurePreviewSafe("Could not find realm in order to configure contacts observer.")
             return
         }
         let observedContacts = realm.objects(Contact.self)
         self.contactsNotificationToken = observedContacts.observe { [weak self] _ in
             self?.contactsResults = observedContacts
+        }
+    }
+    
+    func loadSettingsFromRealm() {
+        if let followUpSettings = self.realm?.objects(FollowUpSettings.self).first {
+            self.settings = followUpSettings
+            print("Loaded FollowUpSettings from realm.")
+        } else {
+            print("FollowUpSettings not found in realm. Creating a new instance.")
+            let followUpSettings = FollowUpSettings()
+            do {
+                try self.realm?.write {
+                    self.realm?.add(followUpSettings)
+                    print("Added instance of FollowUpSettings to realm.")
+                    self.settings = followUpSettings
+                }
+            } catch {
+                assertionFailurePreviewSafe("Could not write new instance of FollowUpSettings to realm. \(error.localizedDescription)")
+            }
         }
     }
 

@@ -94,9 +94,6 @@ struct ContentView: View {
             .onReceive(followUpManager.contactsInteractor.contactSheetPublisher, perform: { contactSheet in
                 self.contactSheet = contactSheet
             })
-//            .task(priority: .background, {
-//                await followUpManager.contactsInteractor.fetchContacts()
-//            })
             .onChange(of: selectedTab, perform: { print("Tab changed to \($0)") })
             .onChange(of: scenePhase, perform: { phase in
                 switch phase {
