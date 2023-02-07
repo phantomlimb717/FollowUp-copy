@@ -64,6 +64,15 @@ extension Contactable {
         hasher.combine(email)
         return hasher.finalize()
     }
+    
+    /// Creates a hash value of the contact which does _not_ contain the 'note', 'id', or 'createDate' properties. This is used for merging.
+    func mergeableHashValue() -> Int {
+        var hasher = Hasher()
+        hasher.combine(name)
+        hasher.combine(phoneNumber?.description)
+        hasher.combine(email)
+        return hasher.finalize()
+    }
 }
 
 class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
@@ -196,7 +205,7 @@ extension Contact {
             note: contact.note,
             followUps: 0,
             // ⚠️ TODO: Update this to use the provided dates from CNContact.
-            createDate: Date(),
+            createDate: contact.value(forKey: "creationDate") as! Date ?? Date(),
             lastFollowedUp: nil,
             highlighted: false,
             containedInFollowUps: false,
