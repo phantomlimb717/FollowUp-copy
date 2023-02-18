@@ -83,6 +83,8 @@ enum Constant {
         case arrowCirclePath = "arrow.triangle.2.circlepath"
         case lock = "lock.fill"
         case lockWithExclamationMark = "lock.trianglebadge.exclamationmark"
+        
+        static let mediumSize: CGFloat = 30.0
 
         case arrowCirclePath = "arrow.triangle.2.circlepath"
         case lock = "lock.fill"
