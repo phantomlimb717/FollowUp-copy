@@ -78,8 +78,7 @@ enum Constant {
         case thumbsUp = "hand.thumbsup.fill"
         case trash = "trash.fill"
         case whatsApp = "whatsAppIcon"
-        case personWithCheckmark = "person.crop.circle.fill.badge.checkmark"
-        case partyPopper = "party.popper.fill"
+
         case arrowCirclePath = "arrow.triangle.2.circlepath"
         case lock = "lock.fill"
         case lockWithExclamationMark = "lock.trianglebadge.exclamationmark"
