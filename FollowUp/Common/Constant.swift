@@ -156,6 +156,14 @@ enum Constant {
         static let maxWidth: CGFloat = 200.0
     }
     
+    // MARK: - Circular Loading Spiner
+    enum CircularLoadingSpinner {
+        static let defaultSize: CGFloat = 25.0
+        static let defaultLineWidth: CGFloat = 5.0
+        static let defaultBackgroundCircleOpacity: CGFloat = 0.50
+        static let defaultColour: Color = .blue
+    }
+    
     // MARK: - Tags
     enum Tag {
         static let horiztontalPadding: CGFloat = 10.0
