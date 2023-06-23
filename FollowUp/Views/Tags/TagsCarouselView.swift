@@ -86,6 +86,24 @@ struct TagsCarouselView: View {
         }
         
     
+    private var creatingTagView: some View {
+            TextField(text: $newTagTitle, label: {
+                Text("New tag")
+            })
+            .textFieldStyle(.roundedBorder)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard, content: {
+                    suggestedTagView
+                })
+            }
+            .onChange(of: newTagTitle, perform: followUpManager.store.set(tagSearchQuery:))
+            .padding(.vertical, Constant.Tag.verticalPadding)
+            .focused($textFieldIsFocused)
+            .onSubmit(onCreateTagSubmit)
+        .submitLabel(.go)
+        }
+        
+    
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
