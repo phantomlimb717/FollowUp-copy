@@ -96,7 +96,11 @@ struct TagsCarouselView: View {
                     suggestedTagView
                 })
             }
-            .onChange(of: newTagTitle, perform: followUpManager.store.set(tagSearchQuery:))
+            .onChange(of: newTagTitle, perform: { tagSearchQuery in
+                withAnimation {
+                    followUpManager.store.set(tagSearchQuery:tagSearchQuery)
+                }
+            })
             .padding(.vertical, Constant.Tag.verticalPadding)
             .focused($textFieldIsFocused)
             .onSubmit(onCreateTagSubmit)
