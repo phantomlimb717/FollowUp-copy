@@ -114,6 +114,13 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
                 self.sortedContacts = self.computeSortedContacts()
             })
             .store(in: &cancellables)
+        
+        $selectedTagSearchTokens
+            .debounce(for: Constant.Search.tagSearchDebounce, scheduler: RunLoop.main)
+            .sink(receiveValue: { _ in
+                self.sortedContacts = self.computeSortedContacts()
+            })
+            .store(in: &cancellables)
     }
 
     // MARK: - Methods
@@ -389,12 +396,17 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
         self.tagSearchQuery = searchQuery
     }
     
+    /// Called by the Contact List view when a Tag is selected and to be used for filtering.
+    func set(selectedTagSearchTokens tagSearchTokens: [Tag]) {
+        self.selectedTagSearchTokens = tagSearchTokens
+    }
+    
     // MARK: - Methods (View Model)
-    private func computeSortedContacts(forContactSearchQuery contactSearchQuery: String = "") -> [any Contactable] {
+    private func computeSortedContacts() -> [any Contactable] {
         contacts
         .filter { contact in
-            guard !contactSearchQuery.isEmpty else { return true }
-            return contact.name.fuzzyMatch(contactSearchQuery)
+            guard !self.contactSearchQuery.isEmpty || !self.selectedTagSearchTokens.isEmpty else { return true }
+            return contact.name.fuzzyMatch(self.contactSearchQuery) && contact.tags.contains(self.selectedTagSearchTokens)
         }
         .sorted(by: \.createDate)
         .reversed()
@@ -417,7 +429,7 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     
     private func computeFilteredTags(forSearchQuery searchQuery: String) -> [Tag] {
         guard searchQuery.isEmpty else { return [] }
-        return self.tagsResults?.array.filter { $0.title.fuzzyMatch(searchQuery) } ?? []
+        return self.allTags.filter { $0.title.fuzzyMatch(searchQuery) }
     }
     
     // MARK: - Realm Configuration
