@@ -90,6 +90,46 @@ struct ContactListView: View {
         bottom: 0,
         trailing: 0
     )
+    
+    // MARK: - Computed Properties
+    private var searchSuggestionView: some View {
+        WrappingHStack(alignment: .leading) {
+            ForEach(suggestedTagSearchTokens) { tag in
+                TagChipView(tag: tag, action: {
+                    self.selectedTagSearchTokens.append(tag)
+                })
+            }
+        }
+        .animation(.default, value: suggestedTagSearchTokens)
+        .padding(.horizontal)
+        .background(Color(.systemGroupedBackground))
+    }
+    
+    private var fullContactListView: some View {
+        LazyVStack(spacing: Constant.ContactList.verticalSpacing) {
+            ForEach(contactSetions) { section in
+                ContactListSectionView(
+                    section: section,
+                    layoutDirection: section.grouping == .new ? .horizontal : .vertical
+                )
+                .padding(emptyListRowItemEdgeInsets)
+            }
+        }
+        .background(Color.clear)
+    }
+    
+    private var searchingContactListView: some View {
+        LazyVStack(spacing: Constant.ContactList.verticalSpacing) {
+            ForEach(contactSetions) { section in
+                ContactListSectionView(
+                    section: section,
+                    layoutDirection: .vertical
+                )
+                .padding(emptyListRowItemEdgeInsets)
+            }
+        }
+        .background(Color.clear)
+    }
 
     // MARK: - Views
     var body: some View {

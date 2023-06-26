@@ -390,11 +390,11 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     }
     
     // MARK: - Methods (View Model)
-    private func computeSortedContacts() -> [any Contactable] {
+    private func computeSortedContacts(forContactSearchQuery contactSearchQuery: String = "") -> [any Contactable] {
         contacts
         .filter { contact in
-            guard !self.contactSearchQuery.isEmpty else { return true }
-            return contact.name.fuzzyMatch(self.contactSearchQuery)
+            guard !contactSearchQuery.isEmpty else { return true }
+            return contact.name.fuzzyMatch(contactSearchQuery)
         }
         .sorted(by: \.createDate)
         .reversed()
@@ -415,9 +415,9 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
             .reversed()
     }
     
-    private func computeFilteredTags() -> [Tag] {
-        guard !self.tagSearchQuery.isEmpty else { return [] }
-        return self.tagsResults?.array.filter { $0.title.fuzzyMatch(self.tagSearchQuery) } ?? []
+    private func computeFilteredTags(forSearchQuery searchQuery: String) -> [Tag] {
+        guard searchQuery.isEmpty else { return [] }
+        return self.tagsResults?.array.filter { $0.title.fuzzyMatch(searchQuery) } ?? []
     }
     
     // MARK: - Realm Configuration
