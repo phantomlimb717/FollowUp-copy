@@ -427,9 +427,9 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
             .reversed()
     }
     
-    private func computeFilteredTags(forSearchQuery searchQuery: String) -> [Tag] {
-        guard searchQuery.isEmpty else { return [] }
-        return self.allTags.filter { $0.title.fuzzyMatch(searchQuery) }
+    private func computeFilteredTags() -> [Tag] {
+        guard !self.tagSearchQuery.isEmpty else { return self.allTags }
+        return self.allTags.filter { $0.title.fuzzyMatch(self.tagSearchQuery.trimmingWhitespace()) }
     }
     
     // MARK: - Realm Configuration
