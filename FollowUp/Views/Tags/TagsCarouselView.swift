@@ -97,9 +97,7 @@ struct TagsCarouselView: View {
                 })
             }
             .onChange(of: newTagTitle, perform: { tagSearchQuery in
-                withAnimation {
-                    followUpManager.store.set(tagSearchQuery:tagSearchQuery)
-                }
+                followUpManager.store.set(tagSearchQuery:tagSearchQuery)
             })
             .padding(.vertical, Constant.Tag.verticalPadding)
             .focused($textFieldIsFocused)
