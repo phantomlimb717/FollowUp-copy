@@ -39,6 +39,21 @@ struct ContactListSectionView: View {
             .font(.headline)
             .padding(.bottom)
     }
+    
+    private var horizontalSectionTitle: some View {
+        HStack {
+            Text(section.grouping.title)
+            Spacer()
+            Circle()
+                .frame(width: Constant.ContactList.newContactsBadgeSize, height: Constant.ContactList.newContactsBadgeSize)
+                .foregroundColor(.red)
+                .overlay {
+                    Text("\(section.contacts.count)")
+                        .font(.caption.bold())
+                        .foregroundColor(.white)
+                }
+        }
+    }
 
     @ViewBuilder
     private func createHighlightToggleButton(for contact: any Contactable) -> some View {
