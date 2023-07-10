@@ -16,11 +16,6 @@ class MockFollowUpStore: FollowUpStoring {
         case .thatAreNew: return completion(self.contacts.filter(\.isNew).count)
         }
     }
-
-    func numberOfContacts(metWithinTimeframe timeFrame: RelativeDateGrouping, completion: @escaping (Int?) -> Void) {
-        return completion(self.contacts.filter { $0.relativeDateGrouping == timeFrame }.count)
-    }
-    
     
     var dailyFollowUpGoal: Int? = nil
     var tagSearchQuery: String = ""
