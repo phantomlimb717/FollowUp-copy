@@ -11,7 +11,6 @@ import SwiftUI
 
 class MockContactsInteractor: ContactsInteracting, ObservableObject {
     
-    
     @Published var contactSheet: ContactSheet?
 
     @Published var contacts: [any Contactable] = []
