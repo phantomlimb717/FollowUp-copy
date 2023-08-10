@@ -94,7 +94,7 @@ struct ContactListView: View {
     // MARK: - Computed Properties
     private var searchSuggestionView: some View {
         WrappingHStack(alignment: .leading) {
-            ForEach(suggestedTagSearchTokens) { tag in
+            ForEach(prefixedSuggestedTagSearchTokens) { tag in
                 TagChipView(tag: tag, action: {
                     self.selectedTagSearchTokens.append(tag)
                 })
