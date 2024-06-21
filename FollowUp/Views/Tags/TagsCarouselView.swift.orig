@@ -86,6 +86,29 @@ struct TagsCarouselView: View {
         }
         
     
+<<<<<<< HEAD
+    private var creatingTagView: some View {
+            TextField(text: $newTagTitle, label: {
+                Text("New tag")
+            })
+            .textFieldStyle(.roundedBorder)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard, content: {
+                    suggestedTagView
+                })
+            }
+            .onChange(of: newTagTitle, perform: { tagSearchQuery in
+                followUpManager.store.set(tagSearchQuery:tagSearchQuery)
+            })
+            .padding(.vertical, Constant.Tag.verticalPadding)
+            .focused($textFieldIsFocused)
+            .onSubmit(onCreateTagSubmit)
+        .submitLabel(.go)
+        }
+        
+    
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
     var body: some View {
         ScrollView(.horizontal) {
             HStack {

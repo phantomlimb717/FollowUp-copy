@@ -14,7 +14,7 @@ struct IntelligentConversationStarter: ConversationStarting {
     // MARK: - Stored Properties
     var prompt: String?
     var context: String?
-    let kind: ConversationStarterKind = .intelligent
+    var kind: ConversationStarterKind = .intelligent
     
     // Unused properties.
     var template: String? = nil

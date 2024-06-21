@@ -81,6 +81,30 @@ struct ContentView: View {
                 default: break
                 }
             })
+<<<<<<< HEAD
+            .sheet(item: $contactSheet, onDismiss: {
+                followUpManager.contactsInteractor.hideContactSheet()
+            }, content: {
+                ContactSheetView(
+                    kind: .modal,
+                    sheet: $0,
+                    onClose: {
+                        followUpManager.contactsInteractor.hideContactSheet()
+                    })
+            })
+            .onReceive(followUpManager.contactsInteractor.contactSheetPublisher, perform: { contactSheet in
+                self.contactSheet = contactSheet
+            })
+            .onChange(of: selectedTab, perform: { print("Tab changed to \($0)") })
+            .onChange(of: scenePhase, perform: { phase in
+                switch phase {
+                case .active:
+                    followUpManager.contactsInteractor.fetchContacts()
+                default: break
+                }
+            })
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
     }
 
 }

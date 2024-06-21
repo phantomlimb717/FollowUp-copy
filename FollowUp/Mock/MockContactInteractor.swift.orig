@@ -29,6 +29,17 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
         self.$state.eraseToAnyPublisher()
     }
 
+<<<<<<< HEAD
+    var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> {
+        self.$contactSheet.eraseToAnyPublisher()
+    }
+    
+    var statePublisher: AnyPublisher<ContactInteractorState, Never> {
+        self.$state.eraseToAnyPublisher()
+    }
+
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
     private var addToContactAmount: Int
 
     init(
@@ -79,6 +90,17 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
     func dismiss(_ contact: any Contactable) {
         
     }
+<<<<<<< HEAD
+
+    func displayContactSheet(_ contact: any Contactable) {
+        self.contactSheet = contact.sheet
+    }
+
+    func hideContactSheet() {
+        self.contactSheet = nil
+    }
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
     
     func add(tag: Tag, to contact: any Contactable) {
             

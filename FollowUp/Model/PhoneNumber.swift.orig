@@ -25,6 +25,14 @@ class PhoneNumber: Object, Codable {
         value.filter { !$0.isWhitespace }
     }
 
+<<<<<<< HEAD
+    // MARK: - Computed Properties
+    private var urlFriendlyValue: String {
+        value.filter { !$0.isWhitespace }
+    }
+
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
     var callURL: URL? {
         URL(string: "tel://\(urlFriendlyValue)")
     }

@@ -206,8 +206,8 @@
             filePath = "FollowUp/Interactors/ContactsInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "requestAuthorization(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -290,6 +290,36 @@
             endingLineNumber = "34"
             landmarkName = "tagSearchSuggestions"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "21A4A247-4FA3-460C-A8F1-D97F812CCCBD - bd9171716af8489"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed, Arg[1] = Owned To Guaranteed&gt; of function signature specialization &lt;Arg[0] = [Closure Propagated : closure #1 (FollowUp.Tag) -&gt; Swift.Bool in FollowUp.TagsCarouselView.tagSearchSuggestions.getter : Swift.Array&lt;FollowUp.Tag&gt;, Argument Types : [FollowUp.TagsCarouselView]&gt; of generic specialization &lt;Swift.Array&lt;FollowUp.Tag&gt;&gt; of Swift._ArrayProtocol.filter((&#x3c4;_0_0.Element) throws -&gt; Swift.Bool) throws -&gt; Swift.Array&lt;&#x3c4;_0_0.Element&gt;"
+                  moduleName = "FollowUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aaronbaw/Code/FollowUp/FollowUp/Views/Tags/TagsCarouselView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34">
+               </Location>
+               <Location
+                  uuid = "21A4A247-4FA3-460C-A8F1-D97F812CCCBD - bd9171716af8489"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed, Arg[1] = Owned To Guaranteed&gt; of function signature specialization &lt;Arg[0] = [Closure Propagated : closure #1 (FollowUp.Tag) -&gt; Swift.Bool in FollowUp.TagsCarouselView.tagSearchSuggestions.getter : Swift.Array&lt;FollowUp.Tag&gt;, Argument Types : [FollowUp.TagsCarouselView]&gt; of generic specialization &lt;Swift.Array&lt;FollowUp.Tag&gt;&gt; of Swift._ArrayProtocol.filter((&#x3c4;_0_0.Element) throws -&gt; Swift.Bool) throws -&gt; Swift.Array&lt;&#x3c4;_0_0.Element&gt;"
+                  moduleName = "FollowUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aaronbaw/Code/FollowUp/FollowUp/Views/Tags/TagsCarouselView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -386,38 +416,6 @@
             endingLineNumber = "211"
             landmarkName = "contact(forID:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "094D4162-31ED-473E-B781-780C67375F9C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FollowUp/Model/Networking/Networking.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "openAIKey"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0A73F8A4-E4ED-41BE-B9BA-F982C8AFF43D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FollowUp/Model/Contactable.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "relativeDateGrouping"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

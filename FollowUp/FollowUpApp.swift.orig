@@ -10,7 +10,14 @@ import SwiftUI
 import UserNotifications
 
 @main
+<<<<<<< HEAD
+struct FollowUpApp: App {a
+    awdawdawda
+    
+    awd
+=======
 struct FollowUpApp: App {
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
 
     // MARK: - State Objects
     @StateObject var followUpManager: FollowUpManager = .init()

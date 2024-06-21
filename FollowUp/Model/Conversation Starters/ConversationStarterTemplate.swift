@@ -114,7 +114,7 @@ struct ConversationStarterTemplate: Codable, Hashable, Identifiable, CustomPersi
         self.starter = IntelligentConversationStarter(prompt: prompt, context: context)
         self.label = label
         self.platform = platform
-        self.id = id ?? UUID().uuidString
+        self.id = id 
     }
     
     // MARK: - Methods

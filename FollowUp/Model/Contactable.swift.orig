@@ -28,6 +28,12 @@ protocol Contactable: Object, Identifiable {
     /// New contacts younger than one week, and have not been interacted with.
     var isNew: Bool { get }
 
+<<<<<<< HEAD
+    /// New contacts younger than one week, and have not been interacted with.
+    var isNew: Bool { get }
+
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
     // MARK: - Interaction Indicators
     var lastFollowedUp: Date? { get set }
     var hasBeenFollowedUpToday: Bool { get }
@@ -61,6 +67,18 @@ extension Contactable {
         hasher.combine(email)
         return hasher.finalize()
     }
+<<<<<<< HEAD
+    
+    /// Creates a hash value of the contact which does _not_ contain the 'note', 'id', or 'createDate' properties. This is used for merging.
+    func mergeableHashValue() -> Int {
+        var hasher = Hasher()
+        hasher.combine(name)
+        hasher.combine(phoneNumber?.description)
+        hasher.combine(email)
+        return hasher.finalize()
+    }
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
 }
 
 class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
@@ -224,6 +242,33 @@ extension Contactable {
     var concrete: Contact {
         Contact.init(from: self)
     }
+<<<<<<< HEAD
+
+    convenience init(from contact: any Contactable){
+        self.init(
+            contactID: contact.id,
+            name: contact.name,
+            phoneNumber: contact.phoneNumber,
+            email: contact.email,
+            thumbnailImage: contact.thumbnailImage,
+            note: contact.note,
+            followUps: contact.followUps,
+            createDate: contact.createDate,
+            lastFollowedUp: contact.lastFollowedUp,
+            highlighted: contact.highlighted,
+            containedInFollowUps: contact.containedInFollowUps,
+            lastInteractedWith: contact.lastInteractedWith
+        )
+    }
+}
+
+// MARK: - Conversion to Concrete type Convenience
+extension Contactable {
+    var concrete: Contact {
+        Contact.init(from: self)
+    }
+=======
+>>>>>>> 8a052cd (Create new Xcode project to fix entitlement issue.)
 }
 
 // MARK: - Grouping Extension

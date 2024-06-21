@@ -12,7 +12,7 @@ struct StandardConversationStarter: ConversationStarting {
     
     // MARK: - Stored Properties
     var template: String?
-    let kind: ConversationStarterKind = .standard
+    var kind: ConversationStarterKind = .standard
 
     // Unused properties.
     var prompt: String? = nil
