@@ -55,4 +55,16 @@ extension LocalizedStringKey {
     static let delete: LocalizedStringKey = "Delete"
     static let newTag: LocalizedStringKey = "New Tag"
     
+    // MARK: - Welcome View
+    static let organiseFeatureTitle: LocalizedStringKey = "Organise"
+    static let organiseFeatureDescription: LocalizedStringKey = "See who you met this week and add them to a dedicated list."
+    
+    static let setGoalsFeatureTitle: LocalizedStringKey = "Set Goals"
+    static let setGoalsFeatureDescription: LocalizedStringKey = "Set daily goals and track your progress."
+    
+    static let autoComposeFeatureTitle: LocalizedStringKey = "Auto-Compose"
+    static let autoComposeFeatureDescription: LocalizedStringKey = "Use conversation starters to quickly compose messages."
+    
+    static let discoverMoreFeaturesHint: LocalizedStringKey = "Discover more on these features by tapping settings."
+    
 }

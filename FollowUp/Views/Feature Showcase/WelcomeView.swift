@@ -22,22 +22,22 @@ struct WelcomeView: View {
             VStack(alignment: .leading, spacing: 30) {
                 IndividualFeatureView(
                     icon: .clock,
-                    title: "Organise",
-                    description: "See who you met this week and add them to a dedicated list.",
+                    title: .organiseFeatureTitle,
+                    description: .organiseFeatureDescription,
                     colour: .single(.blue)
                 )
                 
                 IndividualFeatureView(
                     icon: .target,
-                    title: "Set Goals",
-                    description: "Set daily goals and track your progress.",
+                    title: .setGoalsFeatureTitle,
+                    description: .setGoalsFeatureDescription,
                     colour: .gradient([.red.opacity(0.6), .red])
                 )
                 
                 IndividualFeatureView(
                     icon: .bolt,
-                    title: "Auto-Compose",
-                    description: "Use conversation starters to quickly compose messages.",
+                    title: .autoComposeFeatureTitle,
+                    description: .autoComposeFeatureDescription,
                     colour: .gradient([.yellow.opacity(0.6), .yellow])
                 )
             }
@@ -48,7 +48,7 @@ struct WelcomeView: View {
             VStack(spacing: Constant.verticalPadding) {
                 Image(icon: .settings)
                     .foregroundColor(.blue)
-                Text("Discover more on these features by tapping settings.")
+                Text(.discoverMoreFeaturesHint)
                     .font(.caption.weight(.regular))
                     .foregroundColor(.secondary)
             }.padding()
