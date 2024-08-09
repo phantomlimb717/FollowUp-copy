@@ -8,22 +8,66 @@
             "state" : "translated",
             "value" : ""
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     " Met " : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Getroffen "
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Encontrado "
+            "value" : " Conocimos "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Rencontré "
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Ontmoet "
           }
         }
       }
     },
     "%@" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "nl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
@@ -32,10 +76,18 @@
       }
     },
     "%@ %@" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%1$@ %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@ %2$@"
           }
         },
@@ -44,12 +96,44 @@
             "state" : "translated",
             "value" : "%1$@ %2$@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%1$@ %2$@"
+          }
         }
       }
     },
     "%lld" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%lld"
+          }
+        },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%lld"
+          }
+        },
+        "nl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
@@ -58,18 +142,58 @@
       }
     },
     "%lld Follow UPs" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%lld Verfolgungen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld seguimientos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%lld suivis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%lld volgers"
+          }
         }
       }
     },
     "+" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "+"
+          }
+        },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "+"
+          }
+        },
+        "nl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "+"
@@ -78,631 +202,2085 @@
       }
     },
     "Add to follow ups" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Zu Verfolgungen hinzufügen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agregar a seguimientos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ajouter aux suivis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Toevoegen aan volgingen"
+          }
         }
       }
     },
     "Add to Follow Ups" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Zu Überwachungen hinzufügen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agregar a Seguimientos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ajouter aux Suivis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Toevoegen aan Volgers"
+          }
         }
       }
     },
     "AI-enabled conversation starters use AI to automatically generate a personalised, unique conversation starter for your contact. ✨" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "KI-gesteuerte Gesprächsinitiatoren nutzen künstliche Intelligenz, um automatisch einen personalisierten und einzigartigen Gesprächseinstieg für deinen Kontakt zu generieren."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Los iniciadores de conversación habilitados por IA utilizan la inteligencia artificial para generar automáticamente un inicio de conversación personalizado y único para tu contacto. ✨"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Les initiateurs de conversation activés par IA utilisent l'intelligence artificielle pour générer automatiquement un début de conversation personnalisé et unique pour ton contact. ✨"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Door AI ondersteunde gespreksstarters gebruiken kunstmatige intelligentie om automatisch een gepersonaliseerde en unieke gespreksstarter voor je contact te genereren. ✨"
+          }
+        }
+      }
+    },
+    "Auto-Compose" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisch verfassen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Composición automática"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-Composer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisch samenstellen"
+          }
         }
       }
     },
     "Awaiting Authorisation" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Warte auf Genehmigung"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esperando autorización\n"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "En attente d'autorisation"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Wachtend op autorisatie"
+          }
         }
       }
     },
     "Choose a prompt to instruct the AI on how to compose your message." : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Wähle eine Nachricht, um der KI Anweisungen zu geben, wie sie deine Nachricht verfassen soll."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elige un mensaje para instruir a la IA sobre cómo redactar tu mensaje."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Choisissez un message pour instruire l'IA sur la façon de rédiger votre message"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kies een bericht om de AI instructies te geven over hoe je je bericht wilt laten opstellen."
+          }
         }
       }
     },
     "Contacts" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kontakte"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contactos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Contacts"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Contacten"
+          }
         }
       }
     },
     "Contacts Denied" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kontakte abgelehnt"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contactos denegados"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Contacts refusés"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Geweigerde contacten"
+          }
         }
       }
     },
     "Context" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kontext"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contexto"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Contexte"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Context"
+          }
         }
       }
     },
     "Continue" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Fortfahren"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continuar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Continuer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Doorgaan"
+          }
         }
       }
     },
     "Conversation Starter Kind" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Art der Gesprächseinleitung"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tipo de iniciador de conversación"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Type d'initiateur de conversation"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Type gesprekstarter"
+          }
         }
       }
     },
     "Conversation Starters" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Gesprächsstarter"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Iniciadores de conversación"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Déclencheurs de conversation"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Gespreksaanjagers"
+          }
         }
       }
     },
     "Daily Goal" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tagesziel"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meta diaria"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Objectif quotidien"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Dagelijkse doelstelling"
+          }
         }
       }
     },
     "Day, Month, Year" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tag, Monat, Jahr"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día, Mes, Año"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Jour, Mois, Année"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Dag, Maand, Jaar"
+          }
         }
       }
     },
     "Delete" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Entfernen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Supprimer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Verwijderen"
+          }
         }
       }
     },
     "Discover more on these features by tapping settings." : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Erfahren Sie mehr über diese Funktionen, indem Sie auf Einstellungen tippen."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descubre más sobre estas funciones tocando configuración."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Découvrez-en plus sur ces fonctions en touchant paramètres"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ontdek meer over deze functies door op instellingen te tikken"
+          }
         }
       }
     },
     "Done" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Fertig"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hecho"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Fait"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Gedaan"
+          }
         }
       }
     },
     "Edit Conversation Starter" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Konversationsstarter bearbeiten"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar iniciador de conversación"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Éditeur d'initiateur de conversation"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Gespreksstarter bewerken"
+          }
         }
       }
     },
     "Fetching Contacts" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kontakte suchen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscando contactos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Recherche de contacts"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Op zoek naar contacten"
+          }
         }
       }
     },
     "Followed Up today" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Heute gefolgt"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seguido hoy"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Suivi aujourd'hui"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vandaag gevolgd"
+          }
         }
       }
     },
     "FollowUp" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Verfolgung"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seguimiento"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Suivi"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Volgen"
+          }
         }
       }
     },
     "FollowUp needs permission to read from your device's contacts to work properly. Please enable this in Settings." : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "FollowUp benötigt die Erlaubnis, um die Kontakte auf deinem Gerät lesen zu können, damit es ordnungsgemäß funktioniert. Bitte aktiviere diese Option in den Einstellungen."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "FollowUp necesita permiso para leer los contactos de tu dispositivo para funcionar correctamente. Por favor, habilita esta opción en Configuración."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "FollowUp a besoin d'autorisation pour lire les contacts de votre appareil afin de fonctionner correctement. Veuillez activer cette option dans les Paramètres."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "FollowUp heeft toestemming nodig om de contacten op je apparaat te lezen om correct te functioneren. Schakel deze optie in onder Instellingen."
+          }
         }
       }
     },
     "FollowUp Reminders" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "FollowUp-Erinnerungen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recordatorios de FollowUp"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Rappels de suivi"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "FollowUp-herinneringen"
+          }
         }
       }
     },
     "FollowUps" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Verfolgungen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seguimientos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Suivis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Volgingen"
+          }
         }
       }
     },
     "Grouping" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Gruppierung"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agrupamiento"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Regroupement"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Groepering"
+          }
         }
       }
     },
     "Highlight" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Hervorheben"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resaltar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Souligner"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Markeren"
+          }
         }
       }
     },
     "Highlights" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Hervorgehoben"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Destacados"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "En vedette"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Uitgelicht"
+          }
         }
       }
     },
     "I followed up" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ich habe weitergemacht"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "He seguido"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "J'ai continué"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ik heb gevolgd"
+          }
         }
       }
     },
     "Message" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nachricht"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mensaje"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Message"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Bericht"
+          }
+        }
+      }
+    },
+    "Met" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getroffen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conocimos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rencontré"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ontmoet"
+          }
         }
       }
     },
     "Month, Year" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Monat, Jahr"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mes, Año"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mois, Année"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Maand, Jaar"
+          }
         }
       }
     },
     "Name" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Name"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nom"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Naam"
+          }
         }
       }
     },
     "New" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Neu"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuevo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nouveau"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nieuw"
+          }
         }
       }
     },
     "New Conversation Starter" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Neuer Gesprächsanfang"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuevo iniciador de conversación"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nouveau démarreur de conversation"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nieuwe gespreksstarter"
+          }
         }
       }
     },
     "New Tag" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Neues Etikett"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nueva etiqueta"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nouvelle étiquette"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nieuw label"
+          }
         }
       }
     },
     "No Highlights" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ohne Hervorhebung"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin resaltar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Sans souligner"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Zonder markering"
+          }
         }
       }
     },
     "Open" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Öffnen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abrir"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ouvrir"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Open"
+          }
         }
       }
     },
     "OpenAI Key" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "OpenAI-Schlüssel"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clave OpenAI"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Clé OpenAI"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Sleutel OpenAI"
           }
         }
       }
     },
     "Optional. Add some extra context to help the AI construct a tailor-made message. " : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional. Füge etwas zusätzlichen Kontext hinzu, um der KI zu helfen, eine maßgeschneiderte Nachricht zu erstellen."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Opcional. Añade algún contexto adicional para ayudar a la IA a redactar un mensaje personalizado."
+            "value" : "Opcional. Agrega un poco de contexto adicional para ayudar a la IA a construir un mensaje a medida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optionnel. Ajoutez un peu de contexte supplémentaire pour aider l'IA à formuler un message sur mesure."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optioneel. Voeg wat extra context toe om de AI te helpen een op maat gemaakte boodschap te creëren."
           }
         }
       }
     },
     "Optional. Choose a short name for this conversation starter." : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Optional. Wähle einen kurzen Namen für diesen Gesprächsstarter."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Opcional. Elige un nombre corto para este iniciador de conversación."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Optionnel. Choisissez un nom court pour ce démarreur de conversation."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Optioneel. Kies een korte naam voor deze gesprekstarter."
+          }
+        }
+      }
+    },
+    "Organise" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organisieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organiser"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organiseren"
+          }
         }
       }
     },
     "Please allow FollowUp to read from your Contacts" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Bitte erlaube FollowUp, die Kontakte auf deinem Gerät zu lesen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Por favor, permite que FollowUp lea los contactos de tu dispositivo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "S'il te plaît, permets à FollowUp de lire les contacts de ton appareil"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Laat FollowUp alstublieft de contacten van uw apparaat lezen"
+          }
         }
       }
     },
     "Previous" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Zuvor"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Previamente"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Précédemment"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Eerder"
+          }
         }
       }
     },
     "Prompt" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Anweisung"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Indicación"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Indication"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Indicatie"
+          }
         }
       }
     },
     "Relative" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Relativ"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Relativo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Relatif"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Relatief"
+          }
         }
       }
     },
     "Remove from follow ups" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Aus Verfolgungen entfernen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar de seguimientos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Supprimer des suivis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Verwijderen uit volgers"
+          }
         }
       }
     },
     "Remove from Follow Ups" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Aus Verfolgungen entfernen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar de Seguimientos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Supprimer des Suivis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Verwijderen uit Volgen"
+          }
         }
       }
     },
     "Required for Intelligent conversation starters. Register yours at https://platform.openai.com/account/api-keys/" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Erforderlich für intelligente Gesprächsinitiatoren. Registriere dich unter https://platform.openai.com/account/api-keys/"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Requerido para iniciadores de conversación inteligentes. Regístrate en https://platform.openai.com/account/api-keys/"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Requis pour les démarreurs de conversation intelligents. Inscrivez-vous sur https://platform.openai.com/account/api-keys/"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vereist voor slimme gespreksstarters. Registreer je op https://platform.openai.com/account/api-keys/"
+          }
         }
       }
     },
     "Sample" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Beispiel"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ejemplo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Exemple"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Voorbeeld"
+          }
         }
       }
     },
     "Save" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Speichern"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Garder"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Bewaren"
+          }
         }
       }
     },
     "Search" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Suchen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Chercher"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Zoeken"
+          }
+        }
+      }
+    },
+    "See who you met this week and add them to a dedicated list." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sieh dir an, wen du diese Woche getroffen hast, und füge sie einer speziellen Liste hinzu.​"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta a quién conociste esta semana y añádelos a una lista dedicada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voyez avec qui vous avez rencontré cette semaine et ajoutez-les à une liste dédiée."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zie wie je deze week hebt ontmoet en voeg ze toe aan een speciale lijst."
+          }
         }
       }
     },
     "Sends you periodic reminders to follow up and hit your goal." : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Er sendet dir regelmäßige Erinnerungen, damit du den Fortschritt verfolgst und dein Ziel erreichst."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Te envía recordatorios periódicos para que hagas el seguimiento y alcances tu objetivo."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Il t'envoie des rappels périodiques pour que tu suives et atteignes ton objectif."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Stuurt je periodieke herinneringen zodat je de voortgang kunt bijhouden en je doel kunt bereiken."
+          }
+        }
+      }
+    },
+    "Set daily goals and track your progress." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setze tägliche Ziele und verfolge deinen Fortschritt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establece metas diarias y realiza un seguimiento de tu progreso."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fixez des objectifs quotidiens et suivez vos progrès."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stel dagelijkse doelen en volg je voortgang."
+          }
+        }
+      }
+    },
+    "Set Goals" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setze Ziele"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer metas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fixer des objectifs"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stel doelen in"
+          }
         }
       }
     },
     "Settings" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Einstellungen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configuraciones"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Configurations"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Configuraties"
+          }
         }
       }
     },
     "Something" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Etwas"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Algo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Quelque chose"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Iets"
+          }
         }
       }
     },
     "Special Tokens" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Spezialmarken"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tokens Especiales"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Jetons Spéciaux"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Speciale Tokens"
+          }
         }
       }
     },
     "Tap the 'Highlight' button on a Contact sheet to add them to this list." : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Drücken Sie die Schaltfläche 'Hervorheben' auf einem Kontaktblatt, um es dieser Liste hinzuzufügen."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toca el botón 'Resaltar' en una hoja de contacto para añadirlo a esta lista."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Appuyez sur le bouton 'Surligner' sur une feuille de contact pour l'ajouter à cette liste."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Druk op de knop 'Markeren' op een contactblad om het aan deze lijst toe te voegen"
+          }
         }
       }
     },
     "Text!" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Text!"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Texto!"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Texte"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tekst!"
+          }
         }
       }
     },
     "This Month" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Dieser Monat"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Este Mes"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ce Mois"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Deze Maand"
+          }
         }
       }
     },
     "Today" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Heute"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoy"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Aujourd'hui"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vandaag"
+          }
         }
       }
     },
     "Unable To Generate Message" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Die Nachricht kann nicht generiert werden"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se puede generar el mensaje"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Il est impossible de générer le message"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bericht kan niet worden gegenereerd"
+          }
         }
       }
     },
     "Unhighlight" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Hervorhebung entfernen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitar resaltado"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Supprimer la surbrillance"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markering verwijderen"
+          }
         }
       }
     },
     "Unknown Date" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Unbekanntes Datum"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fecha Desconocida"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Date Inconnue"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onbekende datum"
+          }
+        }
+      }
+    },
+    "Use conversation starters to quickly compose messages." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwende Gesprächsanstöße, um schnell Nachrichten zu verfassen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa frases para iniciar una conversación para redactar mensajes rápidamente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilisez des amorces de conversation pour composer rapidement des messages."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gebruik gespreksstarters om snel berichten te maken."
+          }
         }
       }
     },
     "Week" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Woche"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Semana"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Semaine"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week"
+          }
         }
       }
     },
     "Welcome to FollowUp" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Willkommen bei FollowUp"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenido a FollowUp"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Bienvenue chez FollowUp"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welkom bij FollowUp"
+          }
         }
       }
     },
     "When writing your message template, use the <NAME> keyword and this will be replaced for the contact's first name when you use the conversation starter." : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Wenn du deine Nachrichtenvorlage schreibst, verwende das Stichwort <NAME> und dieses wird durch den Vornamen des Kontakts ersetzt, wenn du den Gesprächsinitiator benutzt."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuando escribas tu plantilla de mensaje, utiliza la palabra clave <NAME> y esta será reemplazada por el primer nombre del contacto cuando uses el iniciador de conversación."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Lorsque tu écriras ton modèle de message, utilise le mot-clé <NAME> et celui-ci sera remplacé par le prénom du contact lorsque tu utiliseras le déclencheur de conversation."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bij het schrijven van je berichtensjabloon, gebruik de <NAME> sleutelwoord en dit zal worden vervangen door de voornaam van de contactpersoon wanneer je de gespreksstarter gebruikt."
+          }
         }
       }
     },
     "You met your daily Follow Up Goal!" : {
+      "comment" : "",
+      "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Du hast dein tägliches Verfolgungsziel erreicht!"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Has alcanzado tu objetivo diario de seguimiento!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vous avez atteint votre objectif quotidien de suivi"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je hebt je dagelijkse Follow-up Doel bereikt!"
           }
         }
       }
