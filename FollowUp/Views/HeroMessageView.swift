@@ -10,8 +10,8 @@ import SwiftUI
 struct HeroMessageView: View {
     
     // MARK: - Stored Properties
-    var header: LocalisedTextKey
-    var subheader: LocalisedTextKey?
+    var header: LocalizedStringKey
+    var subheader: LocalizedStringKey?
     var icon: Constant.Icon
     
     // MARK: - Computed Properties
@@ -26,7 +26,7 @@ struct HeroMessageView: View {
         ) {
             Group {
                 Label(
-                    header.rawValue,
+                    header,
                     systemImage: icon.rawValue
                 )
                     .font(.headline)

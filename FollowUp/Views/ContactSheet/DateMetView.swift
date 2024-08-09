@@ -29,7 +29,7 @@ struct DateMetView: View {
     
     private var relativeTimeSinceMeetingView: some View {
         (Text(Image(icon: .clock)) +
-         Text(" Met ") +
+         Text(" ") + Text("Met") + Text(" ") +
          Text(relativeTimeSinceMeetingString))
             .fontWeight(.medium)
     }

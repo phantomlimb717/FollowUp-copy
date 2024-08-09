@@ -36,9 +36,9 @@ extension FollowUpSettings {
         
         var title: String {
             switch self {
-            case .dayMonthYear: return "Day, Month, Year"
-            case .monthYear: return "Month, Year"
-            case .relative: return "Relative"
+            case .dayMonthYear: return String(localized: "Day, Month, Year")
+            case .monthYear: return String(localized: "Month, Year")
+            case .relative: return String(localized: "Relative")
             }
         }
     }

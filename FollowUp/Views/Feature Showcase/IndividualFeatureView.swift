@@ -10,8 +10,8 @@ import SwiftUI
 struct IndividualFeatureView: View {
     
     var icon: Constant.Icon
-    var title: String
-    var description: String
+    var title: LocalizedStringKey
+    var description: LocalizedStringKey
     var colour: ColourOption
     
     enum ColourOption {

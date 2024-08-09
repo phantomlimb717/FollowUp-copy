@@ -25,7 +25,7 @@ struct IntelligentConversationStarterEditorView: View {
         List {
             Section(content: {
                 TextField(
-                    LocalisedTextKey.editConversationStarterPromptTitle.rawValue,
+                    .editConversationStarterPromptTitle,
                     text: $editingConversationStarter.starter.prompt ?? "",
                     axis: .vertical
                 )
@@ -43,7 +43,7 @@ struct IntelligentConversationStarterEditorView: View {
             
             Section(content: {
                 TextField(
-                    LocalisedTextKey.editConversationStarterContextTitle.rawValue,
+                    .editConversationStarterContextTitle,
                     text: $editingConversationStarter.starter.context ?? "",
                     axis: .vertical
                 )
@@ -56,7 +56,7 @@ struct IntelligentConversationStarterEditorView: View {
             
             Section(content: {
                 TextField(
-                    LocalisedTextKey.editConversationStarterName.rawValue,
+                    .editConversationStarterName,
                     text: $editingConversationStarter.label ?? ""
                 )
                 .submitLabel(.done)
