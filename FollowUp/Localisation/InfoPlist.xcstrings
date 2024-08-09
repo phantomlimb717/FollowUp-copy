@@ -1,0 +1,42 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "FollowUp"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FollowUp"
+          }
+        }
+      }
+    },
+    "NSContactsUsageDescription" : {
+      "comment" : "Privacy - Contacts Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To view and organise your contacts. Contact names and notes may be used with the OpenAI API to enable intelligent conversation starters. They will not be stored anywhere. See Privacy Policy for more info."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para visualizar e organizar seus contatos. Nomes e notas de contatos podem ser usados com a API do OpenAI para permitir iniciadores de conversa inteligentes. Eles não serão armazenados em nenhum lugar. Veja a Política de Privacidade para mais informações."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

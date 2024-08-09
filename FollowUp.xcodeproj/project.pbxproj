@@ -100,6 +100,7 @@
 		210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68C2C25B82100B20544 /* View+Additions.swift */; };
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
+		21A031902C667C5700BF04D8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +212,7 @@
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */,
+				21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */,
 			);
 			path = Localisation;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				de,
 				nl,
 				es,
+				"pt-PT",
 			);
 			mainGroup = 210DC5C42C25B6CE00B20544;
 			packageReferences = (
@@ -667,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				210DC5D82C25B6CF00B20544 /* Preview Assets.xcassets in Resources */,
+				21A031902C667C5700BF04D8 /* InfoPlist.xcstrings in Resources */,
 				210DC6AB2C25B82100B20544 /* Preview Assets.xcassets in Resources */,
 				216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */,
 				210DC5D52C25B6CF00B20544 /* Assets.xcassets in Resources */,

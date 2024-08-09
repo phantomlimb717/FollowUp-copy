@@ -42,6 +42,12 @@
             "state" : "translated",
             "value" : " Ontmoet "
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Conhecido "
+          }
         }
       }
     },
@@ -68,6 +74,12 @@
           }
         },
         "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
@@ -108,6 +120,12 @@
             "state" : "needs_review",
             "value" : "%1$@ %2$@"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
         }
       }
     },
@@ -134,6 +152,12 @@
           }
         },
         "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
@@ -168,6 +192,12 @@
             "state" : "needs_review",
             "value" : "%lld volgers"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Acompanhamentos"
+          }
         }
       }
     },
@@ -178,6 +208,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "+"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "+"
           }
         },
@@ -194,6 +230,12 @@
           }
         },
         "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+"
+          }
+        },
+        "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "+"
@@ -228,6 +270,12 @@
             "state" : "needs_review",
             "value" : "Toevoegen aan volgingen"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar aos acompanhamentos"
+          }
         }
       }
     },
@@ -257,6 +305,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Toevoegen aan Volgers"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar aos Acompanhamentos"
           }
         }
       }
@@ -288,6 +342,12 @@
             "state" : "needs_review",
             "value" : "Door AI ondersteunde gespreksstarters gebruiken kunstmatige intelligentie om automatisch een gepersonaliseerde en unieke gespreksstarter voor je contact te genereren. ✨"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciadores de conversa com IA utilizam IA para gerar automaticamente um iniciador de conversa personalizado e único para seu contato. ✨"
+          }
         }
       }
     },
@@ -297,6 +357,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Automatisch verfassen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-Compose"
           }
         },
         "es" : {
@@ -315,6 +381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Automatisch samenstellen"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Composição Automática"
           }
         }
       }
@@ -346,6 +418,12 @@
             "state" : "needs_review",
             "value" : "Wachtend op autorisatie"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aguardando Autorização"
+          }
         }
       }
     },
@@ -376,6 +454,12 @@
             "state" : "needs_review",
             "value" : "Kies een bericht om de AI instructies te geven over hoe je je bericht wilt laten opstellen."
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha um prompt para instruir a IA sobre como compor sua mensagem."
+          }
         }
       }
     },
@@ -387,6 +471,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Kontakte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts"
           }
         },
         "es" : {
@@ -406,6 +496,12 @@
             "state" : "needs_review",
             "value" : "Contacten"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatos"
+          }
         }
       }
     },
@@ -417,6 +513,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Kontakte abgelehnt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts Denied"
           }
         },
         "es" : {
@@ -435,6 +537,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Geweigerde contacten"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatos Negados"
           }
         }
       }
@@ -466,6 +574,12 @@
             "state" : "needs_review",
             "value" : "Context"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contexto"
+          }
         }
       }
     },
@@ -495,6 +609,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Doorgaan"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
           }
         }
       }
@@ -526,6 +646,12 @@
             "state" : "needs_review",
             "value" : "Type gesprekstarter"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Iniciador de Conversa"
+          }
         }
       }
     },
@@ -537,6 +663,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Gesprächsstarter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conversation Starters"
           }
         },
         "es" : {
@@ -555,6 +687,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Gespreksaanjagers"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciadores de Conversa"
           }
         }
       }
@@ -586,6 +724,12 @@
             "state" : "needs_review",
             "value" : "Dagelijkse doelstelling"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta Diária"
+          }
         }
       }
     },
@@ -615,6 +759,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Dag, Maand, Jaar"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dia, Mês, Ano"
           }
         }
       }
@@ -646,6 +796,12 @@
             "state" : "needs_review",
             "value" : "Verwijderen"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
         }
       }
     },
@@ -675,6 +831,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Ontdek meer over deze functies door op instellingen te tikken"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descubra mais sobre estas funcionalidades tocando em definições."
           }
         }
       }
@@ -706,6 +868,12 @@
             "state" : "needs_review",
             "value" : "Gedaan"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feito"
+          }
         }
       }
     },
@@ -735,6 +903,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Gespreksstarter bewerken"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Iniciador de Conversa"
           }
         }
       }
@@ -766,6 +940,12 @@
             "state" : "needs_review",
             "value" : "Op zoek naar contacten"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtendo Contatos"
+          }
         }
       }
     },
@@ -795,6 +975,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Vandaag gevolgd"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acompanhado hoje"
           }
         }
       }
@@ -826,6 +1012,12 @@
             "state" : "needs_review",
             "value" : "Volgen"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FollowUp"
+          }
         }
       }
     },
@@ -855,6 +1047,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "FollowUp heeft toestemming nodig om de contacten op je apparaat te lezen om correct te functioneren. Schakel deze optie in onder Instellingen."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O FollowUp precisa de permissão para ler os contatos do seu dispositivo para funcionar corretamente. Por favor, habilite isso em Definições."
           }
         }
       }
@@ -886,6 +1084,12 @@
             "state" : "needs_review",
             "value" : "FollowUp-herinneringen"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lembretes FollowUp"
+          }
         }
       }
     },
@@ -915,6 +1119,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Volgingen"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acompanhamentos"
           }
         }
       }
@@ -946,6 +1156,12 @@
             "state" : "needs_review",
             "value" : "Groepering"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grupos"
+          }
         }
       }
     },
@@ -975,6 +1191,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Markeren"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destaque"
           }
         }
       }
@@ -1006,6 +1228,12 @@
             "state" : "needs_review",
             "value" : "Uitgelicht"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destaques"
+          }
         }
       }
     },
@@ -1035,6 +1263,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Ik heb gevolgd"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eu acompanhei"
           }
         }
       }
@@ -1066,6 +1300,12 @@
             "state" : "needs_review",
             "value" : "Bericht"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensagem"
+          }
         }
       }
     },
@@ -1093,6 +1333,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ontmoet"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conheceu"
           }
         }
       }
@@ -1124,6 +1370,12 @@
             "state" : "needs_review",
             "value" : "Maand, Jaar"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mês, Ano"
+          }
         }
       }
     },
@@ -1153,6 +1405,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Naam"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
           }
         }
       }
@@ -1184,6 +1442,12 @@
             "state" : "needs_review",
             "value" : "Nieuw"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nova"
+          }
         }
       }
     },
@@ -1213,6 +1477,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Nieuwe gespreksstarter"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novo Iniciador de Conversa"
           }
         }
       }
@@ -1244,6 +1514,12 @@
             "state" : "needs_review",
             "value" : "Nieuw label"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nova Etiqueta"
+          }
         }
       }
     },
@@ -1274,6 +1550,12 @@
             "state" : "needs_review",
             "value" : "Zonder markering"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem Destaques"
+          }
         }
       }
     },
@@ -1285,6 +1567,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
           }
         },
         "es" : {
@@ -1303,6 +1591,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Open"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir"
           }
         }
       }
@@ -1334,6 +1628,12 @@
             "state" : "needs_review",
             "value" : "Sleutel OpenAI"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chave OpenAI"
+          }
         }
       }
     },
@@ -1361,6 +1661,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Optioneel. Voeg wat extra context toe om de AI te helpen een op maat gemaakte boodschap te creëren."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opcional. Adicione um contexto extra para ajudar a IA a construir uma mensagem personalizada."
           }
         }
       }
@@ -1392,6 +1698,12 @@
             "state" : "needs_review",
             "value" : "Optioneel. Kies een korte naam voor deze gesprekstarter."
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opcional. Escolha um nome curto para este iniciador de conversa."
+          }
         }
       }
     },
@@ -1419,6 +1731,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Organiseren"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizar"
           }
         }
       }
@@ -1450,6 +1768,12 @@
             "state" : "needs_review",
             "value" : "Laat FollowUp alstublieft de contacten van uw apparaat lezen"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, permita que o FollowUp leia seus Contatos"
+          }
         }
       }
     },
@@ -1479,6 +1803,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Eerder"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anterior"
           }
         }
       }
@@ -1510,6 +1840,12 @@
             "state" : "needs_review",
             "value" : "Indicatie"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prompt"
+          }
         }
       }
     },
@@ -1539,6 +1875,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Relatief"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relativo"
           }
         }
       }
@@ -1570,6 +1912,12 @@
             "state" : "needs_review",
             "value" : "Verwijderen uit volgers"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remover dos acompanhamentos"
+          }
         }
       }
     },
@@ -1599,6 +1947,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Verwijderen uit Volgen"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remover dos Acompanhamentos"
           }
         }
       }
@@ -1630,6 +1984,12 @@
             "state" : "needs_review",
             "value" : "Vereist voor slimme gespreksstarters. Registreer je op https://platform.openai.com/account/api-keys/"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necessário para iniciadores de conversa inteligentes. Registre o seu em https://platform.openai.com/account/api-keys/"
+          }
         }
       }
     },
@@ -1641,6 +2001,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Beispiel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sample"
           }
         },
         "es" : {
@@ -1659,6 +2025,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Voorbeeld"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exemplo"
           }
         }
       }
@@ -1690,6 +2062,12 @@
             "state" : "needs_review",
             "value" : "Bewaren"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
         }
       }
     },
@@ -1720,6 +2098,12 @@
             "state" : "needs_review",
             "value" : "Zoeken"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pesquisar"
+          }
         }
       }
     },
@@ -1747,6 +2131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zie wie je deze week hebt ontmoet en voeg ze toe aan een speciale lijst."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veja quem você conheceu esta semana e adicione-os a uma lista dedicada."
           }
         }
       }
@@ -1778,6 +2168,12 @@
             "state" : "needs_review",
             "value" : "Stuurt je periodieke herinneringen zodat je de voortgang kunt bijhouden en je doel kunt bereiken."
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envia lembretes periódicos para acompanhar e atingir sua meta."
+          }
         }
       }
     },
@@ -1806,6 +2202,12 @@
             "state" : "translated",
             "value" : "Stel dagelijkse doelen en volg je voortgang."
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina metas diárias e acompanhe seu progresso."
+          }
         }
       }
     },
@@ -1833,6 +2235,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stel doelen in"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Metas"
           }
         }
       }
@@ -1864,6 +2272,12 @@
             "state" : "needs_review",
             "value" : "Configuraties"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definições"
+          }
         }
       }
     },
@@ -1893,6 +2307,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Iets"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algo"
           }
         }
       }
@@ -1924,6 +2344,12 @@
             "state" : "needs_review",
             "value" : "Speciale Tokens"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tokens Especiais"
+          }
         }
       }
     },
@@ -1953,6 +2379,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Druk op de knop 'Markeren' op een contactblad om het aan deze lijst toe te voegen"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no botão 'Destaque' em uma ficha de contato para adicioná-lo a esta lista."
           }
         }
       }
@@ -1984,6 +2416,12 @@
             "state" : "needs_review",
             "value" : "Tekst!"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texto!"
+          }
         }
       }
     },
@@ -2014,6 +2452,12 @@
             "state" : "needs_review",
             "value" : "Deze Maand"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este Mês"
+          }
         }
       }
     },
@@ -2025,6 +2469,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Heute"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
           }
         },
         "es" : {
@@ -2043,6 +2493,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Vandaag"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoje"
           }
         }
       }
@@ -2074,6 +2530,12 @@
             "state" : "translated",
             "value" : "Bericht kan niet worden gegenereerd"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incapaz de Gerar Mensagem"
+          }
         }
       }
     },
@@ -2103,6 +2565,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Markering verwijderen"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remover Destaque"
           }
         }
       }
@@ -2134,6 +2602,12 @@
             "state" : "translated",
             "value" : "Onbekende datum"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Desconhecida"
+          }
         }
       }
     },
@@ -2161,6 +2635,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gebruik gespreksstarters om snel berichten te maken."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use iniciadores de conversa para compor mensagens rapidamente."
           }
         }
       }
@@ -2192,6 +2672,12 @@
             "state" : "translated",
             "value" : "Week"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semana"
+          }
         }
       }
     },
@@ -2221,6 +2707,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Welkom bij FollowUp"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bem-vindo ao FollowUp"
           }
         }
       }
@@ -2252,6 +2744,12 @@
             "state" : "translated",
             "value" : "Bij het schrijven van je berichtensjabloon, gebruik de <NAME> sleutelwoord en dit zal worden vervangen door de voornaam van de contactpersoon wanneer je de gespreksstarter gebruikt."
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao escrever seu modelo de mensagem, use a palavra-chave <NAME> e ela será substituída pelo primeiro nome do contato quando você usar o iniciador de conversa."
+          }
         }
       }
     },
@@ -2281,6 +2779,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Je hebt je dagelijkse Follow-up Doel bereikt!"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você atingiu sua meta diária de acompanhamento!"
           }
         }
       }
