@@ -36,7 +36,7 @@ struct RegularConversationStarterEditorView: View {
         List {
             Section(content: {
                 TextField(
-                    LocalisedTextKey.editConversationStarterMessageTitle.rawValue,
+                    .editConversationStarterMessageTitle,
                     text: $editingConversationStarter.starter.template ?? "",
                     axis: .vertical
                 )
@@ -55,7 +55,7 @@ struct RegularConversationStarterEditorView: View {
             
             Section(content: {
                 TextField(
-                    LocalisedTextKey.editConversationStarterName.rawValue,
+                    .editConversationStarterName,
                     text: $editingConversationStarter.label ?? ""
                 )
                 .submitLabel(.done)

@@ -97,9 +97,9 @@
 		210DC6BA2C25B82100B20544 /* Results+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC6882C25B82100B20544 /* Results+Additions.swift */; };
 		210DC6BB2C25B82100B20544 /* Sequence+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC6892C25B82100B20544 /* Sequence+Additions.swift */; };
 		210DC6BC2C25B82100B20544 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68A2C25B82100B20544 /* String+Additions.swift */; };
-		210DC6BD2C25B82100B20544 /* Text+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68B2C25B82100B20544 /* Text+Additions.swift */; };
 		210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68C2C25B82100B20544 /* View+Additions.swift */; };
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
+		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,10 +207,10 @@
 		210DC6882C25B82100B20544 /* Results+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Results+Additions.swift"; sourceTree = "<group>"; };
 		210DC6892C25B82100B20544 /* Sequence+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Additions.swift"; sourceTree = "<group>"; };
 		210DC68A2C25B82100B20544 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
-		210DC68B2C25B82100B20544 /* Text+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text+Additions.swift"; sourceTree = "<group>"; };
 		210DC68C2C25B82100B20544 /* View+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,12 +232,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21379047275AE82B004059F4 /* Collections in Frameworks */,
-				2159D01027120349005A2387 /* Fakery in Frameworks */,
-				210A6213295014040064EB8A /* Realm in Frameworks */,
-				210A6215295014040064EB8A /* RealmSwift in Frameworks */,
-				2184F3F62A45F72700D4E8C6 /* WrappingHStack in Frameworks */,
-				21379049275AE82B004059F4 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +275,7 @@
 				210DC67B2C25B82100B20544 /* Common */,
 				210DC68D2C25B82100B20544 /* Extensions */,
 				210DC68F2C25B82100B20544 /* Interactors */,
+				216CF6242C5E164700F6EA9F /* Localisation */,
 				210DC67E2C25B82100B20544 /* Mock */,
 				210DC6722C25B82000B20544 /* Model */,
 				210DC6582C25B82000B20544 /* Modifiers */,
@@ -527,7 +522,6 @@
 				210DC6882C25B82100B20544 /* Results+Additions.swift */,
 				210DC6892C25B82100B20544 /* Sequence+Additions.swift */,
 				210DC68A2C25B82100B20544 /* String+Additions.swift */,
-				210DC68B2C25B82100B20544 /* Text+Additions.swift */,
 				210DC68C2C25B82100B20544 /* View+Additions.swift */,
 			);
 			path = Extensions;
@@ -539,6 +533,14 @@
 				210DC68E2C25B82100B20544 /* ContactsInteractor.swift */,
 			);
 			path = Interactors;
+			sourceTree = "<group>";
+		};
+		216CF6242C5E164700F6EA9F /* Localisation */ = {
+			isa = PBXGroup;
+			children = (
+				216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */,
+			);
+			path = Localisation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -635,6 +637,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 				Base,
 			);
 			mainGroup = 210DC5C42C25B6CE00B20544;
@@ -662,6 +665,7 @@
 			files = (
 				210DC5D82C25B6CF00B20544 /* Preview Assets.xcassets in Resources */,
 				210DC6AB2C25B82100B20544 /* Preview Assets.xcassets in Resources */,
+				216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */,
 				210DC5D52C25B6CF00B20544 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,7 +731,6 @@
 				210DC6412C25B7F900B20544 /* WelcomeView.swift in Sources */,
 				210DC64A2C25B7F900B20544 /* ContentView.swift in Sources */,
 				210DC6962C25B82100B20544 /* StandardConversationStarter.swift in Sources */,
-				210DC6BD2C25B82100B20544 /* Text+Additions.swift in Sources */,
 				210DC6BA2C25B82100B20544 /* Results+Additions.swift in Sources */,
 				210DC63C2C25B7F900B20544 /* DateMetView.swift in Sources */,
 				210DC69F2C25B82100B20544 /* FollowUpFrequency.swift in Sources */,
@@ -862,6 +865,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -918,6 +922,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

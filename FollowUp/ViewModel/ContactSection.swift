@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ContactSection: Identifiable {
     var id: String { grouping.title }

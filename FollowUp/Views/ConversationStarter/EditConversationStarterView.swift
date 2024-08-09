@@ -86,11 +86,11 @@ struct EditConversationStarterView: View {
                 modalHeader
                     .padding()
                 
-                Text("Edit Conversation Starter")
+                Text(.editConversationStarterTitle)
                     .font(.title)
                     .bold()
                 
-                Picker("Conversation Starter Kind", selection: $editingConversationStarter.kind, content: {
+                Picker(.editConversationStarterKindPickerTitle, selection: $editingConversationStarter.kind, content: {
                     ForEach(ConversationStarterKind.allCases, id: \.self) { kind in
                          Text("\(Image(systemName: kind.icon.rawValue)) \(kind.buttonTitle)")
                     }

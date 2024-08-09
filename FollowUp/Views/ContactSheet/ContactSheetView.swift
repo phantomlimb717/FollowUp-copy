@@ -77,8 +77,6 @@ struct ContactSheetView: View {
         HStack(spacing: 20) {
             Label("\(contact.followUps)", systemImage: Constant.Icon.thumbsUp.rawValue)
             Label(relativeTimeSinceFollowingUp, systemImage: Constant.Icon.personWithClock.rawValue)
-//            Text("Last followed up: \(relativeTimeSinceFollowingUp)")
-//            Text("Total follow ups: \(contact.followUps)")
         }
         .font(.subheadline)
         .foregroundColor(.secondary)

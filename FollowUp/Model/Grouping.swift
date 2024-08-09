@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Grouping: Hashable, Comparable {
     case relativeDate(grouping: RelativeDateGrouping)
@@ -19,7 +20,7 @@ enum Grouping: Hashable, Comparable {
         case let .relativeDate(dateGrouping):
             return dateGrouping.title
         case .new:
-            return "New"
+            return String(localized: "New")
         }
     }
 }
@@ -70,12 +71,12 @@ enum ConcreteDateGrouping: Hashable, Comparable {
         switch self {
         case let .monthYear(month, year):
             let components = DateComponents(year: year, month: month, day: 0, hour: 0, minute: 0, second: 0)
-            guard let date = Calendar.current.date(from: components) else { return "Unknown Date" }
-            return Self.monthYearDateFormatter.string(from: date)
+            guard let date = Calendar.current.date(from: components) else { return String(localized: "Unknown Date") }
+            return .init(Self.monthYearDateFormatter.string(from: date))
         case let .dayMonthYear(day, month, year):
             let components = DateComponents(year: year, month: month, day: day, hour: 0, minute: 0, second: 0)
-            guard let date = Calendar.current.date(from: components) else { return "Unknown Date" }
-            return Self.dayMonthYearFormatter.string(from: date)
+            guard let date = Calendar.current.date(from: components) else { return String(localized: "Unknown Date") }
+            return .init(Self.dayMonthYearFormatter.string(from: date))
         }
     }
     
@@ -163,10 +164,10 @@ enum RelativeDateGrouping: CaseIterable, Hashable, Comparable {
 
     var title: String {
         switch self {
-        case .today: return "Today"
-        case .week: return "This Week"
-        case .month: return "This Month"
-        case .beforeLastMonth: return "Previous"
+        case .today: return String(localized: "Today")
+        case .week: return String(localized: "Week")
+        case .month: return String(localized: "This Month")
+        case .beforeLastMonth: return String(localized: "Previous")
         }
     }
 
