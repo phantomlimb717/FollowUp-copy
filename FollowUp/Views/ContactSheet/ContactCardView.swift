@@ -48,11 +48,12 @@ struct ContactCardView: View {
                 Text(Image(systemName: "plus")) +
                 Text("Add to follow ups")
             )
+            .multilineTextAlignment(.leading)
             .fontWeight(.medium)
-
         })
-            .foregroundColor(.secondary)
-            .frame(maxWidth: .infinity)
+            .foregroundColor(.blue)
+            .font(.footnote)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     var body: some View {
@@ -69,6 +70,7 @@ struct ContactCardView: View {
             
             Spacer()
             Divider()
+                .padding(5)
             addToFollowUpsButton
         }
         .padding()
