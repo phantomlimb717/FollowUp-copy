@@ -26,6 +26,9 @@ struct ContactSheetView: View {
     var onClose: () -> Void
     var verticalSpacing: CGFloat = Constant.ContactSheet.verticalSpacing
     
+    // MARK: - State
+    @State private var nativeContactSheetID: String?
+    
     // MARK: - Computed Properties
     private var relativeTimeSinceFollowingUp: String {
         guard let lastFollowedUpDate = contact.lastFollowedUp else { return "Never" }
@@ -56,7 +59,7 @@ struct ContactSheetView: View {
     }
 
     @ViewBuilder
-    private var contactDetailsView: some View {
+    private var contactButtons: some View {
         VStack {
             if let phoneNumber = contact.phoneNumber {
                 Text(phoneNumber.value)
@@ -67,6 +70,9 @@ struct ContactSheetView: View {
                     CircularButton(icon: .phone, action: .call(number: phoneNumber))
                     CircularButton(icon: .sms, action: .sms(number: phoneNumber))
                     CircularButton(icon: .whatsApp, action: .whatsApp(number: phoneNumber, generateText: { completion in completion(.success("")) }))
+                    CircularButton(icon: .pencil, action: .other(action: {
+                        displayNativeContactModal(forID: contact.id)
+                    }))
                 }
             }
         }
@@ -118,9 +124,10 @@ struct ContactSheetView: View {
             
             if let note = contact.note, !note.isEmpty {
                 ContactNoteView(note: note)
+                    .animation(.easeInOut, value: contact.note)
             }
             
-            contactDetailsView
+            contactButtons
             
         }.padding(.top, 50)
     }
@@ -165,7 +172,7 @@ struct ContactSheetView: View {
             
             DateMetView(contact: contact)
             
-            contactDetailsView
+            contactButtons
                 .padding(.top)
             ActionButtonGridView(contact: contact, background: .clear)
                 .padding([.top, .horizontal])
@@ -174,12 +181,31 @@ struct ContactSheetView: View {
         .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(Constant.cornerRadius)
     }
-
-    var body: some View {
+    
+    @ViewBuilder
+    private var variableContent: some View {
         switch kind {
         case .modal: modalContactSheetView
         case .inline: inlineContactSheetView
         }
+    }
+
+    var body: some View {
+        variableContent
+            .sheet(item: $nativeContactSheetID, onDismiss: {
+                self.updateCurrentContact()
+            }, content: {_ in
+                NativeContactView(contactID: contact.id)
+            })
+    }
+    
+    // MARK: - Functions
+    private func displayNativeContactModal(forID ID: String) {
+        self.nativeContactSheetID = ID
+    }
+    
+    private func updateCurrentContact() {
+        followUpManager.contactsInteractor.updateContactInStore(withCNContactID: contact.id)
     }
     
 }
@@ -198,6 +224,6 @@ struct ContactSheetView_Previews: PreviewProvider {
                 .preferredColorScheme(.dark)
         }
         .environmentObject(FollowUpManager())
-//        .environmentObject(FollowUpStore.mocked())
+        .environmentObject(FollowUpStore.mocked())
     }
 }

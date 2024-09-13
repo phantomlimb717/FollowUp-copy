@@ -5,6 +5,7 @@
 //  Created by Aaron Baw on 09/10/2021.
 //
 
+import Contacts
 import Fakery
 import Foundation
 import RealmSwift
@@ -30,6 +31,7 @@ final class MockedContact: Object, Contactable {
     @Persisted var containedInFollowUps: Bool = faker.number.randomBool()
     @Persisted var followUpFrequency: FollowUpFrequency? = .daily
     @Persisted var lastInteractedWith: Date? = faker.date.backward(days: 10)
+    var cnContactForNativeContactView: CNContact? = nil
 
     
     convenience init(id: ContactID = UUID().uuidString, name: String = faker.name.name(), phoneNumber: PhoneNumber? = .mocked, email: String? = faker.internet.email(), thumbnailImage: UIImage? = nil, note: String? = faker.hobbit.quote(), followUps: Int = faker.number.randomInt(min: 0, max: 10), createDate: Date = faker.date.backward(days: 30), lastFollowedUp: Date? = faker.date.backward(days: faker.number.randomInt(min: 0, max: 1)), highlighted: Bool = faker.number.randomBool(), containedInFollowUps: Bool = faker.number.randomBool(), lastInteractedWith: Date? = faker.date.backward(days: 10)) {

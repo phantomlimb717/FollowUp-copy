@@ -100,7 +100,9 @@
 		210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68C2C25B82100B20544 /* View+Additions.swift */; };
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
+		2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193DA212C94454C0080C72C /* CNContact+Additions.swift */; };
 		21A031902C667C5700BF04D8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */; };
+		21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F690A02C8B63B9001F127B /* NativeContactView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,7 +214,9 @@
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
 		21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		21F690A02C8B63B9001F127B /* NativeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +346,7 @@
 				210DC6162C25B7F900B20544 /* ContactCardView.swift */,
 				210DC6172C25B7F900B20544 /* ContactSheetView.swift */,
 				210DC6182C25B7F900B20544 /* DateMetView.swift */,
+				21F690A02C8B63B9001F127B /* NativeContactView.swift */,
 			);
 			path = ContactSheet;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				210DC6892C25B82100B20544 /* Sequence+Additions.swift */,
 				210DC68A2C25B82100B20544 /* String+Additions.swift */,
 				210DC68C2C25B82100B20544 /* View+Additions.swift */,
+				2193DA212C94454C0080C72C /* CNContact+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -702,6 +708,7 @@
 				210DC6B12C25B82100B20544 /* Assertion+Additions.swift in Sources */,
 				210DC6B22C25B82100B20544 /* Color+Additions.swift in Sources */,
 				210DC6542C25B80D00B20544 /* ContactSection.swift in Sources */,
+				21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */,
 				210DC6432C25B7F900B20544 /* TagsCarouselView.swift in Sources */,
 				210DC6A92C25B82100B20544 /* Log.swift in Sources */,
 				210DC6B52C25B82100B20544 /* EnvironmentValues+Additions.swift in Sources */,
@@ -746,6 +753,7 @@
 				210DC64F2C25B7F900B20544 /* HighlightsTabView.swift in Sources */,
 				210DC6A82C25B82100B20544 /* Tag.swift in Sources */,
 				210DC6402C25B7F900B20544 /* IndividualFeatureView.swift in Sources */,
+				2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */,
 				210DC6B72C25B82100B20544 /* Int+Additions.swift in Sources */,
 				210DC6A02C25B82100B20544 /* FollowUpManager.swift in Sources */,
 				210DC6372C25B7F900B20544 /* ActionButtonGridView.swift in Sources */,

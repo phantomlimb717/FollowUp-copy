@@ -13,6 +13,7 @@ enum FollowUpError: LocalizedError {
     // MARK: - Contacts Interactor
     case requestAccessError(Error?)
     case cnContactQueryError(Error?)
+    case couldNotFindContact
     
     var id: String { self.title }
     
@@ -20,6 +21,7 @@ enum FollowUpError: LocalizedError {
         switch self {
         case .cnContactQueryError: return "Error Fetching Contacts"
         case .requestAccessError: return "Error Accessing Contacts"
+        case .couldNotFindContact: return "Could Not Find Contact"
         }
     }
     
@@ -27,6 +29,7 @@ enum FollowUpError: LocalizedError {
         switch self {
         case let .cnContactQueryError(error): return error?.localizedDescription ?? ""
         case let .requestAccessError(error): return error?.localizedDescription ?? ""
+        case .couldNotFindContact: return title
         }
     }
     
@@ -36,6 +39,7 @@ enum FollowUpError: LocalizedError {
         switch self {
         case .cnContactQueryError: return "Please send app feedback."
         case .requestAccessError: return "Ensure that the app has access to your contacts."
+        case .couldNotFindContact: return "Please send app feedback."
         }
     }
 }

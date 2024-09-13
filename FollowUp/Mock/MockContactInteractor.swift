@@ -41,6 +41,10 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
     func fetchContacts() {
         self.contacts.append(contentsOf: generateContacts(withCount: 10))
     }
+    
+    func updateContactInStore(withCNContactID ID: ContactID) {
+        
+    }
 
     private func generateContacts(withCount count: Int) -> [any Contactable] {
         (0...count).map { _ in MockedContact() }
