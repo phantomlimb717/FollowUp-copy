@@ -354,14 +354,12 @@ extension ContactsInteractor {
             
             let email =  get(property: kABPersonEmailProperty, fromRecord: abRecord, castedAs: NSString.self, returnedAs: String.self)
             let phoneNumbers = getPhoneNumbers(fromRecord: abRecord)
-            let thumbnailImage = get(imageOfSize: .thumbnail, from: abRecord)?.uiImage
-            let fullImage = get(imageOfSize: .full, from: abRecord)?.uiImage
             return Contact(
                 contactID: recordID.description,
                 name: self.generateNameString(forFirstName: firstName, middleName: middleName, lastName: lastName),
                 phoneNumber: phoneNumbers.first,
                 email: email,
-                thumbnailImage: thumbnailImage,
+                thumbnailImage: nil,
                 note: nil,
                 createDate: creationDate
             )
