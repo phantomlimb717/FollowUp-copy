@@ -80,6 +80,8 @@ class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
     @Persisted var _thumbnailImageData: Data?
     @Persisted var email: String?
     @Persisted var createDate: Date
+    @Persisted var note: String?
+
     
     // MARK: - Protocol Conformance
     var thumbnailImage: UIImage? {
@@ -100,7 +102,6 @@ class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
     @Persisted var followUps: Int = 0 { didSet { lastFollowedUp = .now } }
     @Persisted var lastFollowedUp: Date? { didSet { lastInteractedWith = .now } }
     @Persisted var highlighted: Bool = false { didSet { lastInteractedWith = .now } }
-    @Persisted var note: String? { didSet { lastInteractedWith = .now } }
     @Persisted var followUpFrequency: FollowUpFrequency? { didSet { lastInteractedWith = .now } }
     
     // TODO: - Ensure that this is reworked to act as a computed property that depends on the 'followUpFrequency' object.
@@ -177,6 +178,34 @@ class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
     
 }
 
+// MARK: - Convenience Methods
+extension Contact {
+    func updateNonInteractiveProperties(fromContact contact: any Contactable) {
+        self.name = contact.name
+        self.phoneNumber = contact.phoneNumber
+        self.note = contact.note
+        self.email = contact.email
+    }
+    
+    /// Creates a new version of the contact with updated non-interactive properties from the user's Address Book
+    func updatedWithNonInteractiveProperties(fromContact contact: any Contactable) -> any Contactable {
+        Contact(
+            contactID: self.id,
+            name: contact.name,
+            phoneNumber: contact.phoneNumber,
+            email: contact.email,
+            thumbnailImage: contact.thumbnailImage,
+            note: contact.note, 
+            followUps: self.followUps,
+            createDate: self.createDate,
+            lastFollowedUp: self.lastFollowedUp,
+            highlighted: self.highlighted,
+            containedInFollowUps: self.containedInFollowUps,
+            lastInteractedWith: self.lastInteractedWith
+        )
+    }
+}
+
 // MARK: - Convenience Initialisers and Conversions
 extension Contact {
     convenience init(from contact: CNContact){
@@ -222,7 +251,7 @@ extension Contact {
 // MARK: - Conversion to Concrete type Convenience
 extension Contactable {
     var concrete: Contact {
-        Contact.init(from: self)
+        (self as? Contact) ?? Contact.init(from: self)
     }
 }
 

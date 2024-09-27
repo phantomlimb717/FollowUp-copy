@@ -17,9 +17,19 @@ import Fakery
 // MARK: - Typealiases
 typealias ContactID = String
 
+// MARK: - Contact Update Enum
+enum ContactSignal {
+    
+    /// Updates all the properties on the given contact which exists in the store, without replacing the entire Contact Object.
+    case updateAndMerge(any Contactable)
+    
+    /// Overwrites contacts in the FollowUpStore which are older than those in this list.
+    case overwrite([any Contactable])
+}
+
 // MARK: -
 protocol ContactsInteracting {
-    var contactsPublisher: AnyPublisher<[any Contactable], FollowUpError> { get }
+    var contactsPublisher: AnyPublisher<ContactSignal, FollowUpError> { get }
     var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> { get }
     var statePublisher: AnyPublisher<ContactInteractorState, Never> { get }
     var contactSheet: ContactSheet? { get }
@@ -68,7 +78,7 @@ enum ContactInteractorState {
 class ContactsInteractor: ContactsInteracting, ObservableObject {
 
     // MARK: - Private Properties
-    private var _contactsPublisher: PassthroughSubject<[any Contactable], FollowUpError> = .init()
+    private var _contactsPublisher: PassthroughSubject<ContactSignal, FollowUpError> = .init()
     private var realm: Realm?
     private let backgroundQueue: DispatchQueue = .init(label: "com.bazel.followup.contacts.background", qos: .background)
     private let cnContactKeyDescriptors = [
@@ -84,7 +94,7 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
     ] as [CNKeyDescriptor]
 
     // MARK: - Public Properties
-    var contactsPublisher: AnyPublisher<[any Contactable], FollowUpError> { _contactsPublisher.eraseToAnyPublisher() }
+    var contactsPublisher: AnyPublisher<ContactSignal, FollowUpError> { _contactsPublisher.eraseToAnyPublisher() }
 
     var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> { self.$contactSheet.eraseToAnyPublisher() }
     
@@ -253,7 +263,7 @@ extension ContactsInteractor {
                                 #if DEBUG || TESTING
                                     print(mergedContacts)
                                 #endif
-                                self._contactsPublisher.send(mergedContacts)
+                                self._contactsPublisher.send(.overwrite(mergedContacts))
                                 self.objectWillChange.send()
                             }
                         }
@@ -283,7 +293,7 @@ extension ContactsInteractor {
                 }
                 Log.info("Found Contact: \(contact.name)")
                 DispatchQueue.main.async {
-                    self._contactsPublisher.send([contact])
+                    self._contactsPublisher.send(.updateAndMerge(contact))
                 }
             case let .failure(error):
                 Log.error("Could not fetch and update contact with ID: \(ID)")
