@@ -180,9 +180,14 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     // prefer the contacts which have a newer 'lastInteractedWith', because that doesn't really work. We need a way of updating the details on every single contact with the details that we receive from the signal. We should assume that the details received for nonInteractivProperties are
     // always correct.
     func mergeWithContactsDictionary(contacts: [any Contactable]) {
-        self.contactsDictionary.merge(contacts.mappedToDictionary(by: \.id)) { current, new in
-            current.concrete.updatedWithNonInteractiveProperties(fromContact: new)
+        self.contactsDictionary.merge(contacts.mappedToDictionary(by: \.id)) { first, second in
+            // Check to see when we last interacted with a contact. We use the most recently interacted with version.
+            // TODO: We should always start with the last interacted with contact, and then update all the other values (e.g. name, email, phone number, etc).
+            (first.lastInteractedWith ?? .distantPast) > (second.lastInteractedWith ?? .distantPast) ? first : second
         }
+//        self.contactsDictionary.merge(contacts.mappedToDictionary(by: \.id)) { current, new in
+//            current.concrete.updatedWithNonInteractiveProperties(fromContact: new)
+//        }
     }
     
     func numberOfContacts(_ searchPredicate: NewContactSearchPredicate, completion: @escaping (Int?) -> Void) {
