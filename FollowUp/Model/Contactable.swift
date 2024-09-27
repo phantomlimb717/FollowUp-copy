@@ -178,34 +178,6 @@ class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
     
 }
 
-// MARK: - Convenience Methods
-extension Contact {
-    func updateNonInteractiveProperties(fromContact contact: any Contactable) {
-        self.name = contact.name
-        self.phoneNumber = contact.phoneNumber
-        self.note = contact.note
-        self.email = contact.email
-    }
-    
-    /// Creates a new version of the contact with updated non-interactive properties from the user's Address Book
-    func updatedWithNonInteractiveProperties(fromContact contact: any Contactable) -> any Contactable {
-        Contact(
-            contactID: self.id,
-            name: contact.name,
-            phoneNumber: contact.phoneNumber,
-            email: contact.email,
-            thumbnailImage: contact.thumbnailImage,
-            note: contact.note, 
-            followUps: self.followUps,
-            createDate: self.createDate,
-            lastFollowedUp: self.lastFollowedUp,
-            highlighted: self.highlighted,
-            containedInFollowUps: self.containedInFollowUps,
-            lastInteractedWith: self.lastInteractedWith
-        )
-    }
-}
-
 // MARK: - Convenience Initialisers and Conversions
 extension Contact {
     convenience init(from contact: CNContact){
