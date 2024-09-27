@@ -185,9 +185,6 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
             // TODO: We should always start with the last interacted with contact, and then update all the other values (e.g. name, email, phone number, etc).
             (first.lastInteractedWith ?? .distantPast) > (second.lastInteractedWith ?? .distantPast) ? first : second
         }
-//        self.contactsDictionary.merge(contacts.mappedToDictionary(by: \.id)) { current, new in
-//            current.concrete.updatedWithNonInteractiveProperties(fromContact: new)
-//        }
     }
     
     func numberOfContacts(_ searchPredicate: NewContactSearchPredicate, completion: @escaping (Int?) -> Void) {
