@@ -157,6 +157,7 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
                 updatedContact.thumbnailImage = contact.thumbnailImage
                 updatedContact.email = contact.email
                 updatedContact.note = contact.note
+                updatedContact.lastInteractedWith = .now
             }
         } catch {
             Log.error("Could not update Realm copy of Contact \(contact.id): (\(contact.name) due to error: \(error.localizedDescription)")
