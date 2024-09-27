@@ -64,6 +64,8 @@ enum Constant {
         case email = "envelope.fill"
         case minus = "minus"
         case partyPopper = "party.popper.fill"
+        case pencil = "pencil"
+        case personWithAtSymbol = "person.crop.square.filled.and.at.rectangle.fill"
         case personWithCheckmark = "person.crop.circle.fill.badge.checkmark"
         case personWithClock = "person.badge.clock.fill"
         case personWithDescription = "person.text.rectangle.fill"
@@ -92,7 +94,7 @@ enum Constant {
 
         var kind: Kind {
             switch self {
-            case .bolt, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .email, .minus, .partyPopper, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
+            case .bolt, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .email, .minus, .partyPopper, .pencil, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
             case .whatsApp: return .asset
             }
         }

@@ -24,3 +24,7 @@ extension String {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
+
+extension String: Identifiable {
+    public var id: String { self }
+}

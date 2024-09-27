@@ -80,6 +80,8 @@ class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
     @Persisted var _thumbnailImageData: Data?
     @Persisted var email: String?
     @Persisted var createDate: Date
+    @Persisted var note: String?
+
     
     // MARK: - Protocol Conformance
     var thumbnailImage: UIImage? {
@@ -100,7 +102,6 @@ class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
     @Persisted var followUps: Int = 0 { didSet { lastFollowedUp = .now } }
     @Persisted var lastFollowedUp: Date? { didSet { lastInteractedWith = .now } }
     @Persisted var highlighted: Bool = false { didSet { lastInteractedWith = .now } }
-    @Persisted var note: String? { didSet { lastInteractedWith = .now } }
     @Persisted var followUpFrequency: FollowUpFrequency? { didSet { lastInteractedWith = .now } }
     
     // TODO: - Ensure that this is reworked to act as a computed property that depends on the 'followUpFrequency' object.
@@ -222,7 +223,7 @@ extension Contact {
 // MARK: - Conversion to Concrete type Convenience
 extension Contactable {
     var concrete: Contact {
-        Contact.init(from: self)
+        (self as? Contact) ?? Contact.init(from: self)
     }
 }
 

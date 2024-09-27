@@ -62,8 +62,13 @@ final class FollowUpManager: ObservableObject {
                         self.error = error
                     }
                 },
-                receiveValue: { newContacts in
-                self.store.updateWithFetchedContacts(newContacts)
+                receiveValue: { contactSignal in
+                    switch contactSignal {
+                    case let .overwrite(newContacts):
+                        self.store.updateWithFetchedContacts(newContacts)
+                    case let .updateAndMerge(contact):
+                        self.store.updateAndMerge(contact: contact)
+                    }
             })
             .store(in: &self.subscriptions)
     }

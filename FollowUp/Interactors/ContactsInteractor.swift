@@ -8,6 +8,7 @@
 import AddressBook
 import Combine
 import Contacts
+import ContactsUI
 import Foundation
 import RealmSwift
 import SwiftUI
@@ -16,15 +17,30 @@ import Fakery
 // MARK: - Typealiases
 typealias ContactID = String
 
+// MARK: - Contact Update Enum
+enum ContactSignal {
+    
+    /// Updates all the properties on the given contact which exists in the store, without replacing the entire Contact Object.
+    case updateAndMerge(any Contactable)
+    
+    /// Overwrites contacts in the FollowUpStore which are older than those in this list.
+    case overwrite([any Contactable])
+}
+
 // MARK: -
 protocol ContactsInteracting {
-    var contactsPublisher: AnyPublisher<[any Contactable], FollowUpError> { get }
+    var contactsPublisher: AnyPublisher<ContactSignal, FollowUpError> { get }
     var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> { get }
     var statePublisher: AnyPublisher<ContactInteractorState, Never> { get }
     var contactSheet: ContactSheet? { get }
+    
+    // MARK: - Actions (Fetch)
     func fetchContacts()
     
-    // MARK: - Actions
+    /// Updates the copy of the contact with the given ID within the Contact Store.
+    func updateContactInStore(withCNContactID ID: ContactID)
+    
+    // MARK: - Actions (Contact)
     func highlight(_ contact: any Contactable)
     func unhighlight(_ contact: any Contactable)
     func addToFollowUps(_ contact: any Contactable)
@@ -43,6 +59,7 @@ protocol ContactsInteracting {
     func moveTags(forContact contact: any Contactable, fromOffsets offsets: IndexSet, toOffset destination: Int)
     func set(tags: [Tag], for contact: any Contactable)
     func changeColour(forTag tag: Tag, toColour colour: Color, forContact contact: any Contactable)
+
 }
 
 /// Describes the current state of the contacts interactor.
@@ -61,12 +78,23 @@ enum ContactInteractorState {
 class ContactsInteractor: ContactsInteracting, ObservableObject {
 
     // MARK: - Private Properties
-    private var _contactsPublisher: PassthroughSubject<[any Contactable], FollowUpError> = .init()
+    private var _contactsPublisher: PassthroughSubject<ContactSignal, FollowUpError> = .init()
     private var realm: Realm?
     private let backgroundQueue: DispatchQueue = .init(label: "com.bazel.followup.contacts.background", qos: .background)
+    private let cnContactKeyDescriptors = [
+        CNContactGivenNameKey,
+        CNContactDatesKey,
+        CNContactPhoneNumbersKey,
+        CNContactFamilyNameKey,
+        CNContactMiddleNameKey,
+        CNContactImageDataKey,
+        CNContactThumbnailImageDataKey,
+        CNContactNoteKey,
+        CNContactDatesKey
+    ] as [CNKeyDescriptor]
 
     // MARK: - Public Properties
-    var contactsPublisher: AnyPublisher<[any Contactable], FollowUpError> { _contactsPublisher.eraseToAnyPublisher() }
+    var contactsPublisher: AnyPublisher<ContactSignal, FollowUpError> { _contactsPublisher.eraseToAnyPublisher() }
 
     var contactSheetPublisher: AnyPublisher<ContactSheet?, Never> { self.$contactSheet.eraseToAnyPublisher() }
     
@@ -155,6 +183,7 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
         }
     }
     
+    
     /// Checks if the tag is orphaned, and if so, removes it.
     private func removeIfOrphaned(tag: Tag) {
         guard tag.taggedContacts.isEmpty else { return }
@@ -234,7 +263,7 @@ extension ContactsInteractor {
                                 #if DEBUG || TESTING
                                     print(mergedContacts)
                                 #endif
-                                self._contactsPublisher.send(mergedContacts)
+                                self._contactsPublisher.send(.overwrite(mergedContacts))
                                 self.objectWillChange.send()
                             }
                         }
@@ -255,6 +284,63 @@ extension ContactsInteractor {
         }
     }
     
+    func updateContactInStore(withCNContactID ID: ContactID) {
+        self.fetchContact(withCNContactID: ID, completion: { result in
+            switch result {
+            case let .success(contact):
+                guard let contact = contact else { 
+                    return Log.error("Could not fetch contact with ID: \(ID)")
+                }
+                Log.info("Found Contact: \(contact.name)")
+                DispatchQueue.main.async {
+                    self._contactsPublisher.send(.updateAndMerge(contact))
+                }
+            case let .failure(error):
+                Log.error("Could not fetch and update contact with ID: \(ID)")
+            }
+            
+        })
+    }
+    
+    private func fetchContact(withCNContactID id: ContactID, completion: @escaping ((Result<Contact?, FollowUpError>) -> Void)) {
+        self.fetchCNContact(withID: id) { result in
+            completion(result.map { $0?.toContact() })
+        }
+    }
+    
+    private func fetchCNContact(withID id: String, completion: @escaping ((Result<CNContact?, FollowUpError>) -> Void)) {
+        Log.info("Fetching CNContact with ID: \(id)")
+        let contactStore = CNContactStore()
+        let predicate = CNContact.predicateForContacts(withIdentifiers: [id])
+        let keys = self.cnContactKeyDescriptors
+        contactStore.requestAccess(for: .contacts) { authorizationResult, error in
+            if let error = error {
+                Log.error("Error fetching CNContact (\(id) with: \(error.localizedDescription)")
+                completion(.failure(.requestAccessError(error)))
+            }
+            
+            
+            // TODO: Why do we need to do this?
+            self.contactsAuthorized = authorizationResult
+            
+            do {
+                
+            let contacts = try contactStore.unifiedContacts(matching: predicate, keysToFetch: keys)
+                
+            if contacts.isEmpty {
+                Log.warn("No Contact found with ID: \(id). Returning nil.")
+            }
+                
+            completion(.success(contacts.first))
+
+                
+            } catch {
+                Log.error("Unable to fetch CNContacts: \(error.localizedDescription)")
+                completion(.failure(.cnContactQueryError(error)))
+            }
+        }
+    }
+    
     private func fetchCNContacts(completion: ((Result<[CNContact], FollowUpError>) -> Void)? = nil) {
         Log.info("Fetching CNContacts.")
         let contactStore = CNContactStore()
@@ -269,17 +355,7 @@ extension ContactsInteractor {
             do {
                 let fetchedContacts = try contactStore.unifiedContacts(
                     matching: .init(value: true),
-                    keysToFetch: [
-                        CNContactGivenNameKey,
-                        CNContactDatesKey,
-                        CNContactPhoneNumbersKey,
-                        CNContactFamilyNameKey,
-                        CNContactMiddleNameKey,
-                        CNContactImageDataKey,
-                        CNContactThumbnailImageDataKey,
-                        CNContactNoteKey,
-                        CNContactDatesKey
-                    ] as [CNKeyDescriptor]
+                    keysToFetch: self.cnContactKeyDescriptors
                 )
                 Log.info("Received CNContacts: \(fetchedContacts.count)")
                 completion?(.success(fetchedContacts))

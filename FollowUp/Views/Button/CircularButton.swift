@@ -24,6 +24,7 @@ struct CircularButton: View {
             Image(icon: icon)
                 .resizable()
                 .renderingMode(.template)
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 15, height: 15, alignment: .center)
         })
             .accentColor(accentColour)

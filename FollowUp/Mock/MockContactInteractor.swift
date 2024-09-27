@@ -13,11 +13,11 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
     
     @Published var contactSheet: ContactSheet?
 
-    @Published var contacts: [any Contactable] = []
+    @Published var contacts: ContactSignal = .overwrite([])
     
     @Published var state: ContactInteractorState = .fetchingContacts
     
-    var contactsPublisher: AnyPublisher<[any Contactable], FollowUpError> {
+    var contactsPublisher: AnyPublisher<ContactSignal, FollowUpError> {
         $contacts.setFailureType(to: FollowUpError.self).eraseToAnyPublisher()
     }
 
@@ -35,11 +35,15 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
         addToContactAmount: Int = 10
     ) {
         self.addToContactAmount = addToContactAmount
-        self.contacts = (0...addToContactAmount).map { _ in MockedContact() }
+        self.contacts = .overwrite((0...addToContactAmount).map { _ in MockedContact() })
     }
 
     func fetchContacts() {
-        self.contacts.append(contentsOf: generateContacts(withCount: 10))
+//        self.contacts.append(contentsOf: generateContacts(withCount: 10))
+    }
+    
+    func updateContactInStore(withCNContactID ID: ContactID) {
+        
     }
 
     private func generateContacts(withCount count: Int) -> [any Contactable] {
