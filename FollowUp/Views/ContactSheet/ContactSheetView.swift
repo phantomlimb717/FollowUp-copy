@@ -193,9 +193,14 @@ struct ContactSheetView: View {
     var body: some View {
         variableContent
             .sheet(item: $nativeContactSheetID, onDismiss: {
-                self.updateCurrentContact()
+               
+                // When the user does not edit the contact using 'Edit', the sheet appears to dismiss before the change to the contact is actually applied. We add a small delay to ensure the change is made so that the newly fetched contact contains the newest data.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                    self.updateCurrentContact()
+                })
             }, content: {_ in
                 NativeContactView(contactID: contact.id)
+                    .ignoresSafeArea(.all, edges: .bottom)
             })
     }
     
@@ -224,6 +229,6 @@ struct ContactSheetView_Previews: PreviewProvider {
                 .preferredColorScheme(.dark)
         }
         .environmentObject(FollowUpManager())
-        .environmentObject(FollowUpStore.mocked())
+//        .environmentObject(FollowUpStore.mocked())
     }
 }
