@@ -118,17 +118,56 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
 
     // MARK: - Methods
     func updateWithFetchedContacts(_ contacts: [any Contactable]) {
-        guard let realm = realm else { return }
-        
-        self.mergeWithContactsDictionary(contacts: contacts)
-        
-        let contactIDsToBeUpdated: [ContactID] = contacts.map(\.id)
-        let updatedContacts = self.contactsDictionary.values.filter { contactIDsToBeUpdated.contains($0.id) }
+                    
+            guard let realm = realm else { return }
+            // Merge contacts asynchornously to prevent the main thread from hanging.
+            self.mergeWithContactsDictionary(contacts: contacts)
+            let contactIDsToBeUpdated: [ContactID] = contacts.map(\.id)
+            let updatedContacts = self.contactsDictionary.values.filter { contactIDsToBeUpdated.contains($0.id) }
+            
+            // guard let realm = self.realm else { return }
+            
+            do {
+                try realm.write {
+                    realm.add(updatedContacts, update: .modified)
+                    self.lastFetchedContacts = .now
+                }
+            } catch {
+                assertionFailurePreviewSafe("Unable to update Realm DB with \(contacts.count) newly fetched contacts: \(error.localizedDescription)")
+            }
+
+    }
+
+    // - name
+    // - phoneNumber
+    // - thumbnailImage
+    // - email
+    // - note
+    /// Updates all non-interactive properties of the Contact from the user's ContactBook.
+    func updateAndMerge(contact: any Contactable) {
+        guard var updatedContact = self.contactsDictionary[contact.id, default: contact] as? Contact
+        else {
+            return Log.error("Could not cast Contactable as object for ID: \(contact.id)")
+        }
         
         do {
-            try realm.write {
-                realm.add(updatedContacts, update: .modified)
-                self.lastFetchedContacts = .now
+            try self.realm?.write {
+                updatedContact.name = contact.name
+                updatedContact.phoneNumber = contact.phoneNumber
+                updatedContact.thumbnailImage = contact.thumbnailImage
+                updatedContact.email = contact.email
+                updatedContact.note = contact.note
+            }
+        } catch {
+            Log.error("Could not update Realm copy of Contact \(contact.id): (\(contact.name) due to error: \(error.localizedDescription)")
+        }
+        
+        self.contactsDictionary[updatedContact.id] = updatedContact
+        
+        do {
+            try self.realm?.write {
+                self.realm?.add([updatedContact], update: .modified)
+//                self.lastFetchedContacts = .now
             }
         } catch {
             assertionFailurePreviewSafe("Unable to update Realm DB with \(contacts.count) newly fetched contacts: \(error.localizedDescription)")
@@ -136,11 +175,12 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     }
     
     
+    // Here we have a situation whereby we take newly updated contacts, and merge them with those that already exist. We can't just
+    // prefer the contacts which have a newer 'lastInteractedWith', because that doesn't really work. We need a way of updating the details on every single contact with the details that we receive from the signal. We should assume that the details received for nonInteractivProperties are
+    // always correct.
     func mergeWithContactsDictionary(contacts: [any Contactable]) {
-        self.contactsDictionary.merge(contacts.mappedToDictionary(by: \.id)) { first, second in
-            // Check to see when we last interacted with a contact. We use the most recently interacted with version.
-            // TODO: We should always start with the last interacted with contact, and then update all the other values (e.g. name, email, phone number, etc).
-            (first.lastInteractedWith ?? .distantPast) > (second.lastInteractedWith ?? .distantPast) ? first : second
+        self.contactsDictionary.merge(contacts.mappedToDictionary(by: \.id)) { current, new in
+            current.concrete.updatedWithNonInteractiveProperties(fromContact: new)
         }
     }
     
