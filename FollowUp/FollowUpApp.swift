@@ -39,6 +39,7 @@ struct FollowUpApp: App {
 //                    )
 //                })
                 .errorAlert(error: $followUpManager.error)
+                .accentColor(.accent)
             #if DEBUG
                 .onAppear {
                     Log.info(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path)
