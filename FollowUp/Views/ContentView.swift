@@ -47,7 +47,7 @@ struct ContentView: View {
                         .navigationBarTitle("FollowUps")
                 }
                 .tabItem {
-                    Label("FollowUp", systemImage: "repeat")
+                    Label("FollowUp", systemImage: "arrow.up.message.fill")
                 }
                 .background(Color(.systemGroupedBackground))
                 .tag(2)

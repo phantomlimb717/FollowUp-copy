@@ -995,6 +995,12 @@
             "value" : "Verfolgung"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FollowUp"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",

@@ -95,6 +95,7 @@ struct ActionButtonGridView: View {
                     .font(buttonFont)
             }
         })
+        .accentColor(.blue)
     }
 
     private var removeFromFollowUpsButton: some View {
@@ -109,6 +110,7 @@ struct ActionButtonGridView: View {
                     .font(buttonFont)
             }
         })
+        .accentColor(.blue)
     }
     
     @ViewBuilder

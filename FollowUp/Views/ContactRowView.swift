@@ -63,9 +63,9 @@ struct ContactRowView: View {
 
             if let phoneNumber = contact.phoneNumber {
                 CircularButton(icon: .phone, action: .call(number: phoneNumber))
-                    .accentColor(.accentColor)
+                    .accentColor(.accent)
                 CircularButton(icon: .sms, action: .sms(number: phoneNumber))
-                .accentColor(.accentColor)
+                    .accentColor(.accent)
             }
         }
         .frame(maxWidth: .greatestFiniteMagnitude)

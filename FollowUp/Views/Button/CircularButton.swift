@@ -16,7 +16,7 @@ struct CircularButton: View {
     var icon: Constant.Icon
     var action: ButtonAction
     var padding: CGFloat = 10.0
-    var accentColour: Color = .accentColor
+    var accentColour: Color = .accent
     var backgroundOpacity: CGFloat = 0.3
 
     var body: some View {
