@@ -13,6 +13,8 @@ struct ContentView: View {
     @State var selectedTab: Int = 0
     @State var contactSheet: ContactSheet?
     @State var settingsSheetShown: Bool = false
+    @State private var rotation: Double = 0
+    @State private var contactInteractorState: ContactInteractorState = .fetchingContacts
     @AppStorage("firstLaunch") var firstLaunch: Bool = true
     @EnvironmentObject var followUpManager: FollowUpManager
     @Environment(\.scenePhase) var scenePhase
@@ -22,6 +24,8 @@ struct ContentView: View {
         let _ = Self._printChanges()
         #endif
             TabView(selection: $selectedTab, content:  {
+                
+                // New Contacts View
                 NavigationView {
                     NewContactsView(
                         store: followUpManager.store,
@@ -29,19 +33,35 @@ struct ContentView: View {
                     )
                     .navigationBarTitle("Contacts")
                     .toolbar(content: {
-                        Button(action: {
-                            self.settingsSheetShown = true
-                        }, label: {
-                            Image(icon: .settings)
-                        })
+                        ZStack {
+                            Button(action: {
+                                self.settingsSheetShown = true
+                            }, label: {
+                                Image(icon: .settings)
+                            })
+                            
+                            if contactInteractorState == .fetchingContacts {
+                                CircularLoadingSpinner(
+                                    lineWidth: 4,
+                                    colour: .accent,
+                                    showBackgroundCircle: true
+                                )
+                                .frame(width: 19, height: 19)
+                                .offset(x: -25, y: 0) // This positions it exactly at the same place as the cog
+                                .transition(.opacity)
+                            }
+                        }
+                        
                     })
                 }
+                .animation(.easeInOut, value: contactInteractorState)
                 .tabItem {
                     Label("Contacts", systemImage: "person.crop.circle")
                 }
                 .tag(1)
                 
                     
+                // FollowUps View
                 NavigationView {
                     FollowUpsView(store: followUpManager.store, contactsInteractor: followUpManager.contactsInteractor)
                         .navigationBarTitle("FollowUps")
@@ -72,6 +92,9 @@ struct ContentView: View {
             })
             .onReceive(followUpManager.contactsInteractor.contactSheetPublisher, perform: { contactSheet in
                 self.contactSheet = contactSheet
+            })
+            .onReceive(followUpManager.contactsInteractor.statePublisher, perform: { contactInteractorState in
+                self.contactInteractorState = contactInteractorState
             })
             .onChange(of: selectedTab, perform: { Log.info("Tab changed to \($0)") })
             .onChange(of: scenePhase, perform: { phase in

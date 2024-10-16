@@ -102,6 +102,7 @@
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
 		2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193DA212C94454C0080C72C /* CNContact+Additions.swift */; };
 		21A031902C667C5700BF04D8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */; };
+		21EF80732CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */; };
 		21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F690A02C8B63B9001F127B /* NativeContactView.swift */; };
 /* End PBXBuildFile section */
 
@@ -216,6 +217,7 @@
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
 		21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArrowLoadingSpinner.swift; sourceTree = "<group>"; };
 		21F690A02C8B63B9001F127B /* NativeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				210DC60D2C25B7F900B20544 /* CircularLoadingSpinner.swift */,
+				21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -625,7 +628,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					210DC5CC2C25B6CE00B20544 = {
 						CreatedOnToolsVersion = 15.4;
@@ -706,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				210DC6B12C25B82100B20544 /* Assertion+Additions.swift in Sources */,
+				21EF80732CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift in Sources */,
 				210DC6B22C25B82100B20544 /* Color+Additions.swift in Sources */,
 				210DC6542C25B80D00B20544 /* ContactSection.swift in Sources */,
 				21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */,
@@ -827,6 +831,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -891,6 +896,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1015,7 +1021,6 @@
 		210DC5F52C25B6CF00B20544 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1035,7 +1040,6 @@
 		210DC5F62C25B6CF00B20544 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1055,7 +1059,6 @@
 		210DC5F82C25B6CF00B20544 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A5YJ22GHFR;
@@ -1073,7 +1076,6 @@
 		210DC5F92C25B6CF00B20544 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A5YJ22GHFR;
