@@ -81,7 +81,7 @@ enum Constant {
         case trash = "trash.fill"
         case whatsApp = "whatsAppIcon"
 
-        case arrowCirclePath = "arrow.triangle.2.circlepath"
+        case arrowCirclePath = "arrow.trianglehead.2.clockwise.rotate.90"
         case lock = "lock.fill"
         case lockWithExclamationMark = "lock.trianglebadge.exclamationmark"
         

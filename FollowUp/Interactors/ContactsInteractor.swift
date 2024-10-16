@@ -264,6 +264,7 @@ extension ContactsInteractor {
                                     print(mergedContacts)
                                 #endif
                                 self._contactsPublisher.send(.overwrite(mergedContacts))
+                                self.setState(.loaded)
                                 self.objectWillChange.send()
                             }
                         }

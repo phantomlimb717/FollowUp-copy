@@ -50,6 +50,9 @@ struct NewContactsView: View {
         .onChange(of: searchQuery, perform: self.store.set(contactSearchQuery:))
         .onChange(of: selectedTagSearchTokens, perform: self.store.set(selectedTagSearchTokens:))
         .onReceive(store.$allTags, perform: { self.availableTagSearchTokens = $0 })
+        .refreshable {
+            self.contactsInteractor.fetchContacts()
+        }
     }
     
     @ViewBuilder
@@ -78,7 +81,9 @@ struct NewContactsView: View {
         let _ = Self._printChanges()
         #endif
         content
-            .onReceive(contactsInteractor.statePublisher, perform: { self.contactInteractorState = $0 })
+            .onReceive(contactsInteractor.statePublisher, perform: {
+                self.contactInteractorState = $0
+            })
     }
 
 }
