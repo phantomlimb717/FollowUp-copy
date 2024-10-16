@@ -33,33 +33,26 @@ struct ContentView: View {
                     )
                     .navigationBarTitle("Contacts")
                     .toolbar(content: {
-                        Button(action: {
-                            self.settingsSheetShown = true
-                        }, label: {
-                            Image(icon: .settings)
-                        })
+                        ZStack {
+                            Button(action: {
+                                self.settingsSheetShown = true
+                            }, label: {
+                                Image(icon: .settings)
+                            })
+                            
+                            if contactInteractorState == .fetchingContacts {
+                                CircularLoadingSpinner(
+                                    lineWidth: 4,
+                                    colour: .accent,
+                                    showBackgroundCircle: true
+                                )
+                                .frame(width: 19, height: 19)
+                                .offset(x: -25, y: 0) // This positions it exactly at the same place as the cog
+                                .transition(.opacity)
+                            }
+                        }
+                        
                     })
-                }
-                .overlay(alignment: .topTrailing) {
-                    if contactInteractorState == .fetchingContacts {
-                        Image(icon: .arrowCirclePath)
-                            .rotationEffect(.degrees(rotation)) // Apply rotation effect
-                            .onAppear {
-                                withAnimation(Animation.linear(duration: 1.0).repeatForever(autoreverses: false)) {
-                                    self.rotation = 360
-                                }
-                            }
-                            .onDisappear {
-                                self.rotation = 0
-                            }
-                            .padding(4)
-                            .background(Material.ultraThin)
-                            .cornerRadius(.greatestFiniteMagnitude)
-                            .foregroundColor(.accent)
-                            .padding(.top, 4)
-                            .padding(.trailing, 50)
-                            .transition(.move(edge: .top).combined(with: .opacity))
-                    }
                 }
                 .animation(.easeInOut, value: contactInteractorState)
                 .tabItem {
