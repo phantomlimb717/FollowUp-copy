@@ -14,11 +14,19 @@ enum Networking {
     static let jsonEncoder: JSONEncoder = .init()
     
     static var openAIKey: String? {
+#if DEBUG
         guard
             let data = UserDefaults.standard.data(forKey: Constant.Secrets.openAIUserDefaultsKey),
-            let decodedValue = try? FollowUpApp.decoder.decode(String.self, from: data)
-        else { return nil }
+            let decodedValue = try? FollowUpApp.decoder.decode(String.self, from: data),
+            !decodedValue.isEmpty
+        else {
+            Log.info("No custom OpenAI Key found, returning default one from build configuration.")
+            return Constant.Secrets.OPENAI_API_KEY
+        }
         return decodedValue
+#else
+        Constant.Secrets.OPENAI_API_KEY
+#endif
     }
     
     enum NetworkingError: String, Error, Identifiable {

@@ -169,6 +169,7 @@ enum Constant {
     // MARK: - Secrets
     enum Secrets {
         static let openAIUserDefaultsKey: String = "openAIKey"
+        static let OPENAI_API_KEY: String? = Bundle.main.object(forInfoDictionaryKey: "OPEN_API_KEY") as? String
     }
     
     // MARK: - Conversation Starter

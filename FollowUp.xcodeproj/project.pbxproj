@@ -79,7 +79,6 @@
 		210DC6A82C25B82100B20544 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC6712C25B82000B20544 /* Tag.swift */; };
 		210DC6A92C25B82100B20544 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC6732C25B82100B20544 /* Log.swift */; };
 		210DC6AA2C25B82100B20544 /* UserDefaultsPersisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC6742C25B82100B20544 /* UserDefaultsPersisted.swift */; };
-		210DC6AB2C25B82100B20544 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210DC6762C25B82100B20544 /* Preview Assets.xcassets */; };
 		210DC6AC2C25B82100B20544 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC6782C25B82100B20544 /* Constant.swift */; };
 		210DC6AD2C25B82100B20544 /* LocalisedTextKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC6792C25B82100B20544 /* LocalisedTextKey.swift */; };
 		210DC6AE2C25B82100B20544 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC67A2C25B82100B20544 /* Mock.swift */; };
@@ -193,7 +192,6 @@
 		210DC6712C25B82000B20544 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		210DC6732C25B82100B20544 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		210DC6742C25B82100B20544 /* UserDefaultsPersisted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsPersisted.swift; sourceTree = "<group>"; };
-		210DC6762C25B82100B20544 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		210DC6782C25B82100B20544 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		210DC6792C25B82100B20544 /* LocalisedTextKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisedTextKey.swift; sourceTree = "<group>"; };
 		210DC67A2C25B82100B20544 /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -213,10 +211,12 @@
 		210DC68A2C25B82100B20544 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		210DC68C2C25B82100B20544 /* View+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
-		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
 		21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		21C9FC2C2CCAA76A00F8F400 /* DebugSecrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugSecrets.xcconfig; sourceTree = "<group>"; };
+		21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseSecrets.xcconfig; sourceTree = "<group>"; };
 		21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArrowLoadingSpinner.swift; sourceTree = "<group>"; };
 		21F690A02C8B63B9001F127B /* NativeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,8 +276,6 @@
 		210DC5CF2C25B6CE00B20544 /* FollowUp */ = {
 			isa = PBXGroup;
 			children = (
-				210DC6C02C25BBFA00B20544 /* Info.plist */,
-				210DC5FA2C25B6F300B20544 /* FollowUp.entitlements */,
 				210DC6532C25B80D00B20544 /* ViewModel */,
 				210DC6322C25B7F900B20544 /* Views */,
 				210DC67B2C25B82100B20544 /* Common */,
@@ -287,11 +285,13 @@
 				210DC67E2C25B82100B20544 /* Mock */,
 				210DC6722C25B82000B20544 /* Model */,
 				210DC6582C25B82000B20544 /* Modifiers */,
-				210DC6772C25B82100B20544 /* Preview Content */,
 				210DC6752C25B82100B20544 /* Utility */,
+				21C9FC2D2CCAAA7E00F8F400 /* Configurations */,
+				210DC5D62C25B6CF00B20544 /* Preview Content */,
+				210DC6C02C25BBFA00B20544 /* Info.plist */,
+				210DC5FA2C25B6F300B20544 /* FollowUp.entitlements */,
 				210DC5D02C25B6CE00B20544 /* FollowUpApp.swift */,
 				210DC5D42C25B6CF00B20544 /* Assets.xcassets */,
-				210DC5D62C25B6CF00B20544 /* Preview Content */,
 			);
 			path = FollowUp;
 			sourceTree = "<group>";
@@ -489,15 +489,6 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		210DC6772C25B82100B20544 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				210DC6762C25B82100B20544 /* Preview Assets.xcassets */,
-			);
-			name = "Preview Content";
-			path = "../../FollowUpLegacy/FollowUp/Preview Content";
-			sourceTree = "<group>";
-		};
 		210DC67B2C25B82100B20544 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +544,15 @@
 				21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */,
 			);
 			path = Localisation;
+			sourceTree = "<group>";
+		};
+		21C9FC2D2CCAAA7E00F8F400 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				21C9FC2C2CCAA76A00F8F400 /* DebugSecrets.xcconfig */,
+				21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -681,7 +681,6 @@
 			files = (
 				210DC5D82C25B6CF00B20544 /* Preview Assets.xcassets in Resources */,
 				21A031902C667C5700BF04D8 /* InfoPlist.xcstrings in Resources */,
-				210DC6AB2C25B82100B20544 /* Preview Assets.xcassets in Resources */,
 				216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */,
 				210DC5D52C25B6CF00B20544 /* Assets.xcassets in Resources */,
 			);
@@ -828,6 +827,7 @@
 /* Begin XCBuildConfiguration section */
 		210DC5EF2C25B6CF00B20544 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2C2CCAA76A00F8F400 /* DebugSecrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -893,6 +893,7 @@
 		};
 		210DC5F02C25B6CF00B20544 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -951,6 +952,7 @@
 		};
 		210DC5F22C25B6CF00B20544 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2C2CCAA76A00F8F400 /* DebugSecrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -985,6 +987,7 @@
 		};
 		210DC5F32C25B6CF00B20544 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1020,6 +1023,7 @@
 		};
 		210DC5F52C25B6CF00B20544 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2C2CCAA76A00F8F400 /* DebugSecrets.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1039,6 +1043,7 @@
 		};
 		210DC5F62C25B6CF00B20544 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1058,6 +1063,7 @@
 		};
 		210DC5F82C25B6CF00B20544 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2C2CCAA76A00F8F400 /* DebugSecrets.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1075,6 +1081,7 @@
 		};
 		210DC5F92C25B6CF00B20544 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

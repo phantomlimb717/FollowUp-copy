@@ -15,7 +15,11 @@ class FollowUpSettings: Object {
     @Persisted var conversationStarters: RealmSwift.List<ConversationStarterTemplate>
     @Persisted var contactListGrouping: ContactListGrouping = .dayMonthYear
     @Persisted var followUpRemindersActive: Bool = false
+    
+    // Used only for development.
+    #if DEBUG
     @UserDefaultsPersisted(Constant.Secrets.openAIUserDefaultsKey) var openAIKey: String = ""
+    #endif
     
 }
 
@@ -113,11 +117,13 @@ extension FollowUpSettings {
         }
     }
 
+    #if DEBUG
     public func set(openAIKey: String) {
         self.update {
             self.openAIKey = openAIKey
         }
     }
+    #endif
     
     public func set(followUpRemindersActive: Bool) {
         self.update {

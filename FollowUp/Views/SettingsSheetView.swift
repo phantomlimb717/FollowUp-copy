@@ -12,7 +12,6 @@ struct SettingsSheetView: View {
     @State var dailyFollowUpGoal: Int = 0
     @State var contactListGrouping: FollowUpSettings.ContactListGrouping = .dayMonthYear
     @State var followUpRemindersActive: Bool = false
-    @State var openAIKey: String = ""
     @EnvironmentObject var settings: FollowUpSettings
     @EnvironmentObject var followUpManager: FollowUpManager
     @Environment(\.dismiss) private var dismiss
@@ -20,6 +19,10 @@ struct SettingsSheetView: View {
     @Environment(\.editMode) var isEditing
     
     @State var currentlyEditingConversationStarter: ConversationStarterTemplate? = nil
+    
+    #if DEBUG
+    @State var openAIKey: String = ""
+    #endif
     
     private var closeButton: some View {
         HStack(alignment: .center) {
@@ -118,6 +121,7 @@ struct SettingsSheetView: View {
         }.onChange(of: self.contactListGrouping, perform:self.settings.set(contactListGrouping:))
     }
     
+    #if DEBUG
     private var openAIKeySectionView: some View {
         Section(content: {
             TextField("OpenAI Key", text: $openAIKey)
@@ -130,6 +134,7 @@ struct SettingsSheetView: View {
         }.onChange(of: self.openAIKey, perform: self.settings.set(openAIKey:))
         .submitLabel(.done)
     }
+    #endif
     
     private var followUpRemindersToggleView: some View {
         Section(content: {
@@ -165,7 +170,10 @@ struct SettingsSheetView: View {
                 conversationStartersSectionView
                 groupingSelectionSectionView
                 followUpRemindersToggleView
+                
+                #if DEBUG
                 openAIKeySectionView
+                #endif
             }
             .background(Color(.systemGroupedBackground))
             .sheet(item: self.$currentlyEditingConversationStarter, content: { conversationStarter in
