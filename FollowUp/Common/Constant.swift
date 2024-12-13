@@ -76,6 +76,7 @@ enum Constant {
         case star = "star.fill"
         case starWithText = "text.badge.star"
         case slashedStar = "star.slash.fill"
+        case tag = "tag.fill"
         case target = "target"
         case thumbsUp = "hand.thumbsup.fill"
         case trash = "trash.fill"
@@ -94,7 +95,7 @@ enum Constant {
 
         var kind: Kind {
             switch self {
-            case .bolt, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .email, .minus, .partyPopper, .pencil, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
+            case .bolt, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .email, .minus, .partyPopper, .pencil, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .tag, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
             case .whatsApp: return .asset
             }
         }
@@ -135,8 +136,8 @@ enum Constant {
     
     // MARK: - Tags
     enum Tag {
-        static let horiztontalPadding: CGFloat = 10.0
-        static let verticalPadding: CGFloat = 5.0
+        static let horiztontalPadding: CGFloat = 7.0
+        static let verticalPadding: CGFloat = 7.0
         static let cornerRadius: CGFloat = 5.0
     }
 

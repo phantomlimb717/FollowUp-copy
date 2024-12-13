@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import CoreTransferable
 
 // MARK: -
 enum ConversationStarterKind: Codable, Hashable, Equatable, CaseIterable {
@@ -187,9 +188,25 @@ extension ConversationStarterTemplate {
         .init(label: "How are you?", template: "Hey \(Constant.ConversationStarter.Token.name)! How are you?", platform: .whatsApp)
     }
     
-    static var examples: [ConversationStarterTemplate] = [
+    static var iceBreaker: ConversationStarterTemplate {
+        .init(
+            label: "Ice Breaker",
+            prompt: "Write a WhatsApp message to follow up with the person using what you know about them. The message needs to be creative, relatable and personal to the person. It should be a conversation starter that can lead into more conversation. E.g “Hey man, it was great meeting you at X, how are the studies going?”. Make it short and informal.",
+            context: nil, platform: .whatsApp)
+    }
+    
+    static var standardExamples: [ConversationStarterTemplate] = [
         .arrangeForCoffee,
         .howAreYou
     ]
+    
+    static var intelligentExamples: [ConversationStarterTemplate] = [
+        .iceBreaker
+    ]
 }
 
+extension ConversationStarterTemplate: Transferable {
+    public static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(contentType: .conversationStarter)
+    }
+}

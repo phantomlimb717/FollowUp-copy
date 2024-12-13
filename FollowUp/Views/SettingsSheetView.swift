@@ -17,9 +17,7 @@ struct SettingsSheetView: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState var dailyGoalInputActive: Bool
     @Environment(\.editMode) var isEditing
-    
-    @State var currentlyEditingConversationStarter: ConversationStarterTemplate? = nil
-    
+        
     #if DEBUG
     @State var openAIKey: String = ""
     #endif
@@ -65,48 +63,7 @@ struct SettingsSheetView: View {
             }
         })
     }
-    
-    private var conversationStartersSectionView: some View {
-        Section(content: {
-            List {
-                ForEach(settings.conversationStarters, id: \.id, content: { conversationStarter in
-                    Button(action: {
-                        self.openEditConversationStarterModal(forConversationStarter: conversationStarter)
-                    }, label: {
-                        HStack {
-                            Text(conversationStarter.title)
-                                .lineLimit(1)
-                            Spacer()
-                            Image(icon: .chevronRight)
-                        }.foregroundColor(.primary)
-                        
-                    })
-                })
-                .onDelete(perform: self.settings.removeConversationStarters(atOffsets:))
-                .onMove(perform: self.settings.moveConversationStarters(fromOffsets:toOffset:))
-                
-            }
-        }, header: {
-            HStack {
-                Label("Conversation Starters", systemImage: Constant.Icon.chatBubbles.rawValue)
-                Spacer()
-                EditButton()
-                    .buttonStyle(.plain)
-                    .foregroundColor(.blue)
-            }
-        }, footer: {
-            Button(action: {
-                self.settings.addNewConversationStarter()
-            }, label: {
-                Text("New Conversation Starter")
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-            })
-            .listRowInsets(nil)
-            .frame(maxWidth: .infinity)
-        })
-    }
-    
+        
     private var groupingSelectionSectionView: some View {
         Section(content: {
             Picker(selection: $contactListGrouping, content: {
@@ -167,7 +124,6 @@ struct SettingsSheetView: View {
             
             Form {
                 dailyGoalSectionView
-                conversationStartersSectionView
                 groupingSelectionSectionView
                 followUpRemindersToggleView
                 
@@ -176,16 +132,11 @@ struct SettingsSheetView: View {
                 #endif
             }
             .background(Color(.systemGroupedBackground))
-            .sheet(item: self.$currentlyEditingConversationStarter, content: { conversationStarter in
-                EditConversationStarterView(conversationStarter: conversationStarter)
-            })
         }.background(Color(.systemGroupedBackground))
     }
     
     // MARK: - Methods
-    private func openEditConversationStarterModal(forConversationStarter conversationStarter: ConversationStarterTemplate) {
-        self.currentlyEditingConversationStarter = conversationStarter
-    }
+
 }
 
 struct SettingsSheetView_Previews: PreviewProvider {

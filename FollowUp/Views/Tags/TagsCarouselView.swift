@@ -41,13 +41,13 @@ struct TagsCarouselView: View {
         Button(action: {
             self.showTextField()
         }, label: {
-            Text("+")
+            Image(icon: .plus)
         })
         .fontWeight(.semibold)
-        .foregroundColor(.white)
+        .foregroundColor(.secondary)
         .padding(.horizontal, Constant.Tag.horiztontalPadding)
         .padding(.vertical, Constant.Tag.verticalPadding)
-        .background(Color(.systemGray3))
+        .background(Color(.tertiarySystemFill))
         .cornerRadius(Constant.Tag.cornerRadius)
     }
     
@@ -124,7 +124,7 @@ struct TagsCarouselView: View {
                 addTagButton
             }
             .animation(.default, value: tags)
-            .padding()
+            .padding(.horizontal)
             .animation(.default, value: creatingTag)
         }
         .scrollIndicators(.hidden)
@@ -182,35 +182,39 @@ struct TagsCarouselView: View {
     }
 }
 
-struct DragRelocateDelegate: DropDelegate {
-    let item: Tag
-    @Binding var localTags: [Tag]
-    @Binding var currentlyDraggedItem: Tag?
-    var commitTagChangesClosure: () -> Void
-    
-    func dropEntered(info: DropInfo) {
-        guard item != currentlyDraggedItem,
-              let currentlyDraggedItem = currentlyDraggedItem,
-              let fromIndex = localTags.firstIndex(where: { $0.id == currentlyDraggedItem.id }),
-              let toIndex = localTags.firstIndex(where: { $0.id == item.id }),
-              fromIndex != toIndex
-        else { return }
+extension TagsCarouselView {
+    struct DragRelocateDelegate: DropDelegate {
+        let item: Tag
+        @Binding var localTags: [Tag]
+        @Binding var currentlyDraggedItem: Tag?
+        var commitTagChangesClosure: () -> Void
         
-        withAnimation {
-            localTags.move(fromOffsets: IndexSet(integer: fromIndex), toOffset: toIndex > fromIndex ? toIndex + 1 : toIndex)
+        func dropEntered(info: DropInfo) {
+            guard item != currentlyDraggedItem,
+                  let currentlyDraggedItem = currentlyDraggedItem,
+                  let fromIndex = localTags.firstIndex(where: { $0.id == currentlyDraggedItem.id }),
+                  let toIndex = localTags.firstIndex(where: { $0.id == item.id }),
+                  fromIndex != toIndex
+            else { return }
+            
+            withAnimation {
+                localTags.move(fromOffsets: IndexSet(integer: fromIndex), toOffset: toIndex > fromIndex ? toIndex + 1 : toIndex)
+            }
+        }
+
+        func dropUpdated(info: DropInfo) -> DropProposal? {
+            return DropProposal(operation: .move)
+        }
+
+        func performDrop(info: DropInfo) -> Bool {
+            currentlyDraggedItem = nil
+            commitTagChangesClosure()
+            return true
         }
     }
-
-    func dropUpdated(info: DropInfo) -> DropProposal? {
-        return DropProposal(operation: .move)
-    }
-
-    func performDrop(info: DropInfo) -> Bool {
-        currentlyDraggedItem = nil
-        commitTagChangesClosure()
-        return true
-    }
 }
+
+
 
 struct TagsCarouselView_Previews: PreviewProvider {
     static var previews: some View {

@@ -91,7 +91,7 @@ extension FollowUpStore {
         followUpStore.allTags = (0...numberOfTags).map { _ in [Tag.mockedAMS, .mockedGym].randomElement()! }
         
         // Adding conversation starters
-        followUpStore.settings.conversationStarters.append(objectsIn: (0...conversationStarters).map { _ in ConversationStarterTemplate.examples.randomElement()! })
+        followUpStore.settings.conversationStarters.append(objectsIn: (0...conversationStarters).map { _ in ConversationStarterTemplate.standardExamples.randomElement()! })
         
         return followUpStore
     }
