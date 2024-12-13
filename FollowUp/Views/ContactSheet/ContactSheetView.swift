@@ -92,19 +92,24 @@ struct ContactSheetView: View {
     @ViewBuilder
     private var startAConversationRowView: some View {
         if (contact.phoneNumber) != nil {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(store.settings.conversationStarters) { conversationStarter in
-                        ConversationActionButtonView(template: conversationStarter, contact: contact)
-                    }
-                }
-                .padding()
+            VStack(alignment: .leading, spacing: verticalSpacing) {
+                Text("\(Image(icon: .chatWithWaveform)) Conversation Starters")
+                    .foregroundStyle(.secondary)
+                    .font(.body.weight(.medium))
+                    .padding(.horizontal)
+                ConversationStarterRowView(contact: contact)
             }
         }
     }
     
     private var tagsView: some View {
-        TagsCarouselView(contact: contact)
+        VStack(alignment: .leading, spacing: verticalSpacing) {
+            Text("\(Image(icon: .tag)) Tags")
+                .padding(.horizontal)
+                .font(.body.weight(.medium))
+                .foregroundStyle(.secondary)
+            TagsCarouselView(contact: contact)
+        }
     }
     
     private var closeButtonView: some View {
@@ -116,7 +121,7 @@ struct ContactSheetView: View {
     }
     
     private var contactHeaderView: some View {
-        VStack(spacing: Constant.ContactSheet.verticalSpacing) {
+        VStack(spacing: verticalSpacing) {
             
             contactBadgeAndNameView
             DateMetView(contact: contact)
@@ -145,6 +150,7 @@ struct ContactSheetView: View {
                     VStack(spacing: verticalSpacing) {
                         Spacer()
                         contactHeaderView
+                        Spacer()
                         tagsView
                         Spacer()
                         startAConversationRowView

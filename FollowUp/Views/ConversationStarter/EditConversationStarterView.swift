@@ -52,7 +52,7 @@ struct EditConversationStarterView: View {
     
     private var unstyledSaveButton: some View {
         Button(action: {
-            self.save(editingConversationStarter)
+            self.saveAndDismiss(editingConversationStarter)
         }, label: {
             Text(.editConversationStarterSaveButtonTitle)
                 .font(.headline)
@@ -60,7 +60,6 @@ struct EditConversationStarterView: View {
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
         })
-        .disabled(saveButtonDisabled)
         .controlSize(.large)
         .frame(maxWidth: .infinity)
         .padding()
@@ -72,8 +71,7 @@ struct EditConversationStarterView: View {
         case .standard: unstyledSaveButton.buttonStyle(.borderedProminent)
         case .intelligent: unstyledSaveButton.buttonStyle(
             GradientButtonStyle(
-                colours: [.pink, .purple],
-                disabled: saveButtonDisabled
+                colours: [.pink, .purple]
             )
         )
 
@@ -90,12 +88,12 @@ struct EditConversationStarterView: View {
                     .font(.title)
                     .bold()
                 
-                Picker(.editConversationStarterKindPickerTitle, selection: $editingConversationStarter.kind, content: {
-                    ForEach(ConversationStarterKind.allCases, id: \.self) { kind in
-                         Text("\(Image(systemName: kind.icon.rawValue)) \(kind.buttonTitle)")
-                    }
-                }).pickerStyle(.segmented)
-                .padding()
+//                Picker(.editConversationStarterKindPickerTitle, selection: $editingConversationStarter.kind, content: {
+//                    ForEach(ConversationStarterKind.allCases, id: \.self) { kind in
+//                         Text("\(Image(systemName: kind.icon.rawValue)) \(kind.buttonTitle)")
+//                    }
+//                }).pickerStyle(.segmented)
+//                .padding()
                 
                 conversationStarterEditorView
                 
@@ -113,9 +111,10 @@ struct EditConversationStarterView: View {
     }
     
     // MARK: - Methods
-    private func save(_ conversationStarter: ConversationStarterTemplate) {
+    private func saveAndDismiss(_ conversationStarter: ConversationStarterTemplate) {
         self.store.settings.update(conversationStarter: editingConversationStarter)
         self.savedConversationStarter = editingConversationStarter
+        self.dismiss()
     }
     
 }

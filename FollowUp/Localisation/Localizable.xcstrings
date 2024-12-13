@@ -129,6 +129,12 @@
         }
       }
     },
+    "%@ Conversation Starters" : {
+
+    },
+    "%@ Tags" : {
+
+    },
     "%lld" : {
       "comment" : "",
       "extractionState" : "manual",
@@ -314,6 +320,9 @@
           }
         }
       }
+    },
+    "AI" : {
+
     },
     "AI-enabled conversation starters use AI to automatically generate a personalised, unique conversation starter for your contact. ✨" : {
       "comment" : "",
@@ -876,6 +885,9 @@
           }
         }
       }
+    },
+    "Edit" : {
+
     },
     "Edit Conversation Starter" : {
       "comment" : "",
@@ -2358,6 +2370,9 @@
           }
         }
       }
+    },
+    "Standard" : {
+
     },
     "Tap the 'Highlight' button on a Contact sheet to add them to this list." : {
       "comment" : "",

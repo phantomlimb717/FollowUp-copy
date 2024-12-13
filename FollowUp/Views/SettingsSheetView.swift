@@ -12,14 +12,15 @@ struct SettingsSheetView: View {
     @State var dailyFollowUpGoal: Int = 0
     @State var contactListGrouping: FollowUpSettings.ContactListGrouping = .dayMonthYear
     @State var followUpRemindersActive: Bool = false
-    @State var openAIKey: String = ""
     @EnvironmentObject var settings: FollowUpSettings
     @EnvironmentObject var followUpManager: FollowUpManager
     @Environment(\.dismiss) private var dismiss
     @FocusState var dailyGoalInputActive: Bool
     @Environment(\.editMode) var isEditing
-    
-    @State var currentlyEditingConversationStarter: ConversationStarterTemplate? = nil
+        
+    #if DEBUG
+    @State var openAIKey: String = ""
+    #endif
     
     private var closeButton: some View {
         HStack(alignment: .center) {
@@ -62,48 +63,7 @@ struct SettingsSheetView: View {
             }
         })
     }
-    
-    private var conversationStartersSectionView: some View {
-        Section(content: {
-            List {
-                ForEach(settings.conversationStarters, id: \.id, content: { conversationStarter in
-                    Button(action: {
-                        self.openEditConversationStarterModal(forConversationStarter: conversationStarter)
-                    }, label: {
-                        HStack {
-                            Text(conversationStarter.title)
-                                .lineLimit(1)
-                            Spacer()
-                            Image(icon: .chevronRight)
-                        }.foregroundColor(.primary)
-                        
-                    })
-                })
-                .onDelete(perform: self.settings.removeConversationStarters(atOffsets:))
-                .onMove(perform: self.settings.moveConversationStarters(fromOffsets:toOffset:))
-                
-            }
-        }, header: {
-            HStack {
-                Label("Conversation Starters", systemImage: Constant.Icon.chatBubbles.rawValue)
-                Spacer()
-                EditButton()
-                    .buttonStyle(.plain)
-                    .foregroundColor(.blue)
-            }
-        }, footer: {
-            Button(action: {
-                self.settings.addNewConversationStarter()
-            }, label: {
-                Text("New Conversation Starter")
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-            })
-            .listRowInsets(nil)
-            .frame(maxWidth: .infinity)
-        })
-    }
-    
+        
     private var groupingSelectionSectionView: some View {
         Section(content: {
             Picker(selection: $contactListGrouping, content: {
@@ -118,6 +78,7 @@ struct SettingsSheetView: View {
         }.onChange(of: self.contactListGrouping, perform:self.settings.set(contactListGrouping:))
     }
     
+    #if DEBUG
     private var openAIKeySectionView: some View {
         Section(content: {
             TextField("OpenAI Key", text: $openAIKey)
@@ -130,6 +91,7 @@ struct SettingsSheetView: View {
         }.onChange(of: self.openAIKey, perform: self.settings.set(openAIKey:))
         .submitLabel(.done)
     }
+    #endif
     
     private var followUpRemindersToggleView: some View {
         Section(content: {
@@ -162,22 +124,19 @@ struct SettingsSheetView: View {
             
             Form {
                 dailyGoalSectionView
-                conversationStartersSectionView
                 groupingSelectionSectionView
                 followUpRemindersToggleView
+                
+                #if DEBUG
                 openAIKeySectionView
+                #endif
             }
             .background(Color(.systemGroupedBackground))
-            .sheet(item: self.$currentlyEditingConversationStarter, content: { conversationStarter in
-                EditConversationStarterView(conversationStarter: conversationStarter)
-            })
         }.background(Color(.systemGroupedBackground))
     }
     
     // MARK: - Methods
-    private func openEditConversationStarterModal(forConversationStarter conversationStarter: ConversationStarterTemplate) {
-        self.currentlyEditingConversationStarter = conversationStarter
-    }
+
 }
 
 struct SettingsSheetView_Previews: PreviewProvider {
