@@ -15,7 +15,11 @@ class FollowUpSettings: Object {
     @Persisted var conversationStarters: RealmSwift.List<ConversationStarterTemplate>
     @Persisted var contactListGrouping: ContactListGrouping = .dayMonthYear
     @Persisted var followUpRemindersActive: Bool = false
+    
+    // Used only for development.
+    #if DEBUG
     @UserDefaultsPersisted(Constant.Secrets.openAIUserDefaultsKey) var openAIKey: String = ""
+    #endif
     
 }
 
@@ -80,16 +84,42 @@ extension FollowUpSettings {
         }
     }
     
-    func addNewConversationStarter() {
+    func set(conversationStarters: [ConversationStarterTemplate]) {
         do {
             try self.realm?.write {
-                if var randomStarter = ConversationStarterTemplate.examples.randomElement() {
+                self.conversationStarters = .init()
+                self.conversationStarters.append(objectsIn: conversationStarters)
+            }
+        } catch {
+            assertionFailurePreviewSafe("Could not set conversation starter template array. \(error.localizedDescription)")
+        }
+    }
+    
+    func addNewStandardConversationStarter(completion: ((ConversationStarterTemplate) -> Void)? = nil) {
+        do {
+            try self.realm?.write {
+                if var randomStarter = ConversationStarterTemplate.standardExamples.randomElement() {
                     randomStarter.id = UUID().uuidString
                     self.conversationStarters.append(randomStarter)
+                    completion?(randomStarter)
                 }
             }
         } catch {
-            assertionFailurePreviewSafe("Could not add conversation starter. \(error.localizedDescription)")
+            assertionFailurePreviewSafe("Could not add standard conversation starter. \(error.localizedDescription)")
+        }
+    }
+    
+    func addNewIntelligentConversationStarter(completion: ((ConversationStarterTemplate) -> Void)? = nil) {
+        do {
+            try self.realm?.write {
+                if var randomStarter = ConversationStarterTemplate.intelligentExamples.randomElement() {
+                    randomStarter.id = UUID().uuidString
+                    self.conversationStarters.append(randomStarter)
+                    completion?(randomStarter)
+                }
+            }
+        } catch {
+            assertionFailurePreviewSafe("Could not add intelligent conversation starter. \(error.localizedDescription)")
         }
     }
     
@@ -113,11 +143,13 @@ extension FollowUpSettings {
         }
     }
 
+    #if DEBUG
     public func set(openAIKey: String) {
         self.update {
             self.openAIKey = openAIKey
         }
     }
+    #endif
     
     public func set(followUpRemindersActive: Bool) {
         self.update {
