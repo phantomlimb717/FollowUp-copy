@@ -101,7 +101,6 @@
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
 		2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193DA212C94454C0080C72C /* CNContact+Additions.swift */; };
 		21A031902C667C5700BF04D8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */; };
-		21AF38B02CF0DBAE009B22CE /* UTType+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF38AF2CF0DBAE009B22CE /* UTType+Additions.swift */; };
 		21C9FC312CCB017E00F8F400 /* ConversationStarterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9FC302CCB017E00F8F400 /* ConversationStarterRowView.swift */; };
 		21EF80732CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */; };
 		21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F690A02C8B63B9001F127B /* NativeContactView.swift */; };
@@ -217,7 +216,6 @@
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
 		21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		21AF38AF2CF0DBAE009B22CE /* UTType+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Additions.swift"; sourceTree = "<group>"; };
 		21C9FC2C2CCAA76A00F8F400 /* DebugSecrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugSecrets.xcconfig; sourceTree = "<group>"; };
 		21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseSecrets.xcconfig; sourceTree = "<group>"; };
 		21C9FC302CCB017E00F8F400 /* ConversationStarterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationStarterRowView.swift; sourceTree = "<group>"; };
@@ -530,7 +528,6 @@
 				210DC68A2C25B82100B20544 /* String+Additions.swift */,
 				210DC68C2C25B82100B20544 /* View+Additions.swift */,
 				2193DA212C94454C0080C72C /* CNContact+Additions.swift */,
-				21AF38AF2CF0DBAE009B22CE /* UTType+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -755,7 +752,6 @@
 				210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */,
 				210DC6412C25B7F900B20544 /* WelcomeView.swift in Sources */,
 				210DC64A2C25B7F900B20544 /* ContentView.swift in Sources */,
-				21AF38B02CF0DBAE009B22CE /* UTType+Additions.swift in Sources */,
 				210DC6962C25B82100B20544 /* StandardConversationStarter.swift in Sources */,
 				210DC6BA2C25B82100B20544 /* Results+Additions.swift in Sources */,
 				210DC63C2C25B7F900B20544 /* DateMetView.swift in Sources */,

@@ -7,7 +7,6 @@
 
 import Foundation
 import RealmSwift
-import CoreTransferable
 
 // MARK: -
 enum ConversationStarterKind: Codable, Hashable, Equatable, CaseIterable {
@@ -203,10 +202,4 @@ extension ConversationStarterTemplate {
     static var intelligentExamples: [ConversationStarterTemplate] = [
         .iceBreaker
     ]
-}
-
-extension ConversationStarterTemplate: Transferable {
-    public static var transferRepresentation: some TransferRepresentation {
-        CodableRepresentation(contentType: .conversationStarter)
-    }
 }
