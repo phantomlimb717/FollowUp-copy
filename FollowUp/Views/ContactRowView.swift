@@ -60,13 +60,32 @@ struct ContactRowView: View {
                 }
             }
             Spacer()
-
-            if let phoneNumber = contact.phoneNumber {
-                CircularButton(icon: .phone, action: .call(number: phoneNumber))
-                    .accentColor(.accent)
-                CircularButton(icon: .sms, action: .sms(number: phoneNumber))
-                    .accentColor(.accent)
+            
+            ForEach(contact.tags.prefix(1)) { tag in
+                TagChipView(tag: tag, size: .small)
             }
+            
+            if contact.tags.count > 1 {
+                Text("+\(contact.tags.count - 1)")
+                    .foregroundStyle(.secondary)
+                    .font(.footnote.weight(.semibold))
+                    .padding(4)
+                    .background(Color(.tertiarySystemFill))
+                    .cornerRadius(Constant.Tag.Normal.cornerRadius)
+            }
+            
+            Image(icon: .arrowUpChatBubble)
+                .fontWeight(.bold)
+                .foregroundStyle(Color(.tertiaryLabel))
+            
+            
+
+//            if let phoneNumber = contact.phoneNumber {
+//                CircularButton(icon: .phone, action: .call(number: phoneNumber))
+//                    .accentColor(.accent)
+//                CircularButton(icon: .sms, action: .sms(number: phoneNumber))
+//                    .accentColor(.accent)
+//            }
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
         .padding(.vertical, verticalPadding)
@@ -129,7 +148,9 @@ struct ContactRowView_Previews: PreviewProvider {
             VStack {
                 ContactRowView(name: "Aaron Baw")
                 ContactRowView(name: "A reallyreallyreallyreallyreallyreallylongname")
-                ContactRowView(name: "Aaron Baw")
+                ContactRowView(contact: .mocked)
+                ContactRowView(contact: .mockedFollowedUpToday)
+
             }
             .padding()
             VStack {

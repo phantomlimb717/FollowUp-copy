@@ -45,10 +45,10 @@ struct TagsCarouselView: View {
         })
         .fontWeight(.semibold)
         .foregroundColor(.secondary)
-        .padding(.horizontal, Constant.Tag.horiztontalPadding)
-        .padding(.vertical, Constant.Tag.verticalPadding)
+        .padding(.horizontal, Constant.Tag.Normal.padding)
+        .padding(.vertical, Constant.Tag.Normal.padding)
         .background(Color(.tertiarySystemFill))
-        .cornerRadius(Constant.Tag.cornerRadius)
+        .cornerRadius(Constant.Tag.Normal.cornerRadius)
     }
     
     private var suggestedTagView: some View {
@@ -79,7 +79,7 @@ struct TagsCarouselView: View {
             .onChange(of: newTagTitle, perform: { tagSearchQuery in
                 followUpManager.store.set(tagSearchQuery:tagSearchQuery)
             })
-            .padding(.vertical, Constant.Tag.verticalPadding)
+            .padding(.vertical, Constant.Tag.Normal.padding)
             .focused($textFieldIsFocused)
             .onSubmit(onCreateTagSubmit)
             .submitLabel(.go)
