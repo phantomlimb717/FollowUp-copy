@@ -60,7 +60,7 @@ extension Contactable where Self == Contact {
     static var mockedFollowedUpToday: any Contactable {
         let contact = MockedContact()
         contact.lastFollowedUp = .now
-        contact.tags.append(objectsIn: [Tag(title: "Gym"), Tag(title: "AMS")])
+        contact.tags.append(objectsIn: [Tag(title: "Gym"), Tag(title: "AMS"), Tag(title: "Professional", colour: .brown)])
         return contact
     }
 }
