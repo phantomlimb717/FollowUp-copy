@@ -30,7 +30,7 @@ struct TagChipView_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
             TagChipView(tag: .init(title: "Science"))
-            TagChipView(tag: .mockedGym, size: .small)
+//            TagChipView(tag: .mockedGym, size: .small)
 //            TagChipView(tag: .mockedAMS)
 
         }
