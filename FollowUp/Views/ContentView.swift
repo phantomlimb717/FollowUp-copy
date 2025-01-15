@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var rotation: Double = 0
     @State private var contactInteractorState: ContactInteractorState = .fetchingContacts
     @AppStorage("firstLaunch") var firstLaunch: Bool = true
+    @AppStorage("v.7FirstLaunch") var newVersionLaunch: Bool = true
     @EnvironmentObject var followUpManager: FollowUpManager
     @Environment(\.scenePhase) var scenePhase
 
@@ -85,10 +86,15 @@ struct ContentView: View {
                         followUpManager.contactsInteractor.hideContactSheet()
                     })
             })
-            .sheet(isPresented: $firstLaunch, onDismiss: {
-                self.firstLaunch = false
+//            .sheet(isPresented: $firstLaunch, onDismiss: {
+//                self.firstLaunch = false
+//            }, content: {
+//                WelcomeView()
+//            })
+            .sheet(isPresented: $newVersionLaunch, onDismiss: {
+                self.newVersionLaunch = false
             }, content: {
-                WelcomeView()
+                NewFeaturesView()
             })
             .onReceive(followUpManager.contactsInteractor.contactSheetPublisher, perform: { contactSheet in
                 self.contactSheet = contactSheet

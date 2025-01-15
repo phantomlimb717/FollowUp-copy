@@ -249,10 +249,10 @@
         }
       }
     },
-    "+%lld" : {
+    "£3.99/month afterwards" : {
 
     },
-    "Add new conversation starters straight from the contact sheet." : {
+    "1 Week Free Trial" : {
 
     },
     "Add to follow ups" : {
@@ -327,7 +327,14 @@
         }
       }
     },
+<<<<<<< Updated upstream
     "AI" : {
+=======
+    "AI Conversation Starters" : {
+
+    },
+    "AI Conversation starters, priority lists, and more." : {
+>>>>>>> Stashed changes
 
     },
     "AI-enabled conversation starters use AI to automatically generate a personalised, unique conversation starter for your contact. ✨" : {
@@ -441,6 +448,9 @@
           }
         }
       }
+    },
+    "Become a FollowUp Master" : {
+
     },
     "Choose a prompt to instruct the AI on how to compose your message." : {
       "comment" : "",
@@ -1081,6 +1091,9 @@
         }
       }
     },
+    "FollowUp Premium" : {
+
+    },
     "FollowUp Reminders" : {
       "comment" : "",
       "extractionState" : "manual",
@@ -1153,7 +1166,10 @@
         }
       }
     },
-    "Get reminded to reach out to your newest contacts every morning." : {
+    "Get reminded when its time to contact your grandma" : {
+
+    },
+    "Go Premium 🚀" : {
 
     },
     "Grouping" : {
@@ -1299,6 +1315,12 @@
           }
         }
       }
+    },
+    "Intelligently curated list of contacts to contact every day" : {
+
+    },
+    "Location Awareness" : {
+
     },
     "Message" : {
       "comment" : "",
@@ -1549,9 +1571,6 @@
           }
         }
       }
-    },
-    "New To FollowUp" : {
-
     },
     "No Highlights" : {
       "comment" : "",
@@ -1843,6 +1862,9 @@
         }
       }
     },
+    "Priority List" : {
+
+    },
     "Prompt" : {
       "comment" : "",
       "extractionState" : "manual",
@@ -1878,6 +1900,9 @@
           }
         }
       }
+    },
+    "Redeem Code" : {
+
     },
     "Relative" : {
       "comment" : "",
@@ -2140,9 +2165,6 @@
         }
       }
     },
-    "See tags for each contact at a glance in your contact list." : {
-
-    },
     "See who you met this week and add them to a dedicated list." : {
       "localizations" : {
         "de" : {
@@ -2316,9 +2338,6 @@
           }
         }
       }
-    },
-    "Simpler Conversation Starters" : {
-
     },
     "Something" : {
       "comment" : "",
@@ -2545,6 +2564,9 @@
         }
       }
     },
+    "Track where you are meeting contacts" : {
+
+    },
     "Unable To Generate Message" : {
       "comment" : "",
       "extractionState" : "manual",
@@ -2653,6 +2675,9 @@
         }
       }
     },
+    "Use ChatGPT to start conversations and quickly create targeted texts" : {
+
+    },
     "Use conversation starters to quickly compose messages." : {
       "localizations" : {
         "de" : {
@@ -2686,9 +2711,6 @@
           }
         }
       }
-    },
-    "Visible Tags" : {
-
     },
     "Week" : {
       "comment" : "",
