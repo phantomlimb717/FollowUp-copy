@@ -35,8 +35,6 @@ extension FollowUpStoring {
     var followedUpToday: Int { contacts.filter(\.hasBeenFollowedUpToday).count }
 }
 
-extension ObjectId: _MapKey { }
-
 class FollowUpStore: FollowUpStoring, ObservableObject {
     
     // MARK: - Stored Properties
@@ -145,7 +143,7 @@ class FollowUpStore: FollowUpStoring, ObservableObject {
     // - note
     /// Updates all non-interactive properties of the Contact from the user's ContactBook.
     func updateAndMerge(contact: any Contactable) {
-        guard var updatedContact = self.contactsDictionary[contact.id, default: contact] as? Contact
+        guard let updatedContact = self.contactsDictionary[contact.id, default: contact] as? Contact
         else {
             return Log.error("Could not cast Contactable as object for ID: \(contact.id)")
         }

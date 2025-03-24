@@ -120,7 +120,7 @@ struct NotificationConfiguration {
                 let currentDate = Date()
                 
                 // Create a date components object from the current calendar
-                var calendar = Calendar.current
+                let calendar = Calendar.current
                 
                 // Add 1 day to the current date
                 let nextDay = calendar.date(byAdding: .day, value: 1, to: currentDate) ?? currentDate
