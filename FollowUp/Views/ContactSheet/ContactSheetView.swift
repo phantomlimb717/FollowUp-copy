@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ContactSheetView: View {
     
@@ -136,10 +137,35 @@ struct ContactSheetView: View {
             
         }.padding(.top, 50)
     }
-//    
-//    private var reminderButtonView: some View {
-//        
-//    }
+
+    @ViewBuilder
+    var timelineView: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("\(Image(icon: .clock)) Timeline")
+                .padding(.horizontal)
+                .font(.body.weight(.medium))
+                .foregroundStyle(.secondary)
+            ContactTimelineView(items: BubbleTimelineItem.mockedItems).padding()
+        }
+    }
+    
+    var blurView: some View {
+        ZStack {
+            Color.black // dark tint to reduce brightness
+            
+            Rectangle()
+                .fill(Material.regularMaterial)
+        }
+        .mask(
+            LinearGradient(
+                gradient: Gradient(colors: [.black, .clear]),
+                startPoint: .bottom,
+                endPoint: .top
+            )
+        )
+        .allowsHitTesting(false)
+        .frame(height: 170)
+    }
     
     var modalContactSheetView: some View {
         NavigationView {
@@ -155,11 +181,17 @@ struct ContactSheetView: View {
                         Spacer()
                         startAConversationRowView
                         Spacer()
+                        timelineView
                         
                         Spacer(minLength: 120)
                         
                     }
                 }
+                
+                VStack {
+                    Spacer()
+                    blurView
+                }.ignoresSafeArea()
 
                 // Overlay View
                 VStack {
@@ -221,20 +253,22 @@ struct ContactSheetView: View {
     
 }
 
-struct ContactSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContactSheetView(kind: .modal, sheet: MockedContact(
-                id: "1",
-                note: "Met on the underground at Euston Station. Works at a local hedgefund and is into cryptocurrency. Open to coming out, but is quite busy."
-            ).sheet, onClose: { })
+#Preview {
+    let followUpManager = FollowUpManager.mocked()
 
-            ContactSheetView(kind: .inline, sheet: MockedContact(id: "0").sheet, onClose: { })
+    Group {
+        ContactSheetView(kind: .modal, sheet: MockedContact(
+            id: "1",
+            note: "Met on the underground at Euston Station. Works at a local hedgefund and is into cryptocurrency. Open to coming out, but is quite busy."
+        ).sheet, onClose: { })
 
-            ContactSheetView(kind: .modal, sheet: MockedContact(id: "0").sheet, onClose: { })
-                .preferredColorScheme(.dark)
-        }
-        .environmentObject(FollowUpManager())
-//        .environmentObject(FollowUpStore.mocked())
+//        ContactSheetView(kind: .inline, sheet: MockedContact(id: "0").sheet, onClose: { })
+//
+//        ContactSheetView(kind: .modal, sheet: MockedContact(id: "0").sheet, onClose: { })
+//            .preferredColorScheme(.dark)
     }
+    .environmentObject(followUpManager)
+    .environmentObject(followUpManager.store)
+    .environmentObject(FollowUpSettings())
 }
+

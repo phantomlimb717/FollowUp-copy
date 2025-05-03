@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21070BB12D91CACD008994B0 /* ContactTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21070BB02D91CACD008994B0 /* ContactTimelineView.swift */; };
 		210DC5D12C25B6CE00B20544 /* FollowUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC5D02C25B6CE00B20544 /* FollowUpApp.swift */; };
 		210DC5D52C25B6CF00B20544 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210DC5D42C25B6CF00B20544 /* Assets.xcassets */; };
 		210DC5D82C25B6CF00B20544 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210DC5D72C25B6CF00B20544 /* Preview Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68C2C25B82100B20544 /* View+Additions.swift */; };
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
 		215219182D37CE9000AD050F /* NewFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215219172D37CE9000AD050F /* NewFeaturesView.swift */; };
+		215F80782DC4DC1B002B181F /* ContactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F80772DC4DC1B002B181F /* ContactTimeline.swift */; };
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
 		2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193DA212C94454C0080C72C /* CNContact+Additions.swift */; };
 		219D81E02CB002F7007855E2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D81DF2CB002F7007855E2 /* LocationManager.swift */; };
@@ -126,6 +128,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21070BB02D91CACD008994B0 /* ContactTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTimelineView.swift; sourceTree = "<group>"; };
 		210DC5CD2C25B6CE00B20544 /* FollowUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FollowUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		210DC5D02C25B6CE00B20544 /* FollowUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUpApp.swift; sourceTree = "<group>"; };
 		210DC5D42C25B6CF00B20544 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		215219172D37CE9000AD050F /* NewFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesView.swift; sourceTree = "<group>"; };
+		215F80772DC4DC1B002B181F /* ContactTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTimeline.swift; sourceTree = "<group>"; };
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
 		219D81DF2CB002F7007855E2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 				210DC6182C25B7F900B20544 /* DateMetView.swift */,
 				21F690A02C8B63B9001F127B /* NativeContactView.swift */,
 				21C9FC302CCB017E00F8F400 /* ConversationStarterRowView.swift */,
+				21070BB02D91CACD008994B0 /* ContactTimelineView.swift */,
 			);
 			path = ContactSheet;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 		210DC6722C25B82000B20544 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				215F80762DC4DC04002B181F /* ContactTimeline */,
 				210DC65D2C25B82000B20544 /* Conversation Starters */,
 				210DC6602C25B82000B20544 /* Error */,
 				210DC6642C25B82000B20544 /* Networking */,
@@ -544,6 +550,14 @@
 				210DC68E2C25B82100B20544 /* ContactsInteractor.swift */,
 			);
 			path = Interactors;
+			sourceTree = "<group>";
+		};
+		215F80762DC4DC04002B181F /* ContactTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				215F80772DC4DC1B002B181F /* ContactTimeline.swift */,
+			);
+			path = ContactTimeline;
 			sourceTree = "<group>";
 		};
 		216CF6242C5E164700F6EA9F /* Localisation */ = {
@@ -743,6 +757,7 @@
 				210DC6462C25B7F900B20544 /* ContactListSectionView.swift in Sources */,
 				210DC6AA2C25B82100B20544 /* UserDefaultsPersisted.swift in Sources */,
 				210DC6A62C25B82100B20544 /* NotificationManager.swift in Sources */,
+				215F80782DC4DC1B002B181F /* ContactTimeline.swift in Sources */,
 				210DC6A52C25B82100B20544 /* NewContactSearchPredicate.swift in Sources */,
 				210DC6AC2C25B82100B20544 /* Constant.swift in Sources */,
 				210DC6A32C25B82100B20544 /* Grouping.swift in Sources */,
@@ -782,6 +797,7 @@
 				210DC6B62C25B82100B20544 /* Image+Additions.swift in Sources */,
 				210DC6AF2C25B82100B20544 /* MockContactInteractor.swift in Sources */,
 				210DC6AE2C25B82100B20544 /* Mock.swift in Sources */,
+				21070BB12D91CACD008994B0 /* ContactTimelineView.swift in Sources */,
 				210DC6B82C25B82100B20544 /* Operators+Additions.swift in Sources */,
 				210DC6502C25B7F900B20544 /* NewContactsView.swift in Sources */,
 				210DC63E2C25B7F900B20544 /* IntelligentConversationStarterEditorView.swift in Sources */,

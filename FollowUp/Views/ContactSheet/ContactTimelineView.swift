@@ -7,17 +7,20 @@
 
 import SwiftUI
 
-struct ContactTimelineView: View {
+struct BubbleTimelineItemView: View {
     
-    var commentItemView: some View {
+    // MARK: - Stored Properties
+    var item: BubbleTimelineItem
+    
+    var body: some View {
         VStack(alignment: .leading) {
-            Text("Spoke on the phone, seemed eager to come to Bible Talk.")
+            Text(item.body)
                 .fontWeight(.medium)
             HStack {
                 Label(title: {
-                    Text("Thursday 17th, 2:34pm")
+                    Text(item.time.formattedRelativeTimeSinceNow)
                 }, icon: {
-                    Image(icon: .chatBubbles)
+                    Image(icon: item.icon)
                 })
                 .font(.footnote)
             }
@@ -26,19 +29,56 @@ struct ContactTimelineView: View {
         .foregroundStyle(.secondary)
         .frame(maxWidth: .greatestFiniteMagnitude)
         .background(
-            RoundedRectangle(cornerRadius: Constant.ContactTimeline.cornerRadius)
+            RoundedRectangle(
+                cornerRadius: Constant.ContactTimeline.cornerRadius)
                 .foregroundStyle(.quinary)
         )
-//        .overlay(
-//            RoundedRectangle(cornerRadius: Constant.ContactTimeline.cornerRadius)
-//                .stroke(.tertiary, lineWidth: Constant.ContactTimeline.borderWidth)
-//        )
     }
+}
+
+struct EventTimelineItemView: View {
+    
+    // MARK: - Stored Properties
+    var item: EventTimelineItem
+
+    var body: some View {
+        VStack(alignment: .center) {
+            Image(icon: item.icon)
+                .padding(.bottom, 5)
+            Text(item.title)
+                .font(.footnote.bold())
+            Text(item.time.formattedRelativeTimeSinceNow)
+                .font(.footnote)
+
+        }
+        .foregroundStyle(.secondary)
+        .padding()
+    }
+}
+
+struct TimelineItemView: View {
+    var item: any TimelineItem
+    var body: some View {
+        switch item.kind {
+        case .bubble:
+            BubbleTimelineItemView(item: item as! BubbleTimelineItem)
+        case .event:
+            EventTimelineItemView(item: item as! EventTimelineItem)
+        }
+    }
+}
+
+struct ContactTimelineView: View {
+    
+    // MARK: - Stored Properties
+    @State var newCommentText: String = ""
+    
+    var items: [any TimelineItem]
     
     var verticalDivider: some View {
         HStack {
             Divider()
-                .frame(width: 3, height: 20)
+                .frame(width: 3, height: 10)
                 .background(.quinary)
         }
     }
@@ -59,39 +99,46 @@ struct ContactTimelineView: View {
     }
     
     var addCommentButton: some View {
-        Button(action: {
-            
-        }, label: {
-            HStack {
-                Label(title: {
-                    Text("Add Comment")
-                        .fontWeight(.medium)
-                }, icon: {
-                    Image(icon: .pencil)
-                })
-                .padding()
-                Spacer()
-            }
-        })
+        TextField("Add Comment", text: $newCommentText, prompt: Text("\(Image(icon: .pencil)) Add Comment"), axis: .vertical)
         .foregroundStyle(.secondary)
-        .frame(maxWidth: .greatestFiniteMagnitude)
-        .cornerRadius(Constant.cornerRadius)
-        .overlay(
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(
             RoundedRectangle(cornerRadius: Constant.ContactTimeline.cornerRadius)
-                .stroke(.quaternary, lineWidth: Constant.ContactTimeline.borderWidth)
+                .stroke(.quaternary)
         )
+        .submitLabel(.go)
+        .onSubmit {
+            self.submitComment()
+        }
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            commentItemView
-            phoneCallItemView
+        LazyVStack(alignment: .center, spacing: 0) {
+            
+            ForEach(items, id: \.id) { item in
+                if items.first?.id != item.id {
+                    verticalDivider
+                }
+                TimelineItemView(item: item)
+                if items.last?.id != item.id {
+                    verticalDivider
+                }
+            }
+            
             addCommentButton
+                .padding(.top)
         }
     }
+    
+    // MARK: - Functions
+    func submitComment() { }
 }
 
 #Preview {
-    ContactTimelineView()
+    ContactTimelineView(items: [BubbleTimelineItem.mockedBT,
+                                EventTimelineItem.mockedCall,
+                                BubbleTimelineItem.mockedBirthday,
+                                EventTimelineItem.mockedMessage])
         .padding()
 }

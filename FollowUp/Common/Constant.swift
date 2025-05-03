@@ -242,4 +242,9 @@ enum Constant {
         
     }
     
+    // MARK: - Contact Timeline
+    enum ContactTimeline {
+        static let cornerRadius: CGFloat = 15
+        static let borderWidth: CGFloat = 1.5
+    }
 }

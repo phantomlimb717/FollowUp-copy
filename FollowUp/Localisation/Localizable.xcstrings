@@ -129,10 +129,16 @@
         }
       }
     },
+    "%@ Add Comment" : {
+
+    },
     "%@ Conversation Starters" : {
 
     },
     "%@ Tags" : {
+
+    },
+    "%@ Timeline" : {
 
     },
     "%lld" : {
@@ -250,6 +256,9 @@
       }
     },
     "+%lld" : {
+
+    },
+    "Add Comment" : {
 
     },
     "Add new conversation starters straight from the contact sheet." : {
@@ -2502,6 +2511,9 @@
           }
         }
       }
+    },
+    "Thursday 17th, 2:42pm" : {
+
     },
     "Today" : {
       "comment" : "",

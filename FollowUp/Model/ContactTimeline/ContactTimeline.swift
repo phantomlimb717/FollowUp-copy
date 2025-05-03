@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum TimelineItemKind {
     case bubble
     case event
 }
 
-protocol TimelineItem: Identifiable {
+protocol TimelineItem: Object, ObjectKeyIdentifiable {
     var kind: TimelineItemKind { get }
     var id: String { get }
     var icon: Constant.Icon { get }
@@ -20,16 +21,22 @@ protocol TimelineItem: Identifiable {
     var time: Date { get }
 }
 
-struct BubbleTimelineItem: TimelineItem {
+class BubbleTimelineItem: Object, TimelineItem {
     let kind: TimelineItemKind = .bubble
     var id: String = UUID().uuidString
     var icon: Constant.Icon = .chatBubbles
     var title: String
     var time: Date = .now
     var body: String
+    
+    init(title: String, time: Date = .now, body: String) {
+        self.title = title
+        self.time = time
+        self.body = body
+    }
 }
 
-struct EventTimelineItem: TimelineItem {
+class EventTimelineItem: Object, TimelineItem {
     let kind: TimelineItemKind = .event
     var id: String = UUID().uuidString
     var icon: Constant.Icon
