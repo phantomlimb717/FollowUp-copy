@@ -145,7 +145,7 @@ struct ContactSheetView: View {
                 .padding(.horizontal)
                 .font(.body.weight(.medium))
                 .foregroundStyle(.secondary)
-            ContactTimelineView(items: BubbleTimelineItem.mockedItems).padding()
+            ContactTimelineView(items: TimelineItem.mockedItems).padding()
         }
     }
     

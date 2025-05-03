@@ -10,11 +10,11 @@ import SwiftUI
 struct BubbleTimelineItemView: View {
     
     // MARK: - Stored Properties
-    var item: BubbleTimelineItem
+    var item: TimelineItem
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(item.body)
+            Text(item.body ?? "")
                 .fontWeight(.medium)
             HStack {
                 Label(title: {
@@ -23,10 +23,12 @@ struct BubbleTimelineItemView: View {
                     Image(icon: item.icon)
                 })
                 .font(.footnote)
+                Spacer()
             }
+            .frame(maxWidth: .greatestFiniteMagnitude)
         }
-        .padding()
         .foregroundStyle(.secondary)
+        .padding()
         .frame(maxWidth: .greatestFiniteMagnitude)
         .background(
             RoundedRectangle(
@@ -39,7 +41,7 @@ struct BubbleTimelineItemView: View {
 struct EventTimelineItemView: View {
     
     // MARK: - Stored Properties
-    var item: EventTimelineItem
+    var item: TimelineItem
 
     var body: some View {
         VStack(alignment: .center) {
@@ -57,13 +59,13 @@ struct EventTimelineItemView: View {
 }
 
 struct TimelineItemView: View {
-    var item: any TimelineItem
+    var item: TimelineItem
     var body: some View {
         switch item.kind {
         case .bubble:
-            BubbleTimelineItemView(item: item as! BubbleTimelineItem)
+            BubbleTimelineItemView(item: item)
         case .event:
-            EventTimelineItemView(item: item as! EventTimelineItem)
+            EventTimelineItemView(item: item)
         }
     }
 }
@@ -73,36 +75,21 @@ struct ContactTimelineView: View {
     // MARK: - Stored Properties
     @State var newCommentText: String = ""
     
-    var items: [any TimelineItem]
+    var items: [TimelineItem]
     
     var verticalDivider: some View {
         HStack {
-            Divider()
+            Rectangle()
                 .frame(width: 3, height: 10)
-                .background(.quinary)
+                .foregroundStyle(.quinary)
         }
-    }
-    
-    var phoneCallItemView: some View {
-        VStack(alignment: .center) {
-            
-            verticalDivider
-            VStack(alignment: .center, spacing: 10) {
-                Image(icon: .phone)
-                Text("Thursday 17th, 2:42pm")
-                    .font(.footnote)
-            }
-            .padding()
-            verticalDivider
-        }
-        .foregroundStyle(.secondary)
     }
     
     var addCommentButton: some View {
-        TextField("Add Comment", text: $newCommentText, prompt: Text("\(Image(icon: .pencil)) Add Comment"), axis: .vertical)
+        TextField("Add Comment", text: $newCommentText, prompt: Text("\(Image(icon: .bubble)) Add Comment"), axis: .vertical)
         .foregroundStyle(.secondary)
         .padding(.horizontal, 12)
-        .padding(.vertical, 8)
+        .padding(.vertical, 10)
         .background(
             RoundedRectangle(cornerRadius: Constant.ContactTimeline.cornerRadius)
                 .stroke(.quaternary)
@@ -136,9 +123,10 @@ struct ContactTimelineView: View {
 }
 
 #Preview {
-    ContactTimelineView(items: [BubbleTimelineItem.mockedBT,
-                                EventTimelineItem.mockedCall,
-                                BubbleTimelineItem.mockedBirthday,
-                                EventTimelineItem.mockedMessage])
+    ContactTimelineView(items: [.mockedBT,
+                                .mockedCall,
+                                .mockedBirthday,
+                                .mockedMessage])
         .padding()
+        .environmentObject(FollowUpManager.mocked())
 }

@@ -55,6 +55,7 @@ enum Constant {
         case arrowForwardUp = "arrow.up.forward"
         case arrowUpChatBubble = "arrow.up.message.fill"
         case bolt = "bolt.fill"
+        case bubble = "bubble.fill"
         case chatBubbles = "bubble.left.and.bubble.right.fill"
         case chatWithElipses = "ellipsis.message.fill"
         case chatWithWaveform = "message.and.waveform.fill"
@@ -69,6 +70,8 @@ enum Constant {
         case notification = "bell.badge"
         case partyPopper = "party.popper.fill"
         case pencil = "pencil"
+        case pencilWithSquare = "square.and.pencil"
+        case pencilWithBubble = "bubble.and.pencil"
         case personWithAtSymbol = "person.crop.square.filled.and.at.rectangle.fill"
         case personWithCheckmark = "person.crop.circle.fill.badge.checkmark"
         case personWithClock = "person.badge.clock.fill"
@@ -99,7 +102,7 @@ enum Constant {
 
         var kind: Kind {
             switch self {
-            case .arrowForwardUp, .arrowUpChatBubble, .bolt, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .circle, .email, .minus, .notification, .partyPopper, .pencil, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .tag, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
+            case .arrowForwardUp, .arrowUpChatBubble, .bolt, .bubble, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .circle, .email, .minus, .notification, .partyPopper, .pencil, .pencilWithSquare, .pencilWithBubble, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .tag, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
             case .whatsApp: return .asset
             }
         }
