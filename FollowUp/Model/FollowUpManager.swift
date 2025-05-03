@@ -274,3 +274,32 @@ final class FollowUpManager: ObservableObject {
     }
 
 }
+
+#if DEBUG
+extension FollowUpManager {
+    static func mocked(
+        numberOfContacts: Int = 5,
+        realmIdentifier: String = "PreviewRealm"
+    ) -> FollowUpManager {
+        let config = Realm.Configuration(inMemoryIdentifier: realmIdentifier)
+        let realm = try! Realm(configuration: config)
+
+        // Add mock contacts
+        try! realm.write {
+            for i in 0..<numberOfContacts {
+                let contact = Contact()
+                contact.id = "\(i)"
+                contact.name = "Mock Contact \(i)"
+                contact.note = "This is a mock contact."
+                realm.add(contact)
+            }
+        }
+
+        let store = FollowUpStore(realm: realm)
+        let manager = FollowUpManager(store: store, realmName: realmIdentifier)
+        manager.realm = realm // ensure realm is assigned
+
+        return manager
+    }
+}
+#endif
