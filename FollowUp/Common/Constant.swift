@@ -229,7 +229,7 @@ enum Constant {
                 graphic: .onboardingAddPeopleEffortlessly,
                 title: "Add people, effortlessly",
                 description: "Add new contacts to your phone, they’ll show up here too, automatically.",
-                onAppear: [.requestContactsPermission]
+                onAppear: [.requestContactsPermission(delay: 0)]
             ),
             .init(
                 graphic: .onboardingStartBetterConversationsGraphic,
@@ -240,7 +240,7 @@ enum Constant {
                 graphic: .onboardingNotificationGraphic,
                 title: "Get a nudge",
                 description: "FollowUp sends you a gentle reminder to reconnect with people you’ve met.",
-                onAppear: [.requestNotificationPermission]
+                onAppear: [.requestNotificationPermission(delay: 0.5)]
             ),
             .init(
                 graphic: .onboardingContactTimeline,

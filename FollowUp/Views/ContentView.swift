@@ -110,6 +110,9 @@ struct ContentView: View {
                 default: break
                 }
             })
+            .onAppear {
+                if (!firstLaunch) { self.followUpManager.configureNotifications() }
+            }
     }
 
 }

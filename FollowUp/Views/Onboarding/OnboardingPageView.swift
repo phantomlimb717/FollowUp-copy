@@ -68,17 +68,27 @@ struct OnboardingPageView: View {
     
     // MARK: - Functions
     
-    func perform(actions: [OnboardingPage.Action]) {
+    private func perform(actions: [OnboardingPage.Action]) {
         actions.forEach(self.perform(action:))
     }
     
     func perform(action: OnboardingPage.Action) {
         switch action {
-        case .requestContactsPermission:
-            self.followUpManager.contactsInteractor.fetchContacts()
-        case .requestNotificationPermission:
-            self.followUpManager.configureNotifications()
+        case let .requestContactsPermission(delay):
+            perform(after: delay) {
+                self.followUpManager.contactsInteractor.fetchContacts()
+            }
+        case let .requestNotificationPermission(delay):
+            perform(after: delay) {
+                self.followUpManager.configureNotifications()
+                
+            }
         }
+    }
+    
+    func perform(after delay: TimeInterval?, _ action: @escaping () -> Void) {
+        guard let delay = delay else { return action() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: action)
     }
 }
 

@@ -11,8 +11,8 @@ struct OnboardingPage: Identifiable {
     
     // MARK: - Enum
     enum Action {
-        case requestNotificationPermission
-        case requestContactsPermission
+        case requestNotificationPermission(delay: TimeInterval?)
+        case requestContactsPermission(delay: TimeInterval?)
     }
     
     // MARK: - Stored Properties

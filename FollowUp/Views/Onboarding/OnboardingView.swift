@@ -20,12 +20,17 @@ struct OnboardingView: View {
         tabViewSelection < (pages.count - 1) ? "Next" : "Done"
     }
     
+    private var dismissDisabled: Bool {
+        tabViewSelection != pages.count - 1
+    }
+    
     var body: some View {
         VStack {
             TabView(selection: $tabViewSelection) {
                 ForEach(Array(pages.enumerated()), id: \.element.id) { index, page in
                     OnboardingPageView(page)
                         .tag(index)
+                        .interactiveDismissDisabled(dismissDisabled)
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
