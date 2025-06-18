@@ -5,6 +5,7 @@
 //  Created by Aaron Baw on 17/10/2021.
 //
 
+import Combine
 import SwiftUI
 import RealmSwift
 
@@ -29,6 +30,7 @@ struct ContactSheetView: View {
     
     // MARK: - State
     @State private var nativeContactSheetID: String?
+    @State private var keyboardVisible: Bool = false
     
     // MARK: - Computed Properties
     private var relativeTimeSinceFollowingUp: String {
@@ -43,6 +45,11 @@ struct ContactSheetView: View {
 
     private var contact: any Contactable {
         store.contact(forID: sheet.contactID) ?? Contact.unknown
+    }
+    
+    // MARK: - Publishers
+    var keyboardVisiblePublisher: AnyPublisher<Bool, Never> {
+        NotificationCenter.default.keyboardVisiblePublisher()
     }
     
     // MARK: - Views
@@ -145,7 +152,7 @@ struct ContactSheetView: View {
                 .padding(.horizontal)
                 .font(.body.weight(.medium))
                 .foregroundStyle(.secondary)
-            ContactTimelineView(items: TimelineItem.mockedItems).padding()
+            ContactTimelineView(contact: contact).padding()
         }
     }
     
@@ -182,7 +189,6 @@ struct ContactSheetView: View {
                         startAConversationRowView
                         Spacer()
                         timelineView
-                        
                         Spacer(minLength: 120)
                         
                     }
@@ -199,6 +205,9 @@ struct ContactSheetView: View {
                     Spacer()
                     ActionButtonGridView(contact: contact)
                         .padding()
+                        .opacity(keyboardVisible ? 0 : 1)
+                        .offset(y: keyboardVisible ? 50 : 0)
+                        .animation(.easeInOut(duration: !keyboardVisible ? 0.5 : 0.3), value: keyboardVisible)
                 }
             }
         }
@@ -240,6 +249,9 @@ struct ContactSheetView: View {
                 NativeContactView(contactID: contact.id)
                     .ignoresSafeArea(.all, edges: .bottom)
             })
+            .onReceive(self.keyboardVisiblePublisher) { keyboardVisible in
+                self.keyboardVisible = keyboardVisible
+            }
     }
     
     // MARK: - Functions
