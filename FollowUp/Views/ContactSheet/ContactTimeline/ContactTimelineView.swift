@@ -11,6 +11,7 @@ struct ContactTimelineView: View {
     
     // MARK: - Stored Properties
     @State var newCommentText: String = ""
+    @State private var editingItem: TimelineItem?
     @FocusState var commentInputActive: Bool
     @EnvironmentObject var followUpManager: FollowUpManager
     var contactsInteractor: ContactsInteracting { followUpManager.contactsInteractor }
@@ -62,7 +63,11 @@ struct ContactTimelineView: View {
                 if items.first?.id != item.id {
                     verticalDivider
                 }
-                TimelineItemView(item: item)
+                TimelineItemView(
+                    item: item,
+                    onEdit: { self.beginEditing(item: item) },
+                    onDelete: { self.delete(item: item) }
+                )
                 if items.last?.id != item.id {
                     verticalDivider
                 }
@@ -77,14 +82,52 @@ struct ContactTimelineView: View {
     
     // MARK: - Functions
     func submitComment() {
-        let timelineItem = TimelineItem.comment(body: newCommentText)
+
+        let trimmed = newCommentText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
         
-        withAnimation {
-            self.items.append(timelineItem)
+        if let editingItem = editingItem {
+            self.contactsInteractor.edit(
+                item: editingItem,
+                newBodyText: self.newCommentText,
+                for: contact,
+                onComplete: {
+                    self.editingItem = nil
+                    withAnimation {
+                        self.items = Array(contact.timelineItems)
+                    }
+                }
+            )
+            
+        } else {
+            let timelineItem = TimelineItem.comment(body: newCommentText)
+            self.contactsInteractor.add(item: timelineItem, to: contact, onComplete: {
+                withAnimation {
+                    self.items = Array(contact.timelineItems)
+                }
+            })
         }
-        
-        self.contactsInteractor.add(item: timelineItem, to: contact)
+        self.newCommentText = ""
     }
+    
+    func beginEditing(item: TimelineItem) {
+        self.newCommentText = item.body ?? ""
+        self.commentInputActive = true
+        self.editingItem = item
+    }
+    
+    func delete(item: TimelineItem){
+        // We remove the item first from the UI Hierarchy to prevent errors when the item is removed from Realm.
+        withAnimation {
+            self.items.removeAll(where: { item == $0 })
+        }
+        self.contactsInteractor.delete(item: item, for: contact, onComplete: {
+            withAnimation {
+                self.items.removeAll(where: { item == $0 })
+            }
+        })
+    }
+    
 }
 
 #if DEBUG
