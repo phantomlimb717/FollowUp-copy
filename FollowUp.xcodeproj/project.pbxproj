@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -99,6 +99,7 @@
 		210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68C2C25B82100B20544 /* View+Additions.swift */; };
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
 		215219182D37CE9000AD050F /* NewFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215219172D37CE9000AD050F /* NewFeaturesView.swift */; };
+		2164BF492DE0C15F00093A38 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164BF482DE0C15B00093A38 /* OnboardingPage.swift */; };
 		21553DE12DE9BFCE00B7199B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21553DE02DE9BFCE00B7199B /* Launch Screen.storyboard */; };
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
 		2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193DA212C94454C0080C72C /* CNContact+Additions.swift */; };
@@ -217,6 +218,7 @@
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		215219172D37CE9000AD050F /* NewFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesView.swift; sourceTree = "<group>"; };
+		2164BF482DE0C15B00093A38 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		21553DE02DE9BFCE00B7199B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
@@ -228,6 +230,10 @@
 		21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArrowLoadingSpinner.swift; sourceTree = "<group>"; };
 		21F690A02C8B63B9001F127B /* NativeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		21B93F222DE090B200F3C32D /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		210DC5CA2C25B6CE00B20544 /* Frameworks */ = {
@@ -400,6 +406,7 @@
 				210DC6122C25B7F900B20544 /* Button */,
 				210DC6192C25B7F900B20544 /* ContactSheet */,
 				210DC61D2C25B7F900B20544 /* ConversationStarter */,
+				21B93F222DE090B200F3C32D /* Onboarding */,
 				210DC6202C25B7F900B20544 /* Feature Showcase */,
 				210DC6232C25B7F900B20544 /* Tags */,
 				210DC6242C25B7F900B20544 /* ChipView.swift */,
@@ -471,6 +478,7 @@
 		210DC6722C25B82000B20544 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2164BF472DE0C15600093A38 /* Onboarding */,
 				210DC65D2C25B82000B20544 /* Conversation Starters */,
 				210DC6602C25B82000B20544 /* Error */,
 				210DC6642C25B82000B20544 /* Networking */,
@@ -549,6 +557,14 @@
 			path = Interactors;
 			sourceTree = "<group>";
 		};
+		2164BF472DE0C15600093A38 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2164BF482DE0C15B00093A38 /* OnboardingPage.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		216CF6242C5E164700F6EA9F /* Localisation */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +597,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				21B93F222DE090B200F3C32D /* Onboarding */,
 			);
 			name = FollowUp;
 			packageProductDependencies = (
@@ -789,6 +808,7 @@
 				210DC6B82C25B82100B20544 /* Operators+Additions.swift in Sources */,
 				210DC6502C25B7F900B20544 /* NewContactsView.swift in Sources */,
 				210DC63E2C25B7F900B20544 /* IntelligentConversationStarterEditorView.swift in Sources */,
+				2164BF492DE0C15F00093A38 /* OnboardingPage.swift in Sources */,
 				219D81E02CB002F7007855E2 /* LocationManager.swift in Sources */,
 				210DC6442C25B7F900B20544 /* ChipView.swift in Sources */,
 				210DC6422C25B7F900B20544 /* TagChipView.swift in Sources */,
