@@ -159,19 +159,18 @@ struct ContactSheetView: View {
     var blurView: some View {
         ZStack {
             Color.black // dark tint to reduce brightness
-            
-            Rectangle()
-                .fill(Material.regularMaterial)
+                .mask(
+                    LinearGradient(
+                        gradient: Gradient(colors: [.black.opacity(0.05), .clear]),
+                        startPoint: .bottom,
+                        endPoint: .top
+                    )
+                )
+            VariableBlurView(maxBlurRadius: 5, direction: .blurredBottomClearTop, startOffset: 0)
+
         }
-        .mask(
-            LinearGradient(
-                gradient: Gradient(colors: [.black, .clear]),
-                startPoint: .bottom,
-                endPoint: .top
-            )
-        )
         .allowsHitTesting(false)
-        .frame(height: 170)
+        .frame(height: 150)
     }
     
     var modalContactSheetView: some View {
@@ -198,6 +197,9 @@ struct ContactSheetView: View {
                     Spacer()
                     blurView
                 }.ignoresSafeArea()
+                .opacity(keyboardVisible ? 0 : 1)
+                .offset(y: keyboardVisible ? 50 : 0)
+                .animation(.easeInOut(duration: !keyboardVisible ? 0.5 : 0.3), value: keyboardVisible)
 
                 // Overlay View
                 VStack {
@@ -205,6 +207,7 @@ struct ContactSheetView: View {
                     Spacer()
                     ActionButtonGridView(contact: contact)
                         .padding()
+                        .shadow(color: .black.opacity(0.05), radius: 40, x: 0, y: 35)
                         .opacity(keyboardVisible ? 0 : 1)
                         .offset(y: keyboardVisible ? 50 : 0)
                         .animation(.easeInOut(duration: !keyboardVisible ? 0.5 : 0.3), value: keyboardVisible)
