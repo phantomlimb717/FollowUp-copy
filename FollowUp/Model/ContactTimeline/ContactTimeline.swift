@@ -55,9 +55,9 @@ class TimelineItem: Object {
         
     }
     
+    @Persisted(primaryKey: true) var id: String
     @Persisted var kind: Kind
     @Persisted var event: EventType
-    @Persisted var id: String
     @Persisted var time: Date = .now
     @Persisted var body: String?
     
@@ -84,6 +84,9 @@ class TimelineItem: Object {
     }
     
 }
+
+// MARK: - Equatable Conformance
+extension TimelineItem: Identifiable { }
 
 #if DEBUG
 extension TimelineItem {

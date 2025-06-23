@@ -86,7 +86,7 @@ final class FollowUpManager: ObservableObject {
         let realmFileURL = documentDirectory?.appendingPathComponent("\(name).realm")
         let config = Realm.Configuration(
             fileURL: realmFileURL,
-            schemaVersion: 7,
+            schemaVersion: 8,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
                     Log.info("Running migration to schema v2, adding contactListGrouping.")
@@ -124,6 +124,13 @@ final class FollowUpManager: ObservableObject {
                         newObject?["timelineItems"] = RealmSwift.List<TimelineItem>()
                     })
                     Log.info("Migration Complete")
+                }
+                
+                if oldSchemaVersion < 8 {
+                    Log.info("Running migration to schema v8. Adding primary key to 'TimelineItem'.")
+                    migration.enumerateObjects(ofType: TimelineItem.className(), { oldObject, newObject in
+                        newObject?["id"] = UUID().uuidString
+                    })
                 }
                 
             }
