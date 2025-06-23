@@ -8,19 +8,40 @@
 import Foundation
 import RealmSwift
 
-
-
-//protocol TimelineItemRepresentable: Object, ObjectKeyIdentifiable {
-//    var kind: TimelineItemKind { get }
-//    var id: String { get }
-//    var icon: Constant.Icon { get }
-//    var title: String { get }
-//    var time: Date { get }
-//}
-
 class TimelineItem: Object {
     
+    @Persisted(primaryKey: true) var id: String
+    @Persisted var kind: Kind
+    @Persisted var event: EventType
+    @Persisted var time: Date = .now
+    @Persisted var body: String?
     
+    // MARK: - Computed Properties
+    var title: String { self.event.title }
+    var icon: Constant.Icon { self.event.icon }
+    
+    convenience init(kind: Kind, event: EventType, time: Date, body: String? = nil) {
+        self.init()
+        self.kind = kind
+        self.event = event
+        self.id = UUID().uuidString
+        self.time = time
+        self.body = body
+    }
+    
+    // MARK: - Static Convenience Initializers
+    static func comment(body: String, time: Date = .now) -> TimelineItem {
+        TimelineItem(kind: .bubble, event: .comment, time: time, body: body)
+    }
+    
+    static func event(type eventType: EventType, time: Date = .now) -> TimelineItem {
+        TimelineItem(kind: .event, event: eventType, time: time)
+    }
+    
+}
+
+// MARK: - Enum Definitions
+extension TimelineItem {
     // MARK: - Enums
     enum Kind: String, PersistableEnum {
         case bubble
@@ -54,39 +75,21 @@ class TimelineItem: Object {
         }
         
     }
-    
-    @Persisted(primaryKey: true) var id: String
-    @Persisted var kind: Kind
-    @Persisted var event: EventType
-    @Persisted var time: Date = .now
-    @Persisted var body: String?
-    
-    // MARK: - Computed Properties
-    var title: String { self.event.title }
-    var icon: Constant.Icon { self.event.icon }
-    
-    convenience init(kind: Kind, event: EventType, time: Date, body: String? = nil) {
-        self.init()
-        self.kind = kind
-        self.event = event
-        self.id = UUID().uuidString
-        self.time = time
-        self.body = body
-    }
-    
-    // MARK: - Static Convenience Initializers
-    static func comment(body: String, time: Date = .now) -> TimelineItem {
-        TimelineItem(kind: .bubble, event: .comment, time: time, body: body)
-    }
-    
-    static func event(type eventType: EventType, time: Date = .now) -> TimelineItem {
-        TimelineItem(kind: .event, event: eventType, time: time)
-    }
-    
 }
 
-// MARK: - Equatable Conformance
+// MARK: - Identifiable Conformance
 extension TimelineItem: Identifiable { }
+
+// MARK: - Equatable Implementation
+extension TimelineItem {
+    static func == (lhs: TimelineItem, rhs: TimelineItem) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.kind == rhs.kind &&
+        lhs.event == rhs.event &&
+        lhs.time == rhs.time &&
+        lhs.body == rhs.body
+    }
+}
 
 #if DEBUG
 extension TimelineItem {
