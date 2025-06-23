@@ -63,11 +63,13 @@ struct ContactTimelineView: View {
                 if items.first?.id != item.id {
                     verticalDivider
                 }
-                TimelineItemView(
-                    item: item,
-                    onEdit: { self.beginEditing(item: item) },
-                    onDelete: { self.delete(item: item) }
-                )
+                VStack {
+                    TimelineItemView(
+                        item: item,
+                        onEdit: { self.beginEditing(item: item) },
+                        onDelete: { self.delete(item: item) }
+                    )
+                }.transition(.move(edge: .bottom).combined(with: .opacity))
                 if items.last?.id != item.id {
                     verticalDivider
                 }
@@ -119,13 +121,9 @@ struct ContactTimelineView: View {
     func delete(item: TimelineItem){
         // We remove the item first from the UI Hierarchy to prevent errors when the item is removed from Realm.
         withAnimation {
-            self.items.removeAll(where: { item == $0 })
+            self.items.removeAll(where: { item.id == $0.id })
         }
-        self.contactsInteractor.delete(item: item, for: contact, onComplete: {
-            withAnimation {
-                self.items.removeAll(where: { item == $0 })
-            }
-        })
+        self.contactsInteractor.delete(item: item, for: contact, onComplete: {})
     }
     
 }
