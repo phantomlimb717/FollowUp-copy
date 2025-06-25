@@ -5,21 +5,21 @@
 //  Created by Aaron Baw on 24/03/2025.
 //
 
+import RealmSwift
 import SwiftUI
 
 struct ContactTimelineView: View {
     
     // MARK: - Stored Properties
     @State var newCommentText: String = ""
+    @State var items: [TimelineItem] = []
     @State private var editingItem: TimelineItem?
+    @State private var notificationToken: NotificationToken?
     @FocusState var commentInputActive: Bool
     @EnvironmentObject var followUpManager: FollowUpManager
     var contactsInteractor: ContactsInteracting { followUpManager.contactsInteractor }
     
     var contact: any Contactable
-    
-    // MARK: - Computed Properties
-    @State var items: [TimelineItem] = []
     
     var verticalDivider: some View {
         HStack {
@@ -59,17 +59,18 @@ struct ContactTimelineView: View {
     var body: some View {
         LazyVStack(alignment: .center, spacing: 0) {
             
-            ForEach(items, id: \.id) { item in
+            ForEach(items.filter { !$0.isInvalidated }) { item in
                 if items.first?.id != item.id {
                     verticalDivider
                 }
-                VStack {
-                    TimelineItemView(
-                        item: item,
-                        onEdit: { self.beginEditing(item: item) },
-                        onDelete: { self.delete(item: item) }
-                    )
-                }.transition(.move(edge: .bottom).combined(with: .opacity))
+                TimelineItemView(
+                    item: item,
+                    onEdit: { self.beginEditing(item: item) },
+                    onDelete: { self.delete(item: item) }
+                )
+                
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+                
                 if items.last?.id != item.id {
                     verticalDivider
                 }
@@ -79,12 +80,29 @@ struct ContactTimelineView: View {
                 .padding(.top)
         }.onAppear {
             self.items = Array(contact.timelineItems)
+            self.observeChanges()
         }
+        .animation(.easeInOut, value: self.items)
     }
     
     // MARK: - Functions
+    func observeChanges() {
+        // Set up Realm observation
+        self.notificationToken = contact.timelineItems.observe { change in
+            switch change {
+            case .initial(let collection):
+                self.items = Array(collection)
+            case .update(let collection, _, _, _):
+                withAnimation {
+                    self.items = Array(collection)
+                }
+            case .error(let error):
+                print("Error observing timelineItems: \(error)")
+            }
+        }
+    }
+    
     func submitComment() {
-
         let trimmed = newCommentText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
         
@@ -92,22 +110,12 @@ struct ContactTimelineView: View {
             self.contactsInteractor.edit(
                 item: editingItem,
                 newBodyText: self.newCommentText,
-                for: contact,
-                onComplete: {
-                    self.editingItem = nil
-                    withAnimation {
-                        self.items = Array(contact.timelineItems)
-                    }
-                }
+                for: contact, onComplete: nil
             )
             
         } else {
             let timelineItem = TimelineItem.comment(body: newCommentText)
-            self.contactsInteractor.add(item: timelineItem, to: contact, onComplete: {
-                withAnimation {
-                    self.items = Array(contact.timelineItems)
-                }
-            })
+            self.contactsInteractor.add(item: timelineItem, to: contact, onComplete: nil)
         }
         self.newCommentText = ""
     }
@@ -119,11 +127,7 @@ struct ContactTimelineView: View {
     }
     
     func delete(item: TimelineItem){
-        // We remove the item first from the UI Hierarchy to prevent errors when the item is removed from Realm.
-        withAnimation {
-            self.items.removeAll(where: { item.id == $0.id })
-        }
-        self.contactsInteractor.delete(item: item, for: contact, onComplete: {})
+        self.contactsInteractor.delete(item: item, for: contact, onComplete: nil)
     }
     
 }
