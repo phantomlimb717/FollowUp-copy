@@ -63,6 +63,11 @@ protocol ContactsInteracting {
     func moveTags(forContact contact: any Contactable, fromOffsets offsets: IndexSet, toOffset destination: Int)
     func set(tags: [Tag], for contact: any Contactable)
     func changeColour(forTag tag: Tag, toColour colour: Color, forContact contact: any Contactable)
+    
+    // MARK: - Actions (Timeline)
+    func add(item: TimelineItem, to contact: any Contactable, onComplete: (() -> Void)?)
+    func delete(item: TimelineItem, for contact: any Contactable, onComplete: (() -> Void)?)
+    func edit(item: TimelineItem, newBodyText bodyText: String, for contact: any Contactable, onComplete: (() -> Void)?)
 
 }
 
@@ -142,6 +147,7 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
     func markAsFollowedUp(_ contact: any Contactable) {
         self.modify(contact: contact) { contact in
             contact?.followUps += 1
+            self.addDirectly(item: .event(type: .followUp), to: contact)
         }
     }
 
@@ -215,23 +221,58 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
         }
     }
     
-    // MARK: - Private methods
-    private func modify(contact: any Contactable, closure: @escaping (Contact?) -> Void) {
-        writeToRealm { realm in
-            let contact = realm.object(ofType: Contact.self, forPrimaryKey: contact.id)
-            closure(contact)
+    // MARK: - Actions (Timeline)
+    
+    /// Adds the timeline item to the contact directly. This must be called within a `modify { }` closure.
+    private func addDirectly(item: TimelineItem, to contact: Contact?) {
+        Log.info("Adding timeline item \(item.description) to \(contact?.name ?? "unnamed")")
+        contact?.timelineItems.append(item)
+    }
+    
+    func add(item: TimelineItem, to contact: any Contactable, onComplete: (() -> Void)?) {
+        self.modify(contact: contact, closure: { contact in
+            self.addDirectly(item: item, to: contact)
+        }, onComplete: onComplete)
+    }
+    
+    func delete(item: TimelineItem, for contact: any Contactable, onComplete: (() -> Void)?) {
+        Log.info("Deleting timeline item \(item.description) from \(contact.name)")
+        self.modify(contact: contact) { contact in
+            guard let itemIndex = contact?.timelineItems.firstIndex(where: { $0.id == item.id }) else {
+                Log.warn("Could not find \(item.description) in timeline for contact \(contact?.name ?? "contact").")
+                return
+            }
+            contact?.timelineItems.remove(at: itemIndex)
+            Log.info("Item \(item.description) removed from \(contact?.name ?? ""). Removing from Realm.")
+            self.writeToRealm({ realm in
+                realm.delete(item)
+                Log.info("Item removed from Realm.")
+            }, onComplete: onComplete)
         }
     }
     
-    private func writeToRealm(_ closure: @escaping (Realm) -> Void) {
+    func edit(item: TimelineItem, newBodyText bodyText: String, for contact: any Contactable, onComplete: (() -> Void)?) {
+    Log.info("Editing timeline item \(item.description) with new body text: '\(bodyText)'.")
+        self.writeToRealm({ _ in
+            item.body = bodyText
+        }, onComplete: onComplete)
+    }
+    
+    // MARK: - Private methods
+    private func modify(contact: any Contactable, closure: @escaping (Contact?) -> Void, onComplete: (() -> Void)? = nil) {
+        writeToRealm({ realm in
+            let contact = realm.object(ofType: Contact.self, forPrimaryKey: contact.id)
+            closure(contact)
+        }, onComplete: onComplete)
+    }
+    
+    private func writeToRealm(_ closure: @escaping (Realm) -> Void, onComplete: (() -> Void)? = nil) {
         guard let realm = self.realm else {
             Log.error("Unable to modify contact, as no realm instance was found in the ContactsInteractor.")
             return
         }
         
-        realm.writeAsync {
-            closure(realm)
-        }
+        realm.writeAsync({ closure(realm) }, onComplete: { _ in onComplete?() })
     }
 }
 

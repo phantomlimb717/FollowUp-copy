@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21070BB12D91CACD008994B0 /* ContactTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21070BB02D91CACD008994B0 /* ContactTimelineView.swift */; };
 		210DC5D12C25B6CE00B20544 /* FollowUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC5D02C25B6CE00B20544 /* FollowUpApp.swift */; };
 		210DC5D52C25B6CF00B20544 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210DC5D42C25B6CF00B20544 /* Assets.xcassets */; };
 		210DC5D82C25B6CF00B20544 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210DC5D72C25B6CF00B20544 /* Preview Assets.xcassets */; };
@@ -98,15 +99,22 @@
 		210DC6BC2C25B82100B20544 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68A2C25B82100B20544 /* String+Additions.swift */; };
 		210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68C2C25B82100B20544 /* View+Additions.swift */; };
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
+		21458F5E2E0C2014003B710D /* VerticalDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21458F5D2E0C2014003B710D /* VerticalDivider.swift */; };
 		215219182D37CE9000AD050F /* NewFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215219172D37CE9000AD050F /* NewFeaturesView.swift */; };
-		2164BF492DE0C15F00093A38 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164BF482DE0C15B00093A38 /* OnboardingPage.swift */; };
 		21553DE12DE9BFCE00B7199B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21553DE02DE9BFCE00B7199B /* Launch Screen.storyboard */; };
+		215F80782DC4DC1B002B181F /* ContactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F80772DC4DC1B002B181F /* ContactTimeline.swift */; };
+		215F807B2DC644E2002B181F /* BubbleTimelineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F807A2DC644E2002B181F /* BubbleTimelineItemView.swift */; };
+		215F807D2DC6451B002B181F /* EventTimelineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F807C2DC6451B002B181F /* EventTimelineItemView.swift */; };
+		215F807F2DC6454A002B181F /* TimelineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F807E2DC6454A002B181F /* TimelineItemView.swift */; };
+		2164BF492DE0C15F00093A38 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164BF482DE0C15B00093A38 /* OnboardingPage.swift */; };
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
 		2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193DA212C94454C0080C72C /* CNContact+Additions.swift */; };
 		219D81E02CB002F7007855E2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D81DF2CB002F7007855E2 /* LocationManager.swift */; };
 		21A031902C667C5700BF04D8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 21A0318F2C667C5700BF04D8 /* InfoPlist.xcstrings */; };
 		21C9FC312CCB017E00F8F400 /* ConversationStarterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9FC302CCB017E00F8F400 /* ConversationStarterRowView.swift */; };
 		21EF80732CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */; };
+		21F296882E02E81D00528DD3 /* NotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F296872E02E81600528DD3 /* NotificationCenter+Additions.swift */; };
+		21F2968B2E031A1500528DD3 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2968A2E031A1500528DD3 /* VariableBlurView.swift */; };
 		21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F690A02C8B63B9001F127B /* NativeContactView.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +136,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21070BB02D91CACD008994B0 /* ContactTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTimelineView.swift; sourceTree = "<group>"; };
 		210DC5CD2C25B6CE00B20544 /* FollowUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FollowUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		210DC5D02C25B6CE00B20544 /* FollowUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUpApp.swift; sourceTree = "<group>"; };
 		210DC5D42C25B6CF00B20544 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -217,9 +226,14 @@
 		210DC68C2C25B82100B20544 /* View+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21458F5D2E0C2014003B710D /* VerticalDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalDivider.swift; sourceTree = "<group>"; };
 		215219172D37CE9000AD050F /* NewFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesView.swift; sourceTree = "<group>"; };
-		2164BF482DE0C15B00093A38 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		21553DE02DE9BFCE00B7199B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		215F80772DC4DC1B002B181F /* ContactTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTimeline.swift; sourceTree = "<group>"; };
+		215F807A2DC644E2002B181F /* BubbleTimelineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTimelineItemView.swift; sourceTree = "<group>"; };
+		215F807C2DC6451B002B181F /* EventTimelineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimelineItemView.swift; sourceTree = "<group>"; };
+		215F807E2DC6454A002B181F /* TimelineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineItemView.swift; sourceTree = "<group>"; };
+		2164BF482DE0C15B00093A38 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
 		219D81DF2CB002F7007855E2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -228,6 +242,8 @@
 		21C9FC2E2CCAAA8F00F8F400 /* ReleaseSecrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseSecrets.xcconfig; sourceTree = "<group>"; };
 		21C9FC302CCB017E00F8F400 /* ConversationStarterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationStarterRowView.swift; sourceTree = "<group>"; };
 		21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArrowLoadingSpinner.swift; sourceTree = "<group>"; };
+		21F296872E02E81600528DD3 /* NotificationCenter+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Additions.swift"; sourceTree = "<group>"; };
+		21F2968A2E031A1500528DD3 /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 		21F690A02C8B63B9001F127B /* NativeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -358,6 +374,7 @@
 		210DC6192C25B7F900B20544 /* ContactSheet */ = {
 			isa = PBXGroup;
 			children = (
+				215F80792DC644CA002B181F /* ContactTimeline */,
 				210DC6132C25B7F900B20544 /* ActionButtonGridView.swift */,
 				210DC6142C25B7F900B20544 /* BadgeView.swift */,
 				210DC6152C25B7F900B20544 /* ContactBadge.swift */,
@@ -423,6 +440,8 @@
 				210DC62F2C25B7F900B20544 /* HighlightsTabView.swift */,
 				210DC6302C25B7F900B20544 /* NewContactsView.swift */,
 				210DC6312C25B7F900B20544 /* SettingsSheetView.swift */,
+				21F2968A2E031A1500528DD3 /* VariableBlurView.swift */,
+				21458F5D2E0C2014003B710D /* VerticalDivider.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -479,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				2164BF472DE0C15600093A38 /* Onboarding */,
+				215F80762DC4DC04002B181F /* ContactTimeline */,
 				210DC65D2C25B82000B20544 /* Conversation Starters */,
 				210DC6602C25B82000B20544 /* Error */,
 				210DC6642C25B82000B20544 /* Networking */,
@@ -531,6 +551,7 @@
 		210DC68D2C25B82100B20544 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				21F296872E02E81600528DD3 /* NotificationCenter+Additions.swift */,
 				210DC67F2C25B82100B20544 /* Assertion+Additions.swift */,
 				210DC6802C25B82100B20544 /* Color+Additions.swift */,
 				210DC6812C25B82100B20544 /* Data+Additions.swift */,
@@ -555,6 +576,25 @@
 				210DC68E2C25B82100B20544 /* ContactsInteractor.swift */,
 			);
 			path = Interactors;
+			sourceTree = "<group>";
+		};
+		215F80762DC4DC04002B181F /* ContactTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				215F80772DC4DC1B002B181F /* ContactTimeline.swift */,
+			);
+			path = ContactTimeline;
+			sourceTree = "<group>";
+		};
+		215F80792DC644CA002B181F /* ContactTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				21070BB02D91CACD008994B0 /* ContactTimelineView.swift */,
+				215F807A2DC644E2002B181F /* BubbleTimelineItemView.swift */,
+				215F807C2DC6451B002B181F /* EventTimelineItemView.swift */,
+				215F807E2DC6454A002B181F /* TimelineItemView.swift */,
+			);
+			path = ContactTimeline;
 			sourceTree = "<group>";
 		};
 		2164BF472DE0C15600093A38 /* Onboarding */ = {
@@ -739,11 +779,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21F2968B2E031A1500528DD3 /* VariableBlurView.swift in Sources */,
 				210DC6B12C25B82100B20544 /* Assertion+Additions.swift in Sources */,
 				21EF80732CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift in Sources */,
 				210DC6B22C25B82100B20544 /* Color+Additions.swift in Sources */,
 				21C9FC312CCB017E00F8F400 /* ConversationStarterRowView.swift in Sources */,
+				215F807B2DC644E2002B181F /* BubbleTimelineItemView.swift in Sources */,
 				210DC6542C25B80D00B20544 /* ContactSection.swift in Sources */,
+				21F296882E02E81D00528DD3 /* NotificationCenter+Additions.swift in Sources */,
 				21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */,
 				210DC6432C25B7F900B20544 /* TagsCarouselView.swift in Sources */,
 				210DC6A92C25B82100B20544 /* Log.swift in Sources */,
@@ -759,6 +802,7 @@
 				210DC6382C25B7F900B20544 /* BadgeView.swift in Sources */,
 				210DC69B2C25B82100B20544 /* Networking.swift in Sources */,
 				210DC69A2C25B82100B20544 /* LegacyCompletion.swift in Sources */,
+				215F807D2DC6451B002B181F /* EventTimelineItemView.swift in Sources */,
 				210DC6362C25B7F900B20544 /* CloseButton.swift in Sources */,
 				210DC6482C25B7F900B20544 /* ContactNoteView.swift in Sources */,
 				210DC64D2C25B7F900B20544 /* FollowUpsView.swift in Sources */,
@@ -766,11 +810,13 @@
 				210DC6462C25B7F900B20544 /* ContactListSectionView.swift in Sources */,
 				210DC6AA2C25B82100B20544 /* UserDefaultsPersisted.swift in Sources */,
 				210DC6A62C25B82100B20544 /* NotificationManager.swift in Sources */,
+				215F80782DC4DC1B002B181F /* ContactTimeline.swift in Sources */,
 				210DC6A52C25B82100B20544 /* NewContactSearchPredicate.swift in Sources */,
 				210DC6AC2C25B82100B20544 /* Constant.swift in Sources */,
 				210DC6A32C25B82100B20544 /* Grouping.swift in Sources */,
 				210DC6982C25B82100B20544 /* LocalizedAlertError.swift in Sources */,
 				210DC63D2C25B7F900B20544 /* EditConversationStarterView.swift in Sources */,
+				21458F5E2E0C2014003B710D /* VerticalDivider.swift in Sources */,
 				210DC6392C25B7F900B20544 /* ContactBadge.swift in Sources */,
 				210DC69E2C25B82100B20544 /* ContactSheet.swift in Sources */,
 				210DC6902C25B82100B20544 /* GradientButtonStyle.swift in Sources */,
@@ -805,6 +851,7 @@
 				210DC6B62C25B82100B20544 /* Image+Additions.swift in Sources */,
 				210DC6AF2C25B82100B20544 /* MockContactInteractor.swift in Sources */,
 				210DC6AE2C25B82100B20544 /* Mock.swift in Sources */,
+				21070BB12D91CACD008994B0 /* ContactTimelineView.swift in Sources */,
 				210DC6B82C25B82100B20544 /* Operators+Additions.swift in Sources */,
 				210DC6502C25B7F900B20544 /* NewContactsView.swift in Sources */,
 				210DC63E2C25B7F900B20544 /* IntelligentConversationStarterEditorView.swift in Sources */,
@@ -822,6 +869,7 @@
 				210DC69D2C25B82100B20544 /* Contactable.swift in Sources */,
 				210DC6342C25B7F900B20544 /* AsyncButton.swift in Sources */,
 				210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */,
+				215F807F2DC6454A002B181F /* TimelineItemView.swift in Sources */,
 				210DC5D12C25B6CE00B20544 /* FollowUpApp.swift in Sources */,
 				210DC6A12C25B82100B20544 /* FollowUpSettings.swift in Sources */,
 				210DC6352C25B7F900B20544 /* CircularButton.swift in Sources */,

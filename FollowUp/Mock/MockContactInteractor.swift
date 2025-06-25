@@ -112,5 +112,17 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
     func changeColour(forTag tag: Tag, toColour colour: Color, forContact contact: any Contactable) {
             
     }
+    
+    func add(item: TimelineItem, to contact: any Contactable, onComplete: (() -> Void)?) {
+        
+    }
+    
+    func delete(item: TimelineItem, for contact: any Contactable, onComplete: (() -> Void)?) {
+        
+    }
+    
+    func edit(item: TimelineItem, newBodyText bodyText: String, for contact: any Contactable, onComplete: (() -> Void)?) {
+        
+    }
 
 }

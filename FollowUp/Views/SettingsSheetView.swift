@@ -103,7 +103,7 @@ struct SettingsSheetView: View {
             }, label: {
                 Text("Reset First Launch")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .greatestFiniteMagnitude)
             })
@@ -113,7 +113,7 @@ struct SettingsSheetView: View {
             }, label: {
                 Text("Reset New Version")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .greatestFiniteMagnitude)
             })

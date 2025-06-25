@@ -5,7 +5,9 @@
 //  Created by Aaron Baw on 17/10/2021.
 //
 
+import Combine
 import SwiftUI
+import RealmSwift
 
 struct ContactSheetView: View {
     
@@ -28,6 +30,7 @@ struct ContactSheetView: View {
     
     // MARK: - State
     @State private var nativeContactSheetID: String?
+    @State private var keyboardVisible: Bool = false
     
     // MARK: - Computed Properties
     private var relativeTimeSinceFollowingUp: String {
@@ -42,6 +45,11 @@ struct ContactSheetView: View {
 
     private var contact: any Contactable {
         store.contact(forID: sheet.contactID) ?? Contact.unknown
+    }
+    
+    // MARK: - Publishers
+    var keyboardVisiblePublisher: AnyPublisher<Bool, Never> {
+        NotificationCenter.default.keyboardVisiblePublisher()
     }
     
     // MARK: - Views
@@ -136,10 +144,34 @@ struct ContactSheetView: View {
             
         }.padding(.top, 50)
     }
-//    
-//    private var reminderButtonView: some View {
-//        
-//    }
+
+    @ViewBuilder
+    var timelineView: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("\(Image(icon: .clock)) Timeline")
+                .padding(.horizontal)
+                .font(.body.weight(.medium))
+                .foregroundStyle(.secondary)
+            ContactTimelineView(contact: contact).padding()
+        }
+    }
+    
+    var blurView: some View {
+        ZStack {
+            Color.black // dark tint to reduce brightness
+                .mask(
+                    LinearGradient(
+                        gradient: Gradient(colors: [.black.opacity(0.05), .clear]),
+                        startPoint: .bottom,
+                        endPoint: .top
+                    )
+                )
+            VariableBlurView(maxBlurRadius: 5, direction: .blurredBottomClearTop, startOffset: 0)
+
+        }
+        .allowsHitTesting(false)
+        .frame(height: 150)
+    }
     
     var modalContactSheetView: some View {
         NavigationView {
@@ -155,11 +187,19 @@ struct ContactSheetView: View {
                         Spacer()
                         startAConversationRowView
                         Spacer()
-                        
+                        timelineView
                         Spacer(minLength: 120)
                         
                     }
                 }
+                
+                VStack {
+                    Spacer()
+                    blurView
+                }.ignoresSafeArea()
+                .opacity(keyboardVisible ? 0 : 1)
+                .offset(y: keyboardVisible ? 50 : 0)
+                .animation(.easeInOut(duration: !keyboardVisible ? 0.5 : 0.3), value: keyboardVisible)
 
                 // Overlay View
                 VStack {
@@ -167,6 +207,10 @@ struct ContactSheetView: View {
                     Spacer()
                     ActionButtonGridView(contact: contact)
                         .padding()
+                        .shadow(color: .black.opacity(0.05), radius: 40, x: 0, y: 35)
+                        .opacity(keyboardVisible ? 0 : 1)
+                        .offset(y: keyboardVisible ? 50 : 0)
+                        .animation(.easeInOut(duration: !keyboardVisible ? 0.5 : 0.3), value: keyboardVisible)
                 }
             }
         }
@@ -208,6 +252,9 @@ struct ContactSheetView: View {
                 NativeContactView(contactID: contact.id)
                     .ignoresSafeArea(.all, edges: .bottom)
             })
+            .onReceive(self.keyboardVisiblePublisher) { keyboardVisible in
+                self.keyboardVisible = keyboardVisible
+            }
     }
     
     // MARK: - Functions
@@ -221,20 +268,22 @@ struct ContactSheetView: View {
     
 }
 
-struct ContactSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContactSheetView(kind: .modal, sheet: MockedContact(
-                id: "1",
-                note: "Met on the underground at Euston Station. Works at a local hedgefund and is into cryptocurrency. Open to coming out, but is quite busy."
-            ).sheet, onClose: { })
+#Preview {
+    let followUpManager = FollowUpManager.mocked()
 
-            ContactSheetView(kind: .inline, sheet: MockedContact(id: "0").sheet, onClose: { })
+    Group {
+        ContactSheetView(kind: .modal, sheet: MockedContact(
+            id: "1",
+            note: "Met on the underground at Euston Station. Works at a local hedgefund and is into cryptocurrency. Open to coming out, but is quite busy."
+        ).sheet, onClose: { })
 
-            ContactSheetView(kind: .modal, sheet: MockedContact(id: "0").sheet, onClose: { })
-                .preferredColorScheme(.dark)
-        }
-        .environmentObject(FollowUpManager())
-//        .environmentObject(FollowUpStore.mocked())
+//        ContactSheetView(kind: .inline, sheet: MockedContact(id: "0").sheet, onClose: { })
+//
+//        ContactSheetView(kind: .modal, sheet: MockedContact(id: "0").sheet, onClose: { })
+//            .preferredColorScheme(.dark)
     }
+    .environmentObject(followUpManager)
+    .environmentObject(followUpManager.store)
+    .environmentObject(FollowUpSettings())
 }
+

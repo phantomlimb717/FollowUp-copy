@@ -86,7 +86,7 @@ final class FollowUpManager: ObservableObject {
         let realmFileURL = documentDirectory?.appendingPathComponent("\(name).realm")
         let config = Realm.Configuration(
             fileURL: realmFileURL,
-            schemaVersion: 6,
+            schemaVersion: 8,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
                     Log.info("Running migration to schema v2, adding contactListGrouping.")
@@ -115,6 +115,21 @@ final class FollowUpManager: ObservableObject {
                     Log.info("Running migration to schema v6. Adding 'followUpFrequency' property.")
                     migration.enumerateObjects(ofType: Contact.className(), {oldObject, newObject in
                         newObject?["followUpFrequency"] = FollowUpFrequency.daily
+                    })
+                }
+                
+                if oldSchemaVersion < 7 {
+                    Log.info("Running migration to schema v7. Adding 'timelineItems' property.")
+                    migration.enumerateObjects(ofType: Contact.className(), { oldObject, newObject in
+                        newObject?["timelineItems"] = RealmSwift.List<TimelineItem>()
+                    })
+                    Log.info("Migration Complete")
+                }
+                
+                if oldSchemaVersion < 8 {
+                    Log.info("Running migration to schema v8. Adding primary key to 'TimelineItem'.")
+                    migration.enumerateObjects(ofType: TimelineItem.className(), { oldObject, newObject in
+                        newObject?["id"] = UUID().uuidString
                     })
                 }
                 
@@ -274,3 +289,32 @@ final class FollowUpManager: ObservableObject {
     }
 
 }
+
+#if DEBUG
+extension FollowUpManager {
+    static func mocked(
+        numberOfContacts: Int = 5,
+        realmIdentifier: String = "PreviewRealm"
+    ) -> FollowUpManager {
+        let config = Realm.Configuration(inMemoryIdentifier: realmIdentifier)
+        let realm = try! Realm(configuration: config)
+
+        // Add mock contacts
+        try! realm.write {
+            for i in 0..<numberOfContacts {
+                let contact = Contact()
+                contact.id = "\(i)"
+                contact.name = "Mock Contact \(i)"
+                contact.note = "This is a mock contact."
+                realm.add(contact)
+            }
+        }
+
+        let store = FollowUpStore(realm: realm)
+        let manager = FollowUpManager(store: store, realmName: realmIdentifier)
+        manager.realm = realm // ensure realm is assigned
+
+        return manager
+    }
+}
+#endif

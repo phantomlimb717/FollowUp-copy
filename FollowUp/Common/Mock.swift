@@ -21,6 +21,7 @@ final class MockedContact: Object, Contactable {
     @Persisted var phoneNumber: PhoneNumber? = .mocked
     @Persisted var email: String? = faker.internet.email()
     @Persisted var tags: RealmSwift.List<Tag>
+    @Persisted var timelineItems: List<TimelineItem>
     var thumbnailImage: UIImage? = nil
     @Persisted var note: String? = faker.hobbit.quote()
     @Persisted var followUps: Int = faker.number.randomInt(min: 0, max: 10)
@@ -32,7 +33,20 @@ final class MockedContact: Object, Contactable {
     @Persisted var lastInteractedWith: Date? = faker.date.backward(days: 10)
 
     
-    convenience init(id: ContactID = UUID().uuidString, name: String = faker.name.name(), phoneNumber: PhoneNumber? = .mocked, email: String? = faker.internet.email(), thumbnailImage: UIImage? = nil, note: String? = faker.hobbit.quote(), followUps: Int = faker.number.randomInt(min: 0, max: 10), createDate: Date = faker.date.backward(days: 30), lastFollowedUp: Date? = faker.date.backward(days: faker.number.randomInt(min: 0, max: 1)), highlighted: Bool = faker.number.randomBool(), containedInFollowUps: Bool = faker.number.randomBool(), lastInteractedWith: Date? = faker.date.backward(days: 10)) {
+    convenience init(
+        id: ContactID = UUID().uuidString,
+        name: String = faker.name.name(),
+        phoneNumber: PhoneNumber? = .mocked,
+        email: String? = faker.internet.email(),
+        thumbnailImage: UIImage? = nil,
+        note: String? = faker.hobbit.quote(),
+        followUps: Int = faker.number.randomInt(min: 0, max: 10),
+        createDate: Date = faker.date.backward(days: 30),
+        lastFollowedUp: Date? = faker.date.backward(days: faker.number.randomInt(min: 0, max: 1)),
+        highlighted: Bool = faker.number.randomBool(),
+        containedInFollowUps: Bool = faker.number.randomBool(),
+        lastInteractedWith: Date? = faker.date.backward(days: 10)
+    ) {
         self.init()
         self.id = id
         self.name = name
@@ -59,8 +73,17 @@ extension Contactable where Self == Contact {
     static var mocked: any Contactable { MockedContact() }
     static var mockedFollowedUpToday: any Contactable {
         let contact = MockedContact()
-        contact.lastFollowedUp = .now
-        contact.tags.append(objectsIn: [Tag(title: "Gym"), Tag(title: "AMS"), Tag(title: "Professional", colour: .brown)])
+        let config = Realm.Configuration(inMemoryIdentifier: "PreviewRealm")
+
+        let realm = try! Realm(configuration: config)
+        try! realm.write {
+            contact.lastFollowedUp = .now
+            contact.tags.append(objectsIn: [Tag(title: "Gym"), Tag(title: "AMS"), Tag(title: "Professional", colour: .brown)])
+            contact.timelineItems.append(objectsIn: [
+                .mockedBT, .mockedCall, .mockedMessage
+            ]
+            )
+        }
         return contact
     }
 }
