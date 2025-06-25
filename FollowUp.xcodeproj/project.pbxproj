@@ -99,6 +99,7 @@
 		210DC6BC2C25B82100B20544 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68A2C25B82100B20544 /* String+Additions.swift */; };
 		210DC6BE2C25B82100B20544 /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68C2C25B82100B20544 /* View+Additions.swift */; };
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
+		21458F5E2E0C2014003B710D /* VerticalDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21458F5D2E0C2014003B710D /* VerticalDivider.swift */; };
 		215219182D37CE9000AD050F /* NewFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215219172D37CE9000AD050F /* NewFeaturesView.swift */; };
 		215F80782DC4DC1B002B181F /* ContactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F80772DC4DC1B002B181F /* ContactTimeline.swift */; };
 		215F807B2DC644E2002B181F /* BubbleTimelineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F807A2DC644E2002B181F /* BubbleTimelineItemView.swift */; };
@@ -111,7 +112,7 @@
 		21C9FC312CCB017E00F8F400 /* ConversationStarterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9FC302CCB017E00F8F400 /* ConversationStarterRowView.swift */; };
 		21EF80732CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */; };
 		21F296882E02E81D00528DD3 /* NotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F296872E02E81600528DD3 /* NotificationCenter+Additions.swift */; };
-		21F2968B2E031A1500528DD3 /* VariableBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2968A2E031A1500528DD3 /* VariableBlur.swift */; };
+		21F2968B2E031A1500528DD3 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2968A2E031A1500528DD3 /* VariableBlurView.swift */; };
 		21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F690A02C8B63B9001F127B /* NativeContactView.swift */; };
 /* End PBXBuildFile section */
 
@@ -223,6 +224,7 @@
 		210DC68C2C25B82100B20544 /* View+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		210DC68E2C25B82100B20544 /* ContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsInteractor.swift; sourceTree = "<group>"; };
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21458F5D2E0C2014003B710D /* VerticalDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalDivider.swift; sourceTree = "<group>"; };
 		215219172D37CE9000AD050F /* NewFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesView.swift; sourceTree = "<group>"; };
 		215F80772DC4DC1B002B181F /* ContactTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTimeline.swift; sourceTree = "<group>"; };
 		215F807A2DC644E2002B181F /* BubbleTimelineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTimelineItemView.swift; sourceTree = "<group>"; };
@@ -237,7 +239,7 @@
 		21C9FC302CCB017E00F8F400 /* ConversationStarterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationStarterRowView.swift; sourceTree = "<group>"; };
 		21EF80722CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArrowLoadingSpinner.swift; sourceTree = "<group>"; };
 		21F296872E02E81600528DD3 /* NotificationCenter+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Additions.swift"; sourceTree = "<group>"; };
-		21F2968A2E031A1500528DD3 /* VariableBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlur.swift; sourceTree = "<group>"; };
+		21F2968A2E031A1500528DD3 /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 		21F690A02C8B63B9001F127B /* NativeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -428,6 +430,8 @@
 				210DC62F2C25B7F900B20544 /* HighlightsTabView.swift */,
 				210DC6302C25B7F900B20544 /* NewContactsView.swift */,
 				210DC6312C25B7F900B20544 /* SettingsSheetView.swift */,
+				21F2968A2E031A1500528DD3 /* VariableBlurView.swift */,
+				21458F5D2E0C2014003B710D /* VerticalDivider.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -510,7 +514,6 @@
 			children = (
 				210DC6732C25B82100B20544 /* Log.swift */,
 				210DC6742C25B82100B20544 /* UserDefaultsPersisted.swift */,
-				21F2968A2E031A1500528DD3 /* VariableBlur.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -753,7 +756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21F2968B2E031A1500528DD3 /* VariableBlur.swift in Sources */,
+				21F2968B2E031A1500528DD3 /* VariableBlurView.swift in Sources */,
 				210DC6B12C25B82100B20544 /* Assertion+Additions.swift in Sources */,
 				21EF80732CBFCF370069CEEB /* CircularArrowLoadingSpinner.swift in Sources */,
 				210DC6B22C25B82100B20544 /* Color+Additions.swift in Sources */,
@@ -790,6 +793,7 @@
 				210DC6A32C25B82100B20544 /* Grouping.swift in Sources */,
 				210DC6982C25B82100B20544 /* LocalizedAlertError.swift in Sources */,
 				210DC63D2C25B7F900B20544 /* EditConversationStarterView.swift in Sources */,
+				21458F5E2E0C2014003B710D /* VerticalDivider.swift in Sources */,
 				210DC6392C25B7F900B20544 /* ContactBadge.swift in Sources */,
 				210DC69E2C25B82100B20544 /* ContactSheet.swift in Sources */,
 				210DC6902C25B82100B20544 /* GradientButtonStyle.swift in Sources */,

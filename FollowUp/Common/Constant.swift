@@ -249,5 +249,13 @@ enum Constant {
     enum ContactTimeline {
         static let cornerRadius: CGFloat = 15
         static let borderWidth: CGFloat = 1.5
+        static let commentBoxHorizontalPadding: CGFloat = 12.0
+        static let commentBoxVerticalPadding: CGFloat = 10.0
+    }
+    
+    // MARK: - Vertical Divider
+    enum VerticalDivider {
+        static let defaultWidth: CGFloat = 3.0
+        static let defaultHeight: CGFloat = 10.0
     }
 }

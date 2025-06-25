@@ -21,19 +21,11 @@ struct ContactTimelineView: View {
     
     var contact: any Contactable
     
-    var verticalDivider: some View {
-        HStack {
-            Rectangle()
-                .frame(width: 3, height: 10)
-                .foregroundStyle(.quinary)
-        }
-    }
-    
     var addCommentButton: some View {
         TextField("Add Comment", text: $newCommentText, prompt: Text("\(Image(icon: .bubble)) Add Comment"))
         .foregroundStyle(.secondary)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
+        .padding(.horizontal, Constant.ContactTimeline.commentBoxHorizontalPadding)
+        .padding(.vertical, Constant.ContactTimeline.commentBoxVerticalPadding)
         .focused($commentInputActive)
         .background(
             RoundedRectangle(cornerRadius: Constant.ContactTimeline.cornerRadius)
@@ -61,7 +53,7 @@ struct ContactTimelineView: View {
             
             ForEach(items.filter { !$0.isInvalidated }) { item in
                 if items.first?.id != item.id {
-                    verticalDivider
+                    VerticalDivider()
                 }
                 TimelineItemView(
                     item: item,
@@ -72,7 +64,7 @@ struct ContactTimelineView: View {
                 .transition(.move(edge: .bottom).combined(with: .opacity))
                 
                 if items.last?.id != item.id {
-                    verticalDivider
+                    VerticalDivider()
                 }
             }
             
