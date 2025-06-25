@@ -101,12 +101,12 @@
 		210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DC68E2C25B82100B20544 /* ContactsInteractor.swift */; };
 		21458F5E2E0C2014003B710D /* VerticalDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21458F5D2E0C2014003B710D /* VerticalDivider.swift */; };
 		215219182D37CE9000AD050F /* NewFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215219172D37CE9000AD050F /* NewFeaturesView.swift */; };
-		2164BF492DE0C15F00093A38 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164BF482DE0C15B00093A38 /* OnboardingPage.swift */; };
 		21553DE12DE9BFCE00B7199B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21553DE02DE9BFCE00B7199B /* Launch Screen.storyboard */; };
 		215F80782DC4DC1B002B181F /* ContactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F80772DC4DC1B002B181F /* ContactTimeline.swift */; };
 		215F807B2DC644E2002B181F /* BubbleTimelineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F807A2DC644E2002B181F /* BubbleTimelineItemView.swift */; };
 		215F807D2DC6451B002B181F /* EventTimelineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F807C2DC6451B002B181F /* EventTimelineItemView.swift */; };
 		215F807F2DC6454A002B181F /* TimelineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F807E2DC6454A002B181F /* TimelineItemView.swift */; };
+		2164BF492DE0C15F00093A38 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164BF482DE0C15B00093A38 /* OnboardingPage.swift */; };
 		216CF6262C5E18FA00F6EA9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */; };
 		2193DA222C94454C0080C72C /* CNContact+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193DA212C94454C0080C72C /* CNContact+Additions.swift */; };
 		219D81E02CB002F7007855E2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D81DF2CB002F7007855E2 /* LocationManager.swift */; };
@@ -228,12 +228,12 @@
 		210DC6C02C25BBFA00B20544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21458F5D2E0C2014003B710D /* VerticalDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalDivider.swift; sourceTree = "<group>"; };
 		215219172D37CE9000AD050F /* NewFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesView.swift; sourceTree = "<group>"; };
-		2164BF482DE0C15B00093A38 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		21553DE02DE9BFCE00B7199B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		215F80772DC4DC1B002B181F /* ContactTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTimeline.swift; sourceTree = "<group>"; };
 		215F807A2DC644E2002B181F /* BubbleTimelineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTimelineItemView.swift; sourceTree = "<group>"; };
 		215F807C2DC6451B002B181F /* EventTimelineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimelineItemView.swift; sourceTree = "<group>"; };
 		215F807E2DC6454A002B181F /* TimelineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineItemView.swift; sourceTree = "<group>"; };
+		2164BF482DE0C15B00093A38 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		216CF6252C5E18FA00F6EA9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2193DA212C94454C0080C72C /* CNContact+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Additions.swift"; sourceTree = "<group>"; };
 		219D81DF2CB002F7007855E2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -578,14 +578,6 @@
 			path = Interactors;
 			sourceTree = "<group>";
 		};
-		2164BF472DE0C15600093A38 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				2164BF482DE0C15B00093A38 /* OnboardingPage.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		215F80762DC4DC04002B181F /* ContactTimeline */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +595,14 @@
 				215F807E2DC6454A002B181F /* TimelineItemView.swift */,
 			);
 			path = ContactTimeline;
+			sourceTree = "<group>";
+		};
+		2164BF472DE0C15600093A38 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2164BF482DE0C15B00093A38 /* OnboardingPage.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		216CF6242C5E164700F6EA9F /* Localisation */ = {
