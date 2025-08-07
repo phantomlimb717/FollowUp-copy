@@ -21,9 +21,6 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
-        #if DEBUG
-        let _ = Self._printChanges()
-        #endif
             TabView(selection: $selectedTab, content:  {
                 
                 // New Contacts View
