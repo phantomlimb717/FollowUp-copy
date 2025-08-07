@@ -12,7 +12,7 @@ class TimelineItem: Object {
     
     @Persisted(primaryKey: true) var id: String
     @Persisted var kind: Kind
-    @Persisted var event: EventType
+    @Persisted var event: InteractionType
     @Persisted var time: Date = .now
     @Persisted var body: String?
     
@@ -20,7 +20,7 @@ class TimelineItem: Object {
     var title: String { self.event.title }
     var icon: Constant.Icon { self.event.icon }
     
-    convenience init(kind: Kind, event: EventType, time: Date, body: String? = nil) {
+    convenience init(kind: Kind, event: InteractionType, time: Date, body: String? = nil) {
         self.init()
         self.kind = kind
         self.event = event
@@ -34,8 +34,8 @@ class TimelineItem: Object {
         TimelineItem(kind: .bubble, event: .comment, time: time, body: body)
     }
     
-    static func event(type eventType: EventType, time: Date = .now) -> TimelineItem {
-        TimelineItem(kind: .event, event: eventType, time: time)
+    static func event(type interactionType: InteractionType, time: Date = .now) -> TimelineItem {
+        TimelineItem(kind: .event, event: interactionType, time: time)
     }
     
 }
@@ -47,34 +47,7 @@ extension TimelineItem {
         case bubble
         case event
     }
-    
-    enum EventType: String, PersistableEnum {
-        case call
-        case message
-        case comment
-        case whatsApp
-        case followUp
-        var icon: Constant.Icon {
-            switch self {
-            case .call: return .phone
-            case .message: return .chatBubbles
-            case .comment: return .bubble
-            case .whatsApp: return .whatsApp
-            case .followUp: return .arrowForwardUp
-            }
-        }
-        
-        var title: String {
-            switch self {
-            case .call: return "Call"
-            case .comment: return "Comment"
-            case .followUp: return "FollowUp"
-            case .message: return "Message"
-            case .whatsApp: return "WhatsApp"
-            }
-        }
-        
-    }
+
 }
 
 // MARK: - Identifiable Conformance
@@ -91,6 +64,13 @@ extension TimelineItem {
     }
 }
 
+// MARK: - Initialise from PendingInteraction
+extension TimelineItem {
+    convenience init(_ interaction: PendingInteraction) {
+        self.init(kind: .event, event: interaction.type, time: interaction.date)
+    }
+}
+
 #if DEBUG
 extension TimelineItem {
     static var mockedBT: TimelineItem = .comment(body: "Spoke on the phone, seemed eager to come to Bible Talk.", time: .now.addingTimeInterval(-20003))
@@ -100,7 +80,7 @@ extension TimelineItem {
     static var mockedCall: TimelineItem = .event(type: .call, time: .now.addingTimeInterval(-30000))
     static var mockedFollowUp: TimelineItem = .event(type: .followUp, time: .now.addingTimeInterval(-200300))
     
-    static var mockedMessage: TimelineItem = .event(type: .message, time: .now.addingTimeInterval(-900000))
+    static var mockedMessage: TimelineItem = .event(type: .sms, time: .now.addingTimeInterval(-900000))
 
     static var mockedItems: [TimelineItem] {
         [

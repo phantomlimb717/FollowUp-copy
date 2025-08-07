@@ -7,6 +7,7 @@
 
 import Contacts
 import SwiftUI
+import Toasts
 
 struct ContentView: View {
 
@@ -19,6 +20,8 @@ struct ContentView: View {
     @AppStorage("v.7FirstLaunch") var newVersionLaunch: Bool = true
     @EnvironmentObject var followUpManager: FollowUpManager
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.presentToast) private var presentToast
+    
 
     var body: some View {
             TabView(selection: $selectedTab, content:  {
@@ -88,11 +91,6 @@ struct ContentView: View {
             }, content: {
                 OnboardingView()
             })
-//            .sheet(isPresented: $newVersionLaunch, onDismiss: {
-//                self.newVersionLaunch = false
-//            }, content: {
-//                NewFeaturesView()
-//            })
             .onReceive(followUpManager.contactsInteractor.contactSheetPublisher, perform: { contactSheet in
                 self.contactSheet = contactSheet
             })
@@ -103,13 +101,49 @@ struct ContentView: View {
             .onChange(of: scenePhase, perform: { phase in
                 switch phase {
                 case .active:
-                    followUpManager.contactsInteractor.fetchContacts()
+                    self.handlePendingInteractions()
+                    self.followUpManager.contactsInteractor.fetchContacts()
                 default: break
                 }
             })
             .onAppear {
                 if (!firstLaunch) { self.followUpManager.configureNotifications() }
             }
+    }
+    
+    // MARK: - Functions
+    func handlePendingInteractions(onComplete: (() -> Void)? = nil) {
+        guard let lastInteraction = followUpManager.interactionManager.lastInteraction else { onComplete?()
+            return
+        }
+        
+        let toastDuration: TimeInterval = 5.0
+        var confirmInteraction: Bool = true
+        
+        let eventTitle = lastInteraction.type.title
+        let toastValue: ToastValue = .init(
+            message: "Detected \(eventTitle) with \(lastInteraction.contactName)",
+            button: .init(
+                title: "Cancel",
+                color: .red,
+                action: {
+                   confirmInteraction = false
+                }
+            ),
+            duration: toastDuration
+        )
+        
+        presentToast(toastValue)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + toastDuration, execute: {
+            if confirmInteraction {
+                self.followUpManager.interactionManager.confirm(lastInteraction, onComplete: { self.handlePendingInteractions(onComplete: onComplete)
+                })
+            } else {
+                self.followUpManager.interactionManager.dismiss(lastInteraction)
+            }
+        })
+        
     }
 
 }

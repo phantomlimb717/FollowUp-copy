@@ -75,9 +75,16 @@ struct ContactSheetView: View {
                     .foregroundColor(.secondary)
                     .textSelection(.enabled)
                 HStack {
-                    CircularButton(icon: .phone, action: .call(number: phoneNumber))
-                    CircularButton(icon: .sms, action: .sms(number: phoneNumber))
-                    CircularButton(icon: .whatsApp, action: .whatsApp(number: phoneNumber, generateText: { completion in completion(.success("")) }))
+                    InteractionButton(action: .call(number: phoneNumber), contact: contact)
+                    InteractionButton(action: .sms(number: phoneNumber), contact: contact)
+                    InteractionButton(action: .whatsApp(number: phoneNumber, generateText: { completion in completion(.success("")) }), contact: contact)
+
+
+                    
+                    
+//                    CircularButton(icon: .phone, action: .call(number: phoneNumber))
+//                    CircularButton(icon: .sms, action: .sms(number: phoneNumber))
+//                    CircularButton(icon: .whatsApp, action: .whatsApp(number: phoneNumber, generateText: { completion in completion(.success("")) }))
                     CircularButton(icon: .pencil, action: .other(action: {
                         displayNativeContactModal(forID: contact.id)
                     }))

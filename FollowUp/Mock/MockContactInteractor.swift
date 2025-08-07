@@ -117,6 +117,10 @@ class MockContactsInteractor: ContactsInteracting, ObservableObject {
         
     }
     
+    func add(item: TimelineItem, toContactID contactID: ContactID, onComplete: (() -> Void)?) {
+        
+    }
+    
     func delete(item: TimelineItem, for contact: any Contactable, onComplete: (() -> Void)?) {
         
     }

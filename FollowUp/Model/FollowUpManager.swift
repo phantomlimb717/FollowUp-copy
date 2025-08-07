@@ -27,7 +27,8 @@ final class FollowUpManager: ObservableObject {
     var contactsInteractor: ContactsInteracting
     private var subscriptions: Set<AnyCancellable> = .init()
     var notificationManager: NotificationManaging
-    
+    var interactionManager: InteractionManager
+
     private var locationManager: LocationManaging?
     
     // MARK: - Initialization
@@ -39,12 +40,14 @@ final class FollowUpManager: ObservableObject {
     ) {
         // The Schema (and Realm object) needs to be initialised first, as this is referenced in order to fetch any existing FollowUpStores from the Realm DB.
         let realm = Self.initializeRealm()
+        let contactsInteractor = contactsInteractor ?? ContactsInteractor(realm: realm)
         self.realm = realm
-        self.contactsInteractor = contactsInteractor ?? ContactsInteractor(realm: realm)
+        self.contactsInteractor = contactsInteractor
         // First, we check to see if a follow up store exists in our realm.
         // If one doesn't exist, then we create one and add it to the realm.
         // If a follow up store has been passed as an argument, than this supercedes any store that we find in the realm.
         self.store = store ?? FollowUpStore(realm: realm)
+        self.interactionManager = InteractionManager(contactsInteractor: contactsInteractor)
 
         self.notificationManager = notificationManager
         self.subscribeForNewContacts()
@@ -53,6 +56,7 @@ final class FollowUpManager: ObservableObject {
         // Initialize LocationManager and start monitoring
         self.locationManager = LocationManager(followUpManager: self)
         self.locationManager?.startMonitoring()
+        
     }
 
     // MARK: - Methods

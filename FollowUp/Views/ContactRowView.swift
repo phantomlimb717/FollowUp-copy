@@ -77,15 +77,6 @@ struct ContactRowView: View {
             Image(icon: .arrowUpChatBubble)
                 .fontWeight(.bold)
                 .foregroundStyle(Color(.tertiaryLabel))
-            
-            
-
-//            if let phoneNumber = contact.phoneNumber {
-//                CircularButton(icon: .phone, action: .call(number: phoneNumber))
-//                    .accentColor(.accent)
-//                CircularButton(icon: .sms, action: .sms(number: phoneNumber))
-//                    .accentColor(.accent)
-//            }
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
         .padding(.vertical, verticalPadding)

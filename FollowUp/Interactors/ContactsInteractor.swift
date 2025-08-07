@@ -66,6 +66,7 @@ protocol ContactsInteracting {
     
     // MARK: - Actions (Timeline)
     func add(item: TimelineItem, to contact: any Contactable, onComplete: (() -> Void)?)
+    func add(item: TimelineItem, toContactID contactID: ContactID, onComplete: (() -> Void)?)
     func delete(item: TimelineItem, for contact: any Contactable, onComplete: (() -> Void)?)
     func edit(item: TimelineItem, newBodyText bodyText: String, for contact: any Contactable, onComplete: (() -> Void)?)
 
@@ -229,9 +230,30 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
         contact?.timelineItems.append(item)
     }
     
+    
+//    func add(item: TimelineItem, to contactID: ContactID, onComplete: (() -> Void)?) {
+//        self.fetchContact(withCNContactID: contactID) { result in
+//            switch result {
+//            case .success(let contact):
+//                guard let contact = contact else {
+//                    Log.error("Could not find contact for ID \(contactID). Unable to add timeline item \(item) to contact.")
+//                    return
+//                }
+//                self.add(item: item, to: contact, onComplete: onComplete)
+//            case .failure(let error):
+//                Log.error("Could not add item \(item) to contact \(contactID): \(error.localizedDescription)")
+//            }
+//        }
+//    }
+    
     func add(item: TimelineItem, to contact: any Contactable, onComplete: (() -> Void)?) {
-        self.modify(contact: contact, closure: { contact in
+        self.add(item: item, toContactID: contact.id, onComplete: onComplete)
+    }
+    
+    func add(item: TimelineItem, toContactID contactID: ContactID, onComplete: (() -> Void)?) {
+        self.modify(contactID: contactID, closure: { contact in
             self.addDirectly(item: item, to: contact)
+            contact?.lastInteractedWith = .now
         }, onComplete: onComplete)
     }
     
@@ -244,6 +266,7 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
             }
             contact?.timelineItems.remove(at: itemIndex)
             Log.info("Item \(item.description) removed from \(contact?.name ?? ""). Removing from Realm.")
+            contact?.lastInteractedWith = .now
             self.writeToRealm({ realm in
                 realm.delete(item)
                 Log.info("Item removed from Realm.")
@@ -255,15 +278,20 @@ class ContactsInteractor: ContactsInteracting, ObservableObject {
     Log.info("Editing timeline item \(item.description) with new body text: '\(bodyText)'.")
         self.writeToRealm({ _ in
             item.body = bodyText
+            contact.lastInteractedWith = .now
         }, onComplete: onComplete)
     }
     
     // MARK: - Private methods
-    private func modify(contact: any Contactable, closure: @escaping (Contact?) -> Void, onComplete: (() -> Void)? = nil) {
+    private func modify(contactID: ContactID, closure: @escaping (Contact?) -> Void, onComplete: (() -> Void)? = nil) {
         writeToRealm({ realm in
-            let contact = realm.object(ofType: Contact.self, forPrimaryKey: contact.id)
+            let contact = realm.object(ofType: Contact.self, forPrimaryKey: contactID)
             closure(contact)
         }, onComplete: onComplete)
+    }
+    
+    private func modify(contact: any Contactable, closure: @escaping (Contact?) -> Void, onComplete: (() -> Void)? = nil) {
+        self.modify(contactID: contact.id, closure: closure, onComplete: onComplete)
     }
     
     private func writeToRealm(_ closure: @escaping (Realm) -> Void, onComplete: (() -> Void)? = nil) {
