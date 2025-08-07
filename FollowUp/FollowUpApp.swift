@@ -8,6 +8,7 @@
 import Contacts
 import SwiftUI
 import UserNotifications
+import Toasts
 
 @main
 struct FollowUpApp: App {
@@ -30,13 +31,8 @@ struct FollowUpApp: App {
                 .environmentObject(followUpManager)
                 .environmentObject(followUpManager.store)
                 .environmentObject(followUpManager.store.settings)
-//                .alert(item: $followUpManager.error, content: { error in
-//                    Alert(
-//                        title: Text("Unable To Generate Message"),
-//                        message: Text(error.localizedDescription),
-//                        dismissButton: .cancel()
-//                    )
-//                })
+                .environmentObject(followUpManager.interactionManager)
+                .installToast(position: .top)
                 .errorAlert(error: $followUpManager.error)
                 .accentColor(.accent)
             #if DEBUG
