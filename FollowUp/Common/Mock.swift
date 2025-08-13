@@ -26,6 +26,7 @@ final class MockedContact: Object, Contactable {
     @Persisted var note: String? = faker.hobbit.quote()
     @Persisted var followUps: Int = faker.number.randomInt(min: 0, max: 10)
     @Persisted var createDate: Date = faker.date.backward(days: 30)
+    @Persisted var firstAddedLocation: LocationSample? = .init(time: .now, latitude: faker.address.latitude(), longitude: faker.address.longitude(), horizontalAccuracy: 1)
     @Persisted var lastFollowedUp: Date? = faker.date.backward(days: faker.number.randomInt(min: 0, max: 1))
     @Persisted var highlighted: Bool = faker.number.randomBool()
     @Persisted var containedInFollowUps: Bool = faker.number.randomBool()
