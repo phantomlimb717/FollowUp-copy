@@ -116,6 +116,10 @@
 		21F296882E02E81D00528DD3 /* NotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F296872E02E81600528DD3 /* NotificationCenter+Additions.swift */; };
 		21F2968B2E031A1500528DD3 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2968A2E031A1500528DD3 /* VariableBlurView.swift */; };
 		21F690A12C8B63B9001F127B /* NativeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F690A02C8B63B9001F127B /* NativeContactView.swift */; };
+		21FE8CCA2E0C2ECE00D920E5 /* InteractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FE8CC92E0C2ECE00D920E5 /* InteractionManager.swift */; };
+		21FE8CCC2E0C2F6900D920E5 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FE8CCB2E0C2F6900D920E5 /* Interaction.swift */; };
+		21FE8CCF2E0C351C00D920E5 /* Toasts in Frameworks */ = {isa = PBXBuildFile; productRef = 21FE8CCE2E0C351C00D920E5 /* Toasts */; };
+		21FE8CD12E0C366100D920E5 /* InteractionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FE8CD02E0C366100D920E5 /* InteractionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +249,9 @@
 		21F296872E02E81600528DD3 /* NotificationCenter+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Additions.swift"; sourceTree = "<group>"; };
 		21F2968A2E031A1500528DD3 /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 		21F690A02C8B63B9001F127B /* NativeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContactView.swift; sourceTree = "<group>"; };
+		21FE8CC92E0C2ECE00D920E5 /* InteractionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionManager.swift; sourceTree = "<group>"; };
+		21FE8CCB2E0C2F6900D920E5 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		21FE8CD02E0C366100D920E5 /* InteractionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -260,6 +267,7 @@
 				210DC6092C25B7B300B20544 /* RealmSwift in Frameworks */,
 				210DC6002C25B76400B20544 /* Collections in Frameworks */,
 				210DC5FD2C25B73800B20544 /* WrappingHStack in Frameworks */,
+				21FE8CCF2E0C351C00D920E5 /* Toasts in Frameworks */,
 				210DC6042C25B76400B20544 /* OrderedCollections in Frameworks */,
 				210DC6022C25B76400B20544 /* DequeModule in Frameworks */,
 				210DC6072C25B7B300B20544 /* Realm in Frameworks */,
@@ -289,6 +297,7 @@
 				210DC5CF2C25B6CE00B20544 /* FollowUp */,
 				210DC5E02C25B6CF00B20544 /* FollowUpTests */,
 				210DC5EA2C25B6CF00B20544 /* FollowUpUITests */,
+				21FE8CCD2E0C351C00D920E5 /* Frameworks */,
 				210DC5CE2C25B6CE00B20544 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -367,6 +376,7 @@
 				210DC60F2C25B7F900B20544 /* AsyncButton.swift */,
 				210DC6102C25B7F900B20544 /* CircularButton.swift */,
 				210DC6112C25B7F900B20544 /* CloseButton.swift */,
+				21FE8CD02E0C366100D920E5 /* InteractionButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -497,6 +507,7 @@
 		210DC6722C25B82000B20544 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				21FE8CC82E0C2EC200D920E5 /* Interactions */,
 				2164BF472DE0C15600093A38 /* Onboarding */,
 				215F80762DC4DC04002B181F /* ContactTimeline */,
 				210DC65D2C25B82000B20544 /* Conversation Starters */,
@@ -623,6 +634,22 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		21FE8CC82E0C2EC200D920E5 /* Interactions */ = {
+			isa = PBXGroup;
+			children = (
+				21FE8CC92E0C2ECE00D920E5 /* InteractionManager.swift */,
+				21FE8CCB2E0C2F6900D920E5 /* Interaction.swift */,
+			);
+			path = Interactions;
+			sourceTree = "<group>";
+		};
+		21FE8CCD2E0C351C00D920E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -650,6 +677,7 @@
 				210DC6062C25B7B300B20544 /* Realm */,
 				210DC6082C25B7B300B20544 /* RealmSwift */,
 				210DC60B2C25B7DA00B20544 /* Fakery */,
+				21FE8CCE2E0C351C00D920E5 /* Toasts */,
 			);
 			productName = FollowUp;
 			productReference = 210DC5CD2C25B6CE00B20544 /* FollowUp.app */;
@@ -733,6 +761,7 @@
 				210DC5FE2C25B76400B20544 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				210DC6052C25B7B300B20544 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				210DC60A2C25B7DA00B20544 /* XCRemoteSwiftPackageReference "Fakery" */,
+				21FE8CC72E0C2D4000D920E5 /* XCRemoteSwiftPackageReference "swiftui-toasts" */,
 			);
 			productRefGroup = 210DC5CE2C25B6CE00B20544 /* Products */;
 			projectDirPath = "";
@@ -846,6 +875,8 @@
 				210DC64C2C25B7F900B20544 /* DailyGoalView.swift in Sources */,
 				210DC6922C25B82100B20544 /* RoundedIconButtonStyle.swift in Sources */,
 				210DC6492C25B7F900B20544 /* ContactRowView.swift in Sources */,
+				21FE8CD12E0C366100D920E5 /* InteractionButton.swift in Sources */,
+				21FE8CCA2E0C2ECE00D920E5 /* InteractionManager.swift in Sources */,
 				210DC6512C25B7F900B20544 /* SettingsSheetView.swift in Sources */,
 				215219182D37CE9000AD050F /* NewFeaturesView.swift in Sources */,
 				210DC6B62C25B82100B20544 /* Image+Additions.swift in Sources */,
@@ -868,6 +899,7 @@
 				210DC64B2C25B7F900B20544 /* ConversationActionButtonView.swift in Sources */,
 				210DC69D2C25B82100B20544 /* Contactable.swift in Sources */,
 				210DC6342C25B7F900B20544 /* AsyncButton.swift in Sources */,
+				21FE8CCC2E0C2F6900D920E5 /* Interaction.swift in Sources */,
 				210DC6BF2C25B82100B20544 /* ContactsInteractor.swift in Sources */,
 				215F807F2DC6454A002B181F /* TimelineItemView.swift in Sources */,
 				210DC5D12C25B6CE00B20544 /* FollowUpApp.swift in Sources */,
@@ -1042,7 +1074,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FollowUp/FollowUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"FollowUp/Preview Content\"";
 				DEVELOPMENT_TEAM = A5YJ22GHFR;
 				ENABLE_PREVIEWS = YES;
@@ -1064,7 +1096,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazel.FollowUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1081,7 +1113,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FollowUp/FollowUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"FollowUp/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = A5YJ22GHFR;
@@ -1104,7 +1136,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazel.FollowUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1263,6 +1295,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		21FE8CC72E0C2D4000D920E5 /* XCRemoteSwiftPackageReference "swiftui-toasts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunghyun-k/swiftui-toasts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1300,6 +1340,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 210DC60A2C25B7DA00B20544 /* XCRemoteSwiftPackageReference "Fakery" */;
 			productName = Fakery;
+		};
+		21FE8CCE2E0C351C00D920E5 /* Toasts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21FE8CC72E0C2D4000D920E5 /* XCRemoteSwiftPackageReference "swiftui-toasts" */;
+			productName = Toasts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

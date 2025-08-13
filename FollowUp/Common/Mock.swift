@@ -69,6 +69,7 @@ extension ContactSection {
     }
 }
 
+#if DEBUG
 extension Contactable where Self == Contact {
     static var mocked: any Contactable { MockedContact() }
     static var mockedFollowedUpToday: any Contactable {
@@ -87,6 +88,7 @@ extension Contactable where Self == Contact {
         return contact
     }
 }
+#endif
 
 extension PhoneNumber {
     static var mocked: PhoneNumber {

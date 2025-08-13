@@ -15,6 +15,7 @@ struct EventTimelineItemView: View {
     var body: some View {
         VStack(alignment: .center) {
             Image(icon: item.icon)
+                .renderingMode(.template)
                 .padding(.bottom, 5)
             Text(item.title)
                 .font(.footnote.bold())
@@ -27,6 +28,8 @@ struct EventTimelineItemView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     EventTimelineItemView(item: .mockedCall)
 }
+#endif

@@ -34,8 +34,6 @@ enum Log {
 
     static func log(_ level: Level, message: String) {
         let message = "\(level.emoji) [\(level.rawValue.uppercased())] \(message)"
-        print(message)
-        
         let logObject = OSLog(subsystem: Constant.appIdentifier, category: "AppLogs")
         os_log("%{public}@", log: logObject, type: level.osLogType, message)
     }

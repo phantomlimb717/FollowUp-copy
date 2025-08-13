@@ -62,9 +62,11 @@ struct TimelineItemView: View {
 //    }
 //}
 
+#if DEBUG
 #Preview {
     VStack {
         TimelineItemView(item: .mockedBT)
         TimelineItemView(item: .mockedCall)
     }
 }
+#endif

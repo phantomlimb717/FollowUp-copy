@@ -65,6 +65,8 @@ struct OnboardingView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     OnboardingView()
 }
+#endif

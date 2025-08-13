@@ -77,15 +77,6 @@ struct ContactRowView: View {
             Image(icon: .arrowUpChatBubble)
                 .fontWeight(.bold)
                 .foregroundStyle(Color(.tertiaryLabel))
-            
-            
-
-//            if let phoneNumber = contact.phoneNumber {
-//                CircularButton(icon: .phone, action: .call(number: phoneNumber))
-//                    .accentColor(.accent)
-//                CircularButton(icon: .sms, action: .sms(number: phoneNumber))
-//                    .accentColor(.accent)
-//            }
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
         .padding(.vertical, verticalPadding)
@@ -142,6 +133,7 @@ struct ContactRowView: View {
     }
 }
 
+#if DEBUG
 struct ContactRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -171,3 +163,4 @@ struct ContactRowView_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
+#endif

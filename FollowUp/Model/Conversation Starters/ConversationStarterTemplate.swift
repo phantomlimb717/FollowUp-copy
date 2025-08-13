@@ -121,7 +121,8 @@ struct ConversationStarterTemplate: Codable, Hashable, Identifiable, CustomPersi
     
     /// Uses the current template to create a conversation starter button action given the platform and contact.
     func buttonAction(
-        contact: any Contactable
+        contact: any Contactable,
+        interactionManager: InteractionManager
     ) throws -> ButtonAction? {
         switch self.platform {
         case .whatsApp:
@@ -130,6 +131,7 @@ struct ConversationStarterTemplate: Codable, Hashable, Identifiable, CustomPersi
                 let contactCopy = contact.concrete
                 self.starter.generateFormattedText(withContact: contactCopy) { result in
                     DispatchQueue.main.async {
+                        interactionManager.beginInteraction(type: .whatsApp, with: contact)
                         completion(result)
                     }
                 }

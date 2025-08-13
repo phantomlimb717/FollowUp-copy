@@ -84,9 +84,10 @@ struct ContactTimelineView: View {
             switch change {
             case .initial(let collection):
                 self.items = Array(collection)
-            case .update(let collection, _, _, _):
+            case .update(let collection, let deletions, let insertions, let modifications):
                 withAnimation {
                     self.items = Array(collection)
+                    Log.info("[TimelineItem] Insertions: \(insertions), Deletions: \(deletions), Modifications: \(modifications)")
                 }
             case .error(let error):
                 print("Error observing timelineItems: \(error)")
@@ -135,6 +136,7 @@ extension ContactTimelineView {
 
 #endif
 
+#if DEBUG
 #Preview {
     let followUpManager = FollowUpManager.mocked()
     ContactTimelineView(items: [
@@ -147,3 +149,4 @@ extension ContactTimelineView {
 //        .environmentObject(followUpManager.store)
 //        .environmentObject(FollowUpSettings())
 }
+#endif

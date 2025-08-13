@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ConversationActionButtonView: View {
     
+    @EnvironmentObject private var interactionManager: InteractionManager
+    
     // MARK: - Stored Properties
     var template: ConversationStarterTemplate
     var contact: any Contactable
@@ -28,11 +30,10 @@ struct ConversationActionButtonView: View {
     private var buttonView: some View {
         Button(action: {
             do {
-                let action = try template.buttonAction(contact: contact)
+                let action = try template.buttonAction(contact: contact, interactionManager: interactionManager)
                 self.isLoading = true
                 action?.closure(completion: { (result: Result<URL, Error>?) in
                     self.isLoading = false
-                    
                     switch result {
                     case let .failure(error):
                         self.intelligentConversationStarterError = error as? Networking.NetworkingError
@@ -90,6 +91,7 @@ struct ConversationActionButtonView: View {
     }
 }
 
+#if DEBUG
 struct ConversationActionButtonView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -104,3 +106,4 @@ struct ConversationActionButtonView_Previews: PreviewProvider {
 
     }
 }
+#endif

@@ -14,13 +14,13 @@ struct CircularButton: View {
 
     // MARK: - Stored Properties
     var icon: Constant.Icon
-    var action: ButtonAction
+    var getAction: () -> ButtonAction
     var padding: CGFloat = 10.0
     var accentColour: Color = .accent
     var backgroundOpacity: CGFloat = 0.3
 
     var body: some View {
-        Button(action: { action.closure() }, label: {
+        Button(action: { getAction().closure() }, label: {
             Image(icon: icon)
                 .resizable()
                 .renderingMode(.template)
@@ -31,6 +31,36 @@ struct CircularButton: View {
             .padding(padding)
             .background(accentColour.opacity(backgroundOpacity))
             .clipShape(Circle())
+    }
+    
+    init(
+        icon: Constant.Icon,
+        action getActionClosure: @escaping () -> ButtonAction,
+        padding: CGFloat = 10.0,
+        accentColour: Color = .accent,
+        backgroundOpacity: CGFloat = 0.3
+    ) {
+        self.icon = icon
+        self.getAction = getActionClosure
+        self.padding = padding
+        self.accentColour = accentColour
+        self.backgroundOpacity = backgroundOpacity
+    }
+    
+    init(
+        icon: Constant.Icon,
+        action: ButtonAction,
+        padding: CGFloat = 10.0,
+        accentColour: Color = .accent,
+        backgroundOpacity: CGFloat = 0.3
+    ) {
+        self.init(
+            icon: icon,
+            action: { action },
+            padding: padding,
+            accentColour: accentColour,
+            backgroundOpacity: backgroundOpacity
+        )
     }
 }
 

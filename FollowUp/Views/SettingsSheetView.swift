@@ -142,10 +142,6 @@ struct SettingsSheetView: View {
     }
     
     var body: some View {
-        #if DEBUG
-        let _ = Self._printChanges()
-        #endif
-        
         VStack {
             closeButton
                 .padding([.leading, .trailing, .top])

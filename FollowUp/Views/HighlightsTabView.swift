@@ -24,6 +24,7 @@ struct HighlightsTabView: View {
     }
 }
 
+#if DEBUG
 struct HighlightsTabView_Previews: PreviewProvider {
     static var previews: some View {
         HighlightsTabView(highlightedContacts: [.mocked.concrete, .mocked.concrete])
@@ -31,3 +32,4 @@ struct HighlightsTabView_Previews: PreviewProvider {
             .background(.black)
     }
 }
+#endif

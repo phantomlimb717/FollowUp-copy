@@ -148,9 +148,11 @@ struct ActionButtonGridView: View {
     }
 }
 
+#if DEBUG
 struct ActionButtonGridView_Previews: PreviewProvider {
     static var previews: some View {
         ActionButtonGridView(contact: .mocked)
             .environmentObject(FollowUpManager())
     }
 }
+#endif
