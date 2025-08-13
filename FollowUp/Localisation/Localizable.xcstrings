@@ -487,6 +487,9 @@
         }
       }
     },
+    "Close" : {
+
+    },
     "Contacts" : {
       "comment" : "",
       "extractionState" : "manual",

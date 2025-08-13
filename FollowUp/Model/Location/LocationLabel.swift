@@ -13,6 +13,7 @@ struct LocationLabel: View {
     let location: LocationSample
     
     @State private var locationAddress: String?
+    @State private var showMap: Bool = false
     
     var addressString: String {
         locationAddress ?? "Loading Location..."
@@ -20,7 +21,7 @@ struct LocationLabel: View {
     
     var body: some View {
         Button(action: {
-            
+            showMap = true
         }, label: {
                 Label(title: {
                     Text(addressString)
@@ -30,6 +31,9 @@ struct LocationLabel: View {
         .font(.footnote)
         .foregroundStyle(.blue)
         .onAppear { reverseGeocodeIfNeeded() }
+        .sheet(isPresented: $showMap) {
+            LocationMapView(latitude: location.latitude, longitude: location.longitude, address: locationAddress)
+        }
 
     }
     
