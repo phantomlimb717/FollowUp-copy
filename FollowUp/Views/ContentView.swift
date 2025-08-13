@@ -16,7 +16,7 @@ struct ContentView: View {
     @State var settingsSheetShown: Bool = false
     @State private var rotation: Double = 0
     @State private var contactInteractorState: ContactInteractorState = .fetchingContacts
-    @AppStorage("firstLaunch") var firstLaunch: Bool = true
+    @AppStorage("v2firstLaunch") var firstLaunch: Bool = true
     @AppStorage("v.7FirstLaunch") var newVersionLaunch: Bool = true
     @EnvironmentObject var followUpManager: FollowUpManager
     @Environment(\.scenePhase) var scenePhase
