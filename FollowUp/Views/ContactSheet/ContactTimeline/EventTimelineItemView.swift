@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+
 struct EventTimelineItemView: View {
     
     // MARK: - Stored Properties
     var item: TimelineItem
-
+    
     var body: some View {
         VStack(alignment: .center) {
             Image(icon: item.icon)
@@ -21,6 +22,10 @@ struct EventTimelineItemView: View {
                 .font(.footnote.bold())
             Text(item.time.formattedRelativeTimeSinceNow)
                 .font(.footnote)
+            
+            if let location = item.location, item.event == .firstMet {
+                LocationLabel(location: location)
+            }
 
         }
         .foregroundStyle(.secondary)
@@ -30,6 +35,6 @@ struct EventTimelineItemView: View {
 
 #if DEBUG
 #Preview {
-    EventTimelineItemView(item: .mockedCall)
+    EventTimelineItemView(item: .mockedFirstMet)
 }
 #endif
