@@ -23,6 +23,11 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
     private var cancellables = Set<AnyCancellable>()
     
     public var authorisationStatus: CLAuthorizationStatus = .notDetermined
+    
+    // MARK: - Computed Properties
+    var hasSufficientAuthorisation: Bool {
+        self.locationManager.authorizationStatus == .authorizedAlways
+    }
 
     // MARK: - Initialization
     init(followUpManager: FollowUpManager) {
@@ -30,25 +35,22 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
         super.init()
         self.locationManager.delegate = self
         self.locationManager.pausesLocationUpdatesAutomatically = false
+        // Seed with current status so we don't sit at .notDetermined until delegate fires
+        self.authorisationStatus = self.locationManager.authorizationStatus
     }
     
     // MARK: - Authorisation
     func requestAuthorisation() {
-        
-        guard self.followUpManager.store.settings.followUpRemindersActive else {
-            Log.warn("Attempted to request authorisation for Location Monitoring but reminders are disabled in settings.")
-            return
-        }
-        
-        if ![.authorizedAlways, .authorizedWhenInUse].contains(self.authorisationStatus) {
-            Log.info("Currently unauthorised to receive location updates. Requesting authorisation now.")
-            self.locationManager.requestAlwaysAuthorization()
-        }
+        // Route through unified handler to avoid duplicated logic
+        self.handleAuthorizationChange(self.locationManager.authorizationStatus)
     }
 
     // MARK: - Start/Stop Monitoring
     func startMonitoring() {
-        self.requestAuthorisation()
+        guard self.hasSufficientAuthorisation else {
+            self.requestAuthorisation()
+            return
+        }
         
         if CLLocationManager.significantLocationChangeMonitoringAvailable() {
             self.locationManager.startMonitoringSignificantLocationChanges()
@@ -66,21 +68,37 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
 
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        // Legacy callback – forward to unified handler
+        self.handleAuthorizationChange(manager.authorizationStatus)
+    }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        // iOS 14+
+        self.handleAuthorizationChange(manager.authorizationStatus)
+    }
+
+    private func handleAuthorizationChange(_ status: CLAuthorizationStatus) {
         self.authorisationStatus = status
-        switch self.authorisationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
-            Log.info("Significant location change monitoring authorised.")
+        switch status {
+        case .authorizedAlways:
+            Log.info("Location authorized: Always.")
             self.startMonitoring()
+        case .authorizedWhenInUse:
+            Log.info("Location authorized: When In Use. Requesting Always.")
+            self.locationManager.requestAlwaysAuthorization()
         case .denied, .restricted:
-            Log.error("Location access denied.")
-        default:
+            Log.error("Location access denied/restricted.")
+        case .notDetermined:
+            Log.info("Location authorization not determined. Requesting When-In-Use.")
+            self.locationManager.requestWhenInUseAuthorization()
+        @unknown default:
             break
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // Compute the number of new contacts when significant location changes occur
-        Log.info("Significant location change occured. \(locations.first?.coordinate ?? .init())")
+        Log.info("Significant location change occured. \(locations.first?.coordinate ?? .init()) at \(locations.first?.timestamp)")
         
         self.record(locations: locations)
         
