@@ -81,6 +81,11 @@ extension TimelineItem {
 
     static var mockedCall: TimelineItem = .event(type: .call, time: .now.addingTimeInterval(-30000))
     static var mockedFollowUp: TimelineItem = .event(type: .followUp, time: .now.addingTimeInterval(-200300))
+    static var mockedFirstMet: TimelineItem = {
+        let date: Date = .now.addingTimeInterval(-203000)
+        let location: LocationSample = .init(time: date, latitude: 53.1234112, longitude: 0.1342334, horizontalAccuracy: 100)
+        return .event(type: .firstMet, time: .now, location: location)
+    }()
     
     static var mockedMessage: TimelineItem = .event(type: .sms, time: .now.addingTimeInterval(-900000))
 
