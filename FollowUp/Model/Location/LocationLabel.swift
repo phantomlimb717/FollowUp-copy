@@ -27,6 +27,7 @@ struct LocationLabel: View {
                     Text(addressString)
                         .multilineTextAlignment(.center)
                 }, icon: { Image(icon: .locationArrow) })
+                .animation(.easeInOut, value: addressString)
         })
         .font(.footnote)
         .foregroundStyle(.blue)
