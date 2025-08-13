@@ -136,6 +136,7 @@ extension ContactTimelineView {
 
 #endif
 
+#if DEBUG
 #Preview {
     let followUpManager = FollowUpManager.mocked()
     ContactTimelineView(items: [
@@ -148,3 +149,4 @@ extension ContactTimelineView {
 //        .environmentObject(followUpManager.store)
 //        .environmentObject(FollowUpSettings())
 }
+#endif

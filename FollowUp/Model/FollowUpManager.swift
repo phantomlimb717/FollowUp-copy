@@ -294,7 +294,7 @@ final class FollowUpManager: ObservableObject {
 
 }
 
-#if DEBUG
+//#if DEBUG
 extension FollowUpManager {
     static func mocked(
         numberOfContacts: Int = 5,
@@ -321,4 +321,4 @@ extension FollowUpManager {
         return manager
     }
 }
-#endif
+//#endif

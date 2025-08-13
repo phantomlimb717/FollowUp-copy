@@ -215,9 +215,10 @@ extension TagsCarouselView {
 }
 
 
-
+#if DEBUG
 struct TagsCarouselView_Previews: PreviewProvider {
     static var previews: some View {
         TagsCarouselView(contact: Contact.mocked)
     }
 }
+#endif

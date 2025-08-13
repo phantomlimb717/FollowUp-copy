@@ -275,6 +275,7 @@ struct ContactSheetView: View {
     
 }
 
+#if DEBUG
 #Preview {
     let followUpManager = FollowUpManager.mocked()
 
@@ -293,4 +294,5 @@ struct ContactSheetView: View {
     .environmentObject(followUpManager.store)
     .environmentObject(FollowUpSettings())
 }
+#endif
 

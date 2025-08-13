@@ -181,6 +181,8 @@ extension ConversationStarterRowView {
     }
 }
 
+#if DEBUG
 #Preview {
     ConversationStarterRowView(contact: .mocked)
 }
+#endif

@@ -133,6 +133,7 @@ struct ContactRowView: View {
     }
 }
 
+#if DEBUG
 struct ContactRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -162,3 +163,4 @@ struct ContactRowView_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
+#endif

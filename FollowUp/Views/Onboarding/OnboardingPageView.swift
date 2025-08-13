@@ -92,6 +92,8 @@ struct OnboardingPageView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     OnboardingPageView(graphic: .onboardingContactTimeline, title: "Never lose touch again", description: "FollowUp helps you stay connected to the people that matter.")
 }
+#endif

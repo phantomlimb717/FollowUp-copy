@@ -91,6 +91,7 @@ struct ConversationActionButtonView: View {
     }
 }
 
+#if DEBUG
 struct ConversationActionButtonView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -105,3 +106,4 @@ struct ConversationActionButtonView_Previews: PreviewProvider {
 
     }
 }
+#endif

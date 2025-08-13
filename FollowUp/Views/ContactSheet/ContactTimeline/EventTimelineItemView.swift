@@ -28,6 +28,8 @@ struct EventTimelineItemView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     EventTimelineItemView(item: .mockedCall)
 }
+#endif

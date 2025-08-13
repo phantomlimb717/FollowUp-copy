@@ -27,6 +27,8 @@ struct CircularArrowLoadingSpinner: View {
     }
 }
 
+#if DEBUG
 #Preview {
     CircularArrowLoadingSpinner()
 }
+#endif

@@ -17,6 +17,8 @@ struct VerticalDivider: View {
     }
 }
 
+#if DEBUG
 #Preview {
     VerticalDivider()
 }
+#endif

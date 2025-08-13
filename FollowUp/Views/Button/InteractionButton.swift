@@ -52,6 +52,8 @@ struct InteractionButton: View {
     }
 }
 
+#if DEBUG
 #Preview {
     InteractionButton(action: .call(number: .mocked), contact: .mocked)
 }
+#endif

@@ -76,6 +76,8 @@ struct NativeContactView: UIViewControllerRepresentable {
     
 }
 
+#if DEBUG
 #Preview {
     NativeContactView(contactID: "1")
 }
+#endif

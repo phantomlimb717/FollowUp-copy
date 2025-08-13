@@ -59,8 +59,10 @@ struct DateMetView: View {
     }
 }
 
+#if DEBUG
 struct DateMetView_Previews: PreviewProvider {
     static var previews: some View {
         DateMetView(contact: Contact.mockedFollowedUpToday)
     }
 }
+#endif

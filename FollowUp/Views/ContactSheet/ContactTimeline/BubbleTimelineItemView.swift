@@ -37,6 +37,8 @@ struct BubbleTimelineItemView: View {
         )
     }
 }
+#if DEBUG
 #Preview {
     BubbleTimelineItemView(item: .mockedBT)
 }
+#endif
