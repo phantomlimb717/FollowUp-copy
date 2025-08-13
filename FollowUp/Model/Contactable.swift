@@ -22,6 +22,7 @@ protocol Contactable: Object, Identifiable {
     var timelineItems: RealmSwift.List<TimelineItem> { get set }
     var followUps: Int { get set }
     var createDate: Date { get set }
+    var firstAddedLocation: LocationSample? { get set }
     var highlighted: Bool { get }
     var containedInFollowUps: Bool { get }
     var followUpFrequency: FollowUpFrequency? { get set }
@@ -81,6 +82,7 @@ class Contact: Object, ObjectKeyIdentifiable, Contactable, Identifiable {
     @Persisted var _thumbnailImageData: Data?
     @Persisted var email: String?
     @Persisted var createDate: Date
+    @Persisted var firstAddedLocation: LocationSample?
     @Persisted var note: String?
 
     
