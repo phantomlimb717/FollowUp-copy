@@ -298,7 +298,7 @@ enum Constant {
     
     // MARK: - Vertical Divider
     enum VerticalDivider {
-        static let defaultWidth: CGFloat = 3.0
+        static let defaultWidth: CGFloat = 2.0
         static let defaultHeight: CGFloat = 10.0
     }
 }

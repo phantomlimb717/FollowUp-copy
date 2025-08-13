@@ -49,22 +49,23 @@ struct ContactTimelineView: View {
     }
     
     var body: some View {
-        LazyVStack(alignment: .center, spacing: 0) {
+        LazyVStack(alignment: .leading, spacing: 0) {
             
             ForEach(items.filter { !$0.isInvalidated }) { item in
                 if items.first?.id != item.id {
                     VerticalDivider()
+                        .padding(.leading, 22)
                 }
                 TimelineItemView(
                     item: item,
                     onEdit: { self.beginEditing(item: item) },
                     onDelete: { self.delete(item: item) }
                 )
-                
                 .transition(.move(edge: .bottom).combined(with: .opacity))
                 
                 if items.last?.id != item.id {
                     VerticalDivider()
+                        .padding(.leading, 22)
                 }
             }
             
