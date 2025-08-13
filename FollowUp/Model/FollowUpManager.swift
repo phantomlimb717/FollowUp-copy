@@ -90,7 +90,7 @@ final class FollowUpManager: ObservableObject {
         let realmFileURL = documentDirectory?.appendingPathComponent("\(name).realm")
         let config = Realm.Configuration(
             fileURL: realmFileURL,
-            schemaVersion: 8,
+            schemaVersion: 9,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
                     Log.info("Running migration to schema v2, adding contactListGrouping.")
@@ -134,6 +134,14 @@ final class FollowUpManager: ObservableObject {
                     Log.info("Running migration to schema v8. Adding primary key to 'TimelineItem'.")
                     migration.enumerateObjects(ofType: TimelineItem.className(), { oldObject, newObject in
                         newObject?["id"] = UUID().uuidString
+                    })
+                }
+                
+                if oldSchemaVersion < 9 {
+                    Log.info("Running migration to schema v9. Adding latitude/longitude to 'TimelineItem'.")
+                    migration.enumerateObjects(ofType: TimelineItem.className(), { _, newObject in
+                        newObject?["latitude"] = nil
+                        newObject?["longitude"] = nil
                     })
                 }
                 

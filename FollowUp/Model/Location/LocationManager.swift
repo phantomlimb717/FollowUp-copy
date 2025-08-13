@@ -81,14 +81,32 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // Compute the number of new contacts when significant location changes occur
         Log.info("Significant location change occured. \(locations.first?.coordinate ?? .init())")
+        
+        self.record(locations: locations)
+        
+        // Current notification system uses significant location updates to re-calculate local notification reminders
         if self.followUpManager.store.settings.followUpRemindersActive {
             self.computeContactsAndScheduleNotification()
+        }
+    }
+    
+    private func record(locations: [CLLocation]) {
+        guard let realm = followUpManager.realm else {
+            Log.error("Could not record \(locations.count) locations as FollowUpManager's realm is unavailable.")
+            return
+        }
+        
+        let samples = locations.map(\.locationSample)
+        
+        Log.info("Recording \(samples.count) location samples. ")
+        
+        realm.writeAsync {
+            realm.add(samples, update: .modified)
         }
     }
 
     // MARK: - Compute New Contacts
     private func computeContactsAndScheduleNotification() {
-        // Here, the computation logic for detecting new contacts would be called
         self.followUpManager.calculateNewlyMetContactsAndScheduleFollowUpReminderNotification()
     }
 }

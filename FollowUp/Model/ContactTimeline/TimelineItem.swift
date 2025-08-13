@@ -1,5 +1,5 @@
 //
-//  ContactTimeline.swift
+//  TimelineItem.swift
 //  FollowUp
 //
 //  Created by Aaron Baw on 02/05/2025.
@@ -15,18 +15,20 @@ class TimelineItem: Object {
     @Persisted var event: InteractionType
     @Persisted var time: Date = .now
     @Persisted var body: String?
+    @Persisted var location: LocationSample?
     
     // MARK: - Computed Properties
     var title: String { self.event.title }
     var icon: Constant.Icon { self.event.icon }
     
-    convenience init(kind: Kind, event: InteractionType, time: Date, body: String? = nil) {
+    convenience init(kind: Kind, event: InteractionType, time: Date, body: String? = nil, location: LocationSample? = nil) {
         self.init()
         self.kind = kind
         self.event = event
         self.id = UUID().uuidString
         self.time = time
         self.body = body
+        self.location = location
     }
     
     // MARK: - Static Convenience Initializers
@@ -34,8 +36,8 @@ class TimelineItem: Object {
         TimelineItem(kind: .bubble, event: .comment, time: time, body: body)
     }
     
-    static func event(type interactionType: InteractionType, time: Date = .now) -> TimelineItem {
-        TimelineItem(kind: .event, event: interactionType, time: time)
+    static func event(type interactionType: InteractionType, time: Date = .now, location: LocationSample? = nil) -> TimelineItem {
+        TimelineItem(kind: .event, event: interactionType, time: time, body: nil, location: location)
     }
     
 }

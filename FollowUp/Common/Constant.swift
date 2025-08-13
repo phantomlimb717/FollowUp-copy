@@ -90,6 +90,7 @@ enum Constant {
         case whatsApp = "whatsAppIcon"
 
         case arrowCirclePath = "arrow.trianglehead.2.clockwise.rotate.90"
+        case mapPin = "mappin.and.ellipse"
         case lock = "lock.fill"
         case lockWithExclamationMark = "lock.trianglebadge.exclamationmark"
         
@@ -102,7 +103,7 @@ enum Constant {
 
         var kind: Kind {
             switch self {
-            case .arrowForwardUp, .arrowUpChatBubble, .bolt, .bubble, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .circle, .email, .minus, .notification, .partyPopper, .pencil, .pencilWithSquare, .pencilWithBubble, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .tag, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
+            case .arrowForwardUp, .arrowUpChatBubble, .bolt, .bubble, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .circle, .email, .minus, .notification, .partyPopper, .pencil, .pencilWithSquare, .pencilWithBubble, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .tag, .target, .thumbsUp, .trash, .arrowCirclePath, .mapPin, .lock, .lockWithExclamationMark: return .sfSymbol
             case .whatsApp: return .asset
             }
         }
