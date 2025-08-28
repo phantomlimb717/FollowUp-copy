@@ -91,7 +91,7 @@ final class FollowUpManager: ObservableObject {
         let realmFileURL = documentDirectory?.appendingPathComponent("\(name).realm")
         let config = Realm.Configuration(
             fileURL: realmFileURL,
-            schemaVersion: 10,
+            schemaVersion: 12,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
                     Log.info("Running migration to schema v2, adding contactListGrouping.")
@@ -152,6 +152,17 @@ final class FollowUpManager: ObservableObject {
                     })
                 }
                 
+                if oldSchemaVersion < 12 {
+                    Log.info("Running migration to schema v12. Removing 'time' property from LocationSample.")
+                    migration.enumerateObjects(ofType: LocationSample.className()) { oldObject, newObject in
+                        // Remove the 'time' property if it exists
+                        // Realm automatically drops properties that are no longer in the model, so no action needed
+                        newObject?["arrivalDate"] = oldObject?["time"]
+                        newObject?["departureDate"] = nil
+                        newObject?["source"] = SampleSource.location
+                    }
+                }
+                
             }
         )
         
@@ -187,13 +198,13 @@ final class FollowUpManager: ObservableObject {
                             let thresholdStartTime = contact.createDate.addingTimeInterval(-threshold)
                             let thresholdEndTime = contact.createDate.addingTimeInterval(threshold)
                             let candidates = realm.objects(LocationSample.self)
-                                .filter("time >= %@ AND time <= %@", thresholdStartTime, thresholdEndTime)
+                                .filter("arrivalDate >= %@ AND arrivalDate <= %@", thresholdStartTime, thresholdEndTime)
                             
                             guard !candidates.isEmpty else { continue }
                             // Choose the closest in time; break ties by better (smaller) accuracy
                             let bestCandidateLocation = candidates.min { first, second in
-                                let firstIntervalSince = abs(first.time.timeIntervalSince(contact.createDate))
-                                let secondIntervalSince = abs(second.time.timeIntervalSince(contact.createDate))
+                                let firstIntervalSince = abs(first.arrivalDate.timeIntervalSince(contact.createDate))
+                                let secondIntervalSince = abs(second.arrivalDate.timeIntervalSince(contact.createDate))
                                 
 
                                 if firstIntervalSince == secondIntervalSince {
@@ -207,7 +218,7 @@ final class FollowUpManager: ObservableObject {
                                 Log.info("Linking firstAddedLocation \(bestCandidateLocation) to contact \(contact.name)")
                                 contact.firstAddedLocation = bestCandidateLocation
                                 // When we link the firstMetLocation, add a timeline even to reflect this.
-                                contact.timelineItems.append(.event(type: .firstMet, time: bestCandidateLocation.time, location: bestCandidateLocation))
+                                contact.timelineItems.append(.event(type: .firstMet, time: bestCandidateLocation.arrivalDate, location: bestCandidateLocation))
                             }
                         }
                     }
@@ -234,12 +245,12 @@ final class FollowUpManager: ObservableObject {
                             let start = item.time.addingTimeInterval(-threshold)
                             let end = item.time.addingTimeInterval(threshold)
                             let candidates = realm.objects(LocationSample.self)
-                                .filter("time >= %@ AND time <= %@", start, end)
+                                .filter("arrivalDate >= %@ AND arrivalDate <= %@", start, end)
                             guard !candidates.isEmpty else { continue }
                             // Choose the closest in time; break ties by better (smaller) accuracy
                             let bestCandidateLocation = candidates.min { first, second in
-                                let firstDistance = abs(first.time.timeIntervalSince(item.time))
-                                let secondDistance = abs(second.time.timeIntervalSince(item.time))
+                                let firstDistance = abs(first.arrivalDate.timeIntervalSince(item.time))
+                                let secondDistance = abs(second.arrivalDate.timeIntervalSince(item.time))
                                 
 
                                 if firstDistance == secondDistance {

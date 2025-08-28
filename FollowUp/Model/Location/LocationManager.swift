@@ -60,6 +60,9 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
             // Handle if significant location change monitoring is unavailable
             Log.error("Significant location change monitoring is unavailable.")
         }
+        
+        self.locationManager.startMonitoringVisits()
+        Log.info("Started visit monitoring.")
 
     }
 
@@ -76,6 +79,12 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         // iOS 14+
         self.handleAuthorizationChange(manager.authorizationStatus)
+    }
+
+    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+        Log.info("Visit detected at: \(visit.coordinate) arrival: \(visit.arrivalDate) departure: \(visit.departureDate)")
+        let sample = LocationSample(visit)
+        self.record(samples: [sample])
     }
 
     private func handleAuthorizationChange(_ status: CLAuthorizationStatus) {
@@ -119,6 +128,17 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
         
         Log.info("Recording \(samples.count) location samples. ")
         
+        realm.writeAsync {
+            realm.add(samples, update: .modified)
+        }
+    }
+    
+    private func record(samples: [LocationSample]) {
+        guard let realm = followUpManager.realm else {
+            Log.error("Could not record \(samples.count) location samples as FollowUpManager's realm is unavailable.")
+            return
+        }
+        Log.info("Recording \(samples.count) location samples. ")
         realm.writeAsync {
             realm.add(samples, update: .modified)
         }

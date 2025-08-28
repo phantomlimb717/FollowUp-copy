@@ -83,7 +83,7 @@ extension TimelineItem {
     static var mockedFollowUp: TimelineItem = .event(type: .followUp, time: .now.addingTimeInterval(-200300))
     static var mockedFirstMet: TimelineItem = {
         let date: Date = .now.addingTimeInterval(-203000)
-        let location: LocationSample = .init(time: date, latitude: 53.1234112, longitude: 0.1342334, horizontalAccuracy: 100)
+        let location: LocationSample = .init(arrivalDate: date, latitude: 53.1234112, longitude: 0.1342334, horizontalAccuracy: 100)
         return .event(type: .firstMet, time: .now, location: location)
     }()
     
