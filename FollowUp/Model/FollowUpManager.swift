@@ -154,7 +154,7 @@ final class FollowUpManager: ObservableObject {
                 }
                 
                 if oldSchemaVersion < 12 {
-                    Log.info("Running migration to schema v12. Removing 'time' property from LocationSample.")
+                    Log.info("Running migration to schema v12. Removing 'time' property from LocationSample and adding 'source', 'arrivalDate' and 'departureDate'.")
                     migration.enumerateObjects(ofType: LocationSample.className()) { oldObject, newObject in
                         // Remove the 'time' property if it exists
                         // Realm automatically drops properties that are no longer in the model, so no action needed
