@@ -179,7 +179,7 @@ final class FollowUpManager: ObservableObject {
     }
     
     // MARK: - Location Linking
-    private func linkLocationsToObjects<T: Object & LocationLinkable>(
+    private func linkLocationsToObjects<T: Object>(
         objects: Results<T>,
         locationSamples: Results<LocationSample>,
         getObjectDate: @escaping (T) -> Date,
@@ -410,16 +410,3 @@ extension FollowUpManager {
     }
 }
 //#endif
-
-// Add a protocol for objects that can be linked to a location
-protocol LocationLinkable {
-    var location: LocationSample? { get set }
-}
-
-extension TimelineItem: LocationLinkable {}
-extension Contact: LocationLinkable {
-    var location: LocationSample? {
-        get { firstAddedLocation }
-        set { firstAddedLocation = newValue }
-    }
-}
