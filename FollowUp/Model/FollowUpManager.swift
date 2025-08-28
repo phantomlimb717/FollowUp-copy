@@ -216,7 +216,7 @@ final class FollowUpManager: ObservableObject {
         }
     }
 
-    func linkContactLocationsInBackground(threshold: TimeInterval = 20 * 60) {
+    func linkContactLocationsInBackground(threshold: TimeInterval = Constant.Location.linkingThresholdSeconds) {
         DispatchQueue.global(qos: .utility).async {
             autoreleasepool {
                 do {
@@ -251,7 +251,7 @@ final class FollowUpManager: ObservableObject {
         }
     }
 
-    func linkTimelineLocationsInBackground(threshold: TimeInterval = 20 * 60) {
+    func linkTimelineLocationsInBackground(threshold: TimeInterval = Constant.Location.linkingThresholdSeconds) {
         DispatchQueue.global(qos: .utility).async {
             autoreleasepool {
                 do {

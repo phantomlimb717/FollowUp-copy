@@ -301,4 +301,9 @@ enum Constant {
         static let defaultWidth: CGFloat = 2.0
         static let defaultHeight: CGFloat = 10.0
     }
+    
+    // MARK: - Location
+    enum Location {
+        static let linkingThresholdSeconds: TimeInterval = 20 * 60
+    }
 }
