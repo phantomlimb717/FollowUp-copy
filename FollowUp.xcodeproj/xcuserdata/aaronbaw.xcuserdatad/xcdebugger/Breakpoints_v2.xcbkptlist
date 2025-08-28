@@ -590,9 +590,9 @@
             filePath = "FollowUp/Model/FollowUpManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "linkContactLocationsInBackground(threshold:)"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "linkLocationsToObjects(objects:locationSamples:getObjectDate:setObjectLocation:threshold:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
