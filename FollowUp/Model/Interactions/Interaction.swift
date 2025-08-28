@@ -17,6 +17,8 @@ enum InteractionType: String, PersistableEnum {
     case comment
     case whatsApp
     case followUp
+    case firstMet
+
     var icon: Constant.Icon {
         switch self {
         case .call: return .phone
@@ -24,6 +26,7 @@ enum InteractionType: String, PersistableEnum {
         case .comment: return .bubble
         case .whatsApp: return .whatsApp
         case .followUp: return .arrowForwardUp
+        case .firstMet: return .mapPin
         }
     }
     
@@ -34,6 +37,7 @@ enum InteractionType: String, PersistableEnum {
         case .followUp: return "FollowUp"
         case .sms: return "Message"
         case .whatsApp: return "WhatsApp"
+        case .firstMet: return "First Met"
         }
     }
     

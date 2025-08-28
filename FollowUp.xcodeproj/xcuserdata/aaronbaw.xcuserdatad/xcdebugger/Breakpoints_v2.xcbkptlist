@@ -302,8 +302,8 @@
             filePath = "FollowUp/Model/Contactable.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "isNew"
             landmarkType = "24">
          </BreakpointContent>
@@ -567,16 +567,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "67CD09EF-944B-4CE4-8169-60CCE0556AED"
+            uuid = "0BB8C310-5E25-42C6-93A0-3BE9462C55A6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FollowUp/Model/FollowUpStore.swift"
+            filePath = "FollowUp/Model/Location/LocationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "updateWithFetchedContacts(_:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "LocationManager"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBA77430-B128-4415-90B6-919DEAF5DC65"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FollowUp/Model/FollowUpManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "linkLocationsToObjects(objects:locationSamples:getObjectDate:setObjectLocation:threshold:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

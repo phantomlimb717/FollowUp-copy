@@ -52,6 +52,7 @@ enum Constant {
 
     // MARK: - Icons
     enum Icon: String, PersistableEnum {
+        case arrowCirclePath = "arrow.trianglehead.2.clockwise.rotate.90"
         case arrowForwardUp = "arrow.up.forward"
         case arrowUpChatBubble = "arrow.up.message.fill"
         case bolt = "bolt.fill"
@@ -66,6 +67,10 @@ enum Constant {
         case closeOutline = "xmark"
         case circle = "circle"
         case email = "envelope.fill"
+        case locationArrow = "location.fill"
+        case lock = "lock.fill"
+        case lockWithExclamationMark = "lock.trianglebadge.exclamationmark"
+        case mapPin = "mappin.and.ellipse"
         case minus = "minus"
         case notification = "bell.badge"
         case partyPopper = "party.popper.fill"
@@ -88,10 +93,6 @@ enum Constant {
         case thumbsUp = "hand.thumbsup.fill"
         case trash = "trash.fill"
         case whatsApp = "whatsAppIcon"
-
-        case arrowCirclePath = "arrow.trianglehead.2.clockwise.rotate.90"
-        case lock = "lock.fill"
-        case lockWithExclamationMark = "lock.trianglebadge.exclamationmark"
         
         static let mediumSize: CGFloat = 30.0
 
@@ -102,7 +103,7 @@ enum Constant {
 
         var kind: Kind {
             switch self {
-            case .arrowForwardUp, .arrowUpChatBubble, .bolt, .bubble, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .circle, .email, .minus, .notification, .partyPopper, .pencil, .pencilWithSquare, .pencilWithBubble, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .tag, .target, .thumbsUp, .trash, .arrowCirclePath, .lock, .lockWithExclamationMark: return .sfSymbol
+            case .arrowCirclePath, .arrowForwardUp, .arrowUpChatBubble, .bolt, .bubble, .chatBubbles, .chatWithElipses, .chatWithWaveform, .checkmark, .chevronRight, .clock, .closeOutline, .close, .circle, .email, .locationArrow, .lock, .lockWithExclamationMark, .mapPin, .minus, .notification, .partyPopper, .pencil, .pencilWithSquare, .pencilWithBubble, .personWithAtSymbol, .personWithCheckmark, .personWithClock, .personWithDescription, .phone, .plus, .settings, .sms, .star, .starWithText, .slashedStar, .tag, .target, .thumbsUp, .trash: return .sfSymbol
             case .whatsApp: return .asset
             }
         }
@@ -297,7 +298,12 @@ enum Constant {
     
     // MARK: - Vertical Divider
     enum VerticalDivider {
-        static let defaultWidth: CGFloat = 3.0
+        static let defaultWidth: CGFloat = 2.0
         static let defaultHeight: CGFloat = 10.0
+    }
+    
+    // MARK: - Location
+    enum Location {
+        static let linkingThresholdSeconds: TimeInterval = 60 * 60
     }
 }

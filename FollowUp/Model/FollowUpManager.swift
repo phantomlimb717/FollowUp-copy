@@ -79,6 +79,8 @@ final class FollowUpManager: ObservableObject {
                     case let .updateAndMerge(contact):
                         self.store.updateAndMerge(contact: contact)
                     }
+                    self.linkContactLocationsInBackground()
+                    self.linkTimelineLocationsInBackground()
             })
             .store(in: &self.subscriptions)
     }
@@ -90,7 +92,7 @@ final class FollowUpManager: ObservableObject {
         let realmFileURL = documentDirectory?.appendingPathComponent("\(name).realm")
         let config = Realm.Configuration(
             fileURL: realmFileURL,
-            schemaVersion: 8,
+            schemaVersion: 12,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
                     Log.info("Running migration to schema v2, adding contactListGrouping.")
@@ -137,6 +139,31 @@ final class FollowUpManager: ObservableObject {
                     })
                 }
                 
+                if oldSchemaVersion < 9 {
+                    Log.info("Running migration to schema v9. Adding location to 'TimelineItem'.")
+                    migration.enumerateObjects(ofType: TimelineItem.className(), { _, newObject in
+                        newObject?["location"] = nil
+                    })
+                }
+                
+                if oldSchemaVersion < 10 {
+                    Log.info("Running migration to schema v10. Adding location to 'Contact'.")
+                    migration.enumerateObjects(ofType: Contact.className(), { _, newObject in
+                        newObject?["firstAddedLocation"] = nil
+                    })
+                }
+                
+                if oldSchemaVersion < 12 {
+                    Log.info("Running migration to schema v12. Removing 'time' property from LocationSample and adding 'source', 'arrivalDate' and 'departureDate'.")
+                    migration.enumerateObjects(ofType: LocationSample.className()) { oldObject, newObject in
+                        // Remove the 'time' property if it exists
+                        // Realm automatically drops properties that are no longer in the model, so no action needed
+                        newObject?["arrivalDate"] = oldObject?["time"]
+                        newObject?["departureDate"] = nil
+                        newObject?["source"] = SampleSource.location
+                    }
+                }
+                
             }
         )
         
@@ -148,6 +175,105 @@ final class FollowUpManager: ObservableObject {
         } catch {
             Log.error("Could not open realm: \(error.localizedDescription)")
             return nil
+        }
+    }
+    
+    // MARK: - Location Linking
+    private func linkLocationsToObjects<T: Object>(
+        objects: Results<T>,
+        locationSamples: Results<LocationSample>,
+        getObjectDate: @escaping (T) -> Date,
+        setObjectLocation: @escaping (T, LocationSample) -> Void,
+        threshold: TimeInterval
+    ) {
+        for object in objects {
+            let objectDate = getObjectDate(object)
+            // 1. Try to find a visit sample where the object's date falls within the visit window
+            if let visitSample = locationSamples.first(where: { sample in
+                sample.source == .visit &&
+                sample.arrivalDate <= objectDate &&
+                (sample.departureDate ?? sample.arrivalDate) >= objectDate
+            }) {
+                setObjectLocation(object, visitSample)
+                continue
+            }
+            // 2. Fallback: find the closest non-visit sample (or any sample)
+            let start = objectDate.addingTimeInterval(-threshold)
+            let end = objectDate.addingTimeInterval(threshold)
+            let candidates = locationSamples.filter("arrivalDate >= %@ AND arrivalDate <= %@", start, end)
+            guard !candidates.isEmpty else { continue }
+            let bestCandidate = candidates.min { first, second in
+                let firstDistance = abs(first.arrivalDate.timeIntervalSince(objectDate))
+                let secondDistance = abs(second.arrivalDate.timeIntervalSince(objectDate))
+                if firstDistance == secondDistance {
+                    return (first.horizontalAccuracy) < (second.horizontalAccuracy)
+                }
+                return firstDistance < secondDistance
+            }
+            if let bestCandidate {
+                setObjectLocation(object, bestCandidate)
+            }
+        }
+    }
+
+    func linkContactLocationsInBackground(threshold: TimeInterval = Constant.Location.linkingThresholdSeconds) {
+        DispatchQueue.global(qos: .utility).async {
+            autoreleasepool {
+                do {
+                    let realm = try Realm()
+                    let unlinkedContacts = realm.objects(Contact.self).filter("firstAddedLocation == nil")
+                    guard !unlinkedContacts.isEmpty else { return }
+                    let locationSamples = realm.objects(LocationSample.self)
+                    try realm.write {
+                        self.linkLocationsToObjects(
+                            objects: unlinkedContacts,
+                            locationSamples: locationSamples,
+                            getObjectDate: { $0.createDate },
+                            setObjectLocation: { contact, location in
+                                contact.firstAddedLocation = location
+                                
+                                // NOTE: When the source type is "visit", we use the createDate of the contact, as we assume that the contact was created within the visitation period of the location sample. For a source of "location", we defer to the arrivalDate as an approximation.
+                                contact.timelineItems.append(
+                                    .event(
+                                        type: .firstMet,
+                                        time: location.source == .visit ? contact.createDate : location.arrivalDate,
+                                        location: location
+                                    )
+                                )
+                            },
+                            threshold: threshold
+                        )
+                    }
+                } catch {
+                    Log.error("Failed to link contacts to location samples: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+    func linkTimelineLocationsInBackground(threshold: TimeInterval = Constant.Location.linkingThresholdSeconds) {
+        DispatchQueue.global(qos: .utility).async {
+            autoreleasepool {
+                do {
+                    let realm = try Realm()
+                    let unlinkedTimelineItems = realm.objects(TimelineItem.self).filter("location == nil")
+                    guard !unlinkedTimelineItems.isEmpty else { return }
+                    let locationSamples = realm.objects(LocationSample.self)
+                    try realm.write {
+                        self.linkLocationsToObjects(
+                            objects: unlinkedTimelineItems,
+                            locationSamples: locationSamples,
+                            getObjectDate: { $0.time },
+                            setObjectLocation: { item, location in
+                                item.location = location
+                            },
+                            threshold: threshold
+                        )
+                    }
+                } catch {
+                    Log.error("Failed to link timeline items to location samples: \(error.localizedDescription)")
+                }
+            }
         }
     }
     
@@ -176,44 +302,6 @@ final class FollowUpManager: ObservableObject {
             
         
     }
-    
-    // Legacy Notification Configuration
-//    func configureNotifications() {
-//        BGTaskScheduler.shared.getPendingTaskRequests(completionHandler: { requests in
-//            
-//            DispatchQueue.main.async {
-//                
-//                if self.store.settings.followUpRemindersActive {
-//                    
-//                    // Check if we have the right authorisation.
-//                    self.notificationManager.requestNotificationAuthorization()
-//                    
-//                    // Check to see if any background tasks are scheduled.
-//                    guard !requests.map(\.identifier).contains(Constant.Processing.followUpRemindersTaskIdentifier)
-//                    else {
-//                        Log.info("Background task already scheduled for follow up reminders.")
-//                        return
-//                    }
-//                    
-//                    Log.info("No background tasks found for follow up reminders. Scheduling now.")
-//                    
-//                    self.scheduleBackgroundTaskForConfiguringNotifications(
-//                        onDay: .now.setting(
-//                            .hour,
-//                            to: Constant.Notification.defaultNotificationTriggerHour
-//                        )?.setting(.minute, to: 0)?.setting(.second, to: 0)
-//                    )
-//                    
-//                } else {
-//                    // Remove all pending tasks.
-//                    Log.info("Removing \(requests.count) background tasks for follow up reminders.")
-//                    BGTaskScheduler.shared.cancel(taskRequestWithIdentifier: Constant.Processing.followUpRemindersTaskIdentifier)
-//                }
-//            }
-//            
-//        })
-//        
-//    }
     
     private func scheduleBackgroundTaskForConfiguringNotifications(onDay date: Date?) {
         let date = date ?? .now
