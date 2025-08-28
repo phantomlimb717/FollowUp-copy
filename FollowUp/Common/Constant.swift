@@ -304,6 +304,6 @@ enum Constant {
     
     // MARK: - Location
     enum Location {
-        static let linkingThresholdSeconds: TimeInterval = 20 * 60
+        static let linkingThresholdSeconds: TimeInterval = 60 * 60
     }
 }
