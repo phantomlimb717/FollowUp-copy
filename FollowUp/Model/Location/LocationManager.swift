@@ -35,6 +35,7 @@ class LocationManager: NSObject, LocationManaging, CLLocationManagerDelegate {
         super.init()
         self.locationManager.delegate = self
         self.locationManager.pausesLocationUpdatesAutomatically = false
+        self.locationManager.allowsBackgroundLocationUpdates = true
         // Seed with current status so we don't sit at .notDetermined until delegate fires
         self.authorisationStatus = self.locationManager.authorizationStatus
     }
