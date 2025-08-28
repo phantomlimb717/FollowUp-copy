@@ -79,7 +79,8 @@ final class FollowUpManager: ObservableObject {
                     case let .updateAndMerge(contact):
                         self.store.updateAndMerge(contact: contact)
                     }
-                    self.linkLocationSamplesInBackground()
+                    self.linkContactLocationsInBackground()
+                    self.linkTimelineLocationsInBackground()
             })
             .store(in: &self.subscriptions)
     }
@@ -178,93 +179,96 @@ final class FollowUpManager: ObservableObject {
     }
     
     // MARK: - Location Linking
-    func linkLocationSamplesInBackground() {
-        self.linkContactLocationsInBackground()
-        self.linkTimelineLocationsInBackground()
+    private func linkLocationsToObjects<T: Object & LocationLinkable>(
+        objects: Results<T>,
+        locationSamples: Results<LocationSample>,
+        getObjectDate: @escaping (T) -> Date,
+        setObjectLocation: @escaping (T, LocationSample) -> Void,
+        threshold: TimeInterval
+    ) {
+        for object in objects {
+            let objectDate = getObjectDate(object)
+            // 1. Try to find a visit sample where the object's date falls within the visit window
+            if let visitSample = locationSamples.first(where: { sample in
+                sample.source == .visit &&
+                sample.arrivalDate <= objectDate &&
+                (sample.departureDate ?? sample.arrivalDate) >= objectDate
+            }) {
+                setObjectLocation(object, visitSample)
+                continue
+            }
+            // 2. Fallback: find the closest non-visit sample (or any sample)
+            let start = objectDate.addingTimeInterval(-threshold)
+            let end = objectDate.addingTimeInterval(threshold)
+            let candidates = locationSamples.filter("arrivalDate >= %@ AND arrivalDate <= %@", start, end)
+            guard !candidates.isEmpty else { continue }
+            let bestCandidate = candidates.min { first, second in
+                let firstDistance = abs(first.arrivalDate.timeIntervalSince(objectDate))
+                let secondDistance = abs(second.arrivalDate.timeIntervalSince(objectDate))
+                if firstDistance == secondDistance {
+                    return (first.horizontalAccuracy) < (second.horizontalAccuracy)
+                }
+                return firstDistance < secondDistance
+            }
+            if let bestCandidate {
+                setObjectLocation(object, bestCandidate)
+            }
+        }
     }
-    
-    
-    func linkContactLocationsInBackground(threshold: TimeInterval = 20 * 60){
+
+    func linkContactLocationsInBackground(threshold: TimeInterval = 20 * 60) {
         DispatchQueue.global(qos: .utility).async {
             autoreleasepool {
                 do {
                     let realm = try Realm()
-                    // Find items without a linked location
                     let unlinkedContacts = realm.objects(Contact.self).filter("firstAddedLocation == nil")
                     guard !unlinkedContacts.isEmpty else { return }
-                    
+                    let locationSamples = realm.objects(LocationSample.self)
                     try realm.write {
-                        for contact in unlinkedContacts {
-                            let thresholdStartTime = contact.createDate.addingTimeInterval(-threshold)
-                            let thresholdEndTime = contact.createDate.addingTimeInterval(threshold)
-                            let candidates = realm.objects(LocationSample.self)
-                                .filter("arrivalDate >= %@ AND arrivalDate <= %@", thresholdStartTime, thresholdEndTime)
-                            
-                            guard !candidates.isEmpty else { continue }
-                            // Choose the closest in time; break ties by better (smaller) accuracy
-                            let bestCandidateLocation = candidates.min { first, second in
-                                let firstIntervalSince = abs(first.arrivalDate.timeIntervalSince(contact.createDate))
-                                let secondIntervalSince = abs(second.arrivalDate.timeIntervalSince(contact.createDate))
+                        self.linkLocationsToObjects(
+                            objects: unlinkedContacts,
+                            locationSamples: locationSamples,
+                            getObjectDate: { $0.createDate },
+                            setObjectLocation: { contact, location in
+                                contact.firstAddedLocation = location
                                 
-
-                                if firstIntervalSince == secondIntervalSince {
-                                    return (first.horizontalAccuracy) < (second.horizontalAccuracy)
-                                }
-                                
-                                return firstIntervalSince < secondIntervalSince
-                            }
-                            
-                            if let bestCandidateLocation {
-                                Log.info("Linking firstAddedLocation \(bestCandidateLocation) to contact \(contact.name)")
-                                contact.firstAddedLocation = bestCandidateLocation
-                                // When we link the firstMetLocation, add a timeline even to reflect this.
-                                contact.timelineItems.append(.event(type: .firstMet, time: bestCandidateLocation.arrivalDate, location: bestCandidateLocation))
-                            }
-                        }
+                                // NOTE: When the source type is "visit", we use the createDate of the contact, as we assume that the contact was created within the visitation period of the location sample. For a source of "location", we defer to the arrivalDate as an approximation.
+                                contact.timelineItems.append(
+                                    .event(
+                                        type: .firstMet,
+                                        time: location.source == .visit ? contact.createDate : location.arrivalDate,
+                                        location: location
+                                    )
+                                )
+                            },
+                            threshold: threshold
+                        )
                     }
                 } catch {
-                    Log.error("Failed to link timeline items to location samples: \(error.localizedDescription)")
+                    Log.error("Failed to link contacts to location samples: \(error.localizedDescription)")
                 }
             }
         }
     }
 
-    /// Links unlinked `TimelineItem`s to the nearest `LocationSample` within the provided threshold.
-    /// Runs on a background queue to avoid impacting UI.
     func linkTimelineLocationsInBackground(threshold: TimeInterval = 20 * 60) {
         DispatchQueue.global(qos: .utility).async {
             autoreleasepool {
                 do {
                     let realm = try Realm()
-                    // Find items without a linked location
                     let unlinkedTimelineItems = realm.objects(TimelineItem.self).filter("location == nil")
                     guard !unlinkedTimelineItems.isEmpty else { return }
-                    
+                    let locationSamples = realm.objects(LocationSample.self)
                     try realm.write {
-                        for item in unlinkedTimelineItems {
-                            let start = item.time.addingTimeInterval(-threshold)
-                            let end = item.time.addingTimeInterval(threshold)
-                            let candidates = realm.objects(LocationSample.self)
-                                .filter("arrivalDate >= %@ AND arrivalDate <= %@", start, end)
-                            guard !candidates.isEmpty else { continue }
-                            // Choose the closest in time; break ties by better (smaller) accuracy
-                            let bestCandidateLocation = candidates.min { first, second in
-                                let firstDistance = abs(first.arrivalDate.timeIntervalSince(item.time))
-                                let secondDistance = abs(second.arrivalDate.timeIntervalSince(item.time))
-                                
-
-                                if firstDistance == secondDistance {
-                                    return (first.horizontalAccuracy) < (second.horizontalAccuracy)
-                                }
-                                
-                                return firstDistance < secondDistance
-                            }
-                            
-                            if let bestCandidateLocation {
-                                Log.info("Linking location \(bestCandidateLocation) to timeline item \(item)")
-                                item.location = bestCandidateLocation
-                            }
-                        }
+                        self.linkLocationsToObjects(
+                            objects: unlinkedTimelineItems,
+                            locationSamples: locationSamples,
+                            getObjectDate: { $0.time },
+                            setObjectLocation: { item, location in
+                                item.location = location
+                            },
+                            threshold: threshold
+                        )
                     }
                 } catch {
                     Log.error("Failed to link timeline items to location samples: \(error.localizedDescription)")
@@ -406,3 +410,16 @@ extension FollowUpManager {
     }
 }
 //#endif
+
+// Add a protocol for objects that can be linked to a location
+protocol LocationLinkable {
+    var location: LocationSample? { get set }
+}
+
+extension TimelineItem: LocationLinkable {}
+extension Contact: LocationLinkable {
+    var location: LocationSample? {
+        get { firstAddedLocation }
+        set { firstAddedLocation = newValue }
+    }
+}
